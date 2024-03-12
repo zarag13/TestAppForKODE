@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B04EE819539580A03186AAC5 /* Pods_TestAppForKODE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3824CFDE07CEC4FB659A2354 /* Pods_TestAppForKODE.framework */; };
 		ED4DA5062B9F36AF00895EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DA5052B9F36AF00895EAC /* AppDelegate.swift */; };
 		ED4DA5082B9F36AF00895EAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DA5072B9F36AF00895EAC /* SceneDelegate.swift */; };
-		ED4DA50A2B9F36AF00895EAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DA5092B9F36AF00895EAC /* ViewController.swift */; };
 		ED4DA50F2B9F36B100895EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4DA50E2B9F36B100895EAC /* Assets.xcassets */; };
 		ED4DA5122B9F36B100895EAC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = ED4DA5112B9F36B100895EAC /* Base */; };
 		ED4DA5292B9F4F7800895EAC /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DA5282B9F4F7800895EAC /* Resources.swift */; };
@@ -24,13 +24,40 @@
 		ED4DA5352B9F54BF00895EAC /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED4DA5242B9F4B7B00895EAC /* Inter-Regular.ttf */; };
 		ED4DA5362B9F54C100895EAC /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED4DA51F2B9F4B7B00895EAC /* Inter-SemiBold.ttf */; };
 		ED4DA5372B9F54C300895EAC /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED4DA5252B9F4B7B00895EAC /* Inter-Thin.ttf */; };
+		ED5E2B642B9F8A170033B19B /* UIView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B632B9F8A170033B19B /* UIView + extension.swift */; };
+		ED5E2B662B9F98A90033B19B /* ModelDetailProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B652B9F98A90033B19B /* ModelDetailProfile.swift */; };
+		ED5E2B682B9F9F010033B19B /* DetailEmployeProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B672B9F9F010033B19B /* DetailEmployeProfileCell.swift */; };
+		ED5E2B6F2B9FE2A90033B19B /* FilterForProfessionVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B6E2B9FE2A90033B19B /* FilterForProfessionVIew.swift */; };
+		ED5E2B712B9FE2D40033B19B /* TableListOfEmployeesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B702B9FE2D40033B19B /* TableListOfEmployeesView.swift */; };
+		ED5E2B732B9FE3630033B19B /* ViewForStackProfession.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B722B9FE3630033B19B /* ViewForStackProfession.swift */; };
+		ED5E2B782BA061F40033B19B /* BuilderForGetEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B772BA061F30033B19B /* BuilderForGetEmployee.swift */; };
+		ED5E2B7B2BA062260033B19B /* CreaterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B7A2BA062260033B19B /* CreaterRequest.swift */; };
+		ED5E2B7D2BA062380033B19B /* CreaterTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B7C2BA062370033B19B /* CreaterTask.swift */; };
+		ED5E2B7F2BA062470033B19B /* CreaterSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B7E2BA062470033B19B /* CreaterSession.swift */; };
+		ED5E2B812BA062D00033B19B /* CreaterURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B802BA062D00033B19B /* CreaterURL.swift */; };
+		ED5E2B832BA06D9E0033B19B /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B822BA06D9E0033B19B /* JSONCodable.swift */; };
+		ED5E2B852BA087A70033B19B /* ModelEmployeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B842BA087A70033B19B /* ModelEmployeeList.swift */; };
+		ED9A7A9A2B9F66160037BAF9 /* EmployeeProfileVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */; };
+		ED9A7A9C2B9F66410037BAF9 /* EmployeeProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */; };
+		ED9A7A9E2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */; };
+		ED9A7AA02B9F667C0037BAF9 /* EmployeeProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9F2B9F667C0037BAF9 /* EmployeeProfileRouter.swift */; };
+		ED9A7AA52B9F66F80037BAF9 /* EmployeeProfileModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7AA42B9F66F80037BAF9 /* EmployeeProfileModuleBuilder.swift */; };
+		ED9A7AA72B9F67130037BAF9 /* ListOfEmployeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7AA62B9F67130037BAF9 /* ListOfEmployeesViewController.swift */; };
+		ED9A7AAA2B9F67290037BAF9 /* ListOfEmployeesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7AA92B9F67290037BAF9 /* ListOfEmployeesPresenter.swift */; };
+		ED9A7AAC2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7AAB2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift */; };
+		ED9A7AAE2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7AAD2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift */; };
+		ED9A7AB02B9F67470037BAF9 /* ListOfEmployeesPouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7AAF2B9F67470037BAF9 /* ListOfEmployeesPouter.swift */; };
+		EDDC905D2B9F6C41002515D7 /* EmployeeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDC905C2B9F6C41002515D7 /* EmployeeProfileView.swift */; };
+		EDDC905F2B9F6C51002515D7 /* DetailEmployeeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDC905E2B9F6C51002515D7 /* DetailEmployeeProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3824CFDE07CEC4FB659A2354 /* Pods_TestAppForKODE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppForKODE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		748ABC391ED249477E34AD08 /* Pods-TestAppForKODE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppForKODE.debug.xcconfig"; path = "Target Support Files/Pods-TestAppForKODE/Pods-TestAppForKODE.debug.xcconfig"; sourceTree = "<group>"; };
+		C9D0884CF64C89A15F49A75B /* Pods-TestAppForKODE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppForKODE.release.xcconfig"; path = "Target Support Files/Pods-TestAppForKODE/Pods-TestAppForKODE.release.xcconfig"; sourceTree = "<group>"; };
 		ED4DA5022B9F36AF00895EAC /* TestAppForKODE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAppForKODE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4DA5052B9F36AF00895EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED4DA5072B9F36AF00895EAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED4DA5092B9F36AF00895EAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ED4DA50E2B9F36B100895EAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED4DA5112B9F36B100895EAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED4DA5132B9F36B100895EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +73,31 @@
 		ED4DA5272B9F4B8C00895EAC /* Inter-VariableFont_slnt,wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-VariableFont_slnt,wght.ttf"; sourceTree = "<group>"; };
 		ED4DA5282B9F4F7800895EAC /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		ED4DA52C2B9F4FF600895EAC /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
+		ED5E2B632B9F8A170033B19B /* UIView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + extension.swift"; sourceTree = "<group>"; };
+		ED5E2B652B9F98A90033B19B /* ModelDetailProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDetailProfile.swift; sourceTree = "<group>"; };
+		ED5E2B672B9F9F010033B19B /* DetailEmployeProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmployeProfileCell.swift; sourceTree = "<group>"; };
+		ED5E2B6E2B9FE2A90033B19B /* FilterForProfessionVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterForProfessionVIew.swift; sourceTree = "<group>"; };
+		ED5E2B702B9FE2D40033B19B /* TableListOfEmployeesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableListOfEmployeesView.swift; sourceTree = "<group>"; };
+		ED5E2B722B9FE3630033B19B /* ViewForStackProfession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForStackProfession.swift; sourceTree = "<group>"; };
+		ED5E2B772BA061F30033B19B /* BuilderForGetEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderForGetEmployee.swift; sourceTree = "<group>"; };
+		ED5E2B7A2BA062260033B19B /* CreaterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreaterRequest.swift; sourceTree = "<group>"; };
+		ED5E2B7C2BA062370033B19B /* CreaterTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreaterTask.swift; sourceTree = "<group>"; };
+		ED5E2B7E2BA062470033B19B /* CreaterSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreaterSession.swift; sourceTree = "<group>"; };
+		ED5E2B802BA062D00033B19B /* CreaterURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreaterURL.swift; sourceTree = "<group>"; };
+		ED5E2B822BA06D9E0033B19B /* JSONCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
+		ED5E2B842BA087A70033B19B /* ModelEmployeeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEmployeeList.swift; sourceTree = "<group>"; };
+		ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileVIewController.swift; sourceTree = "<group>"; };
+		ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfilePresenter.swift; sourceTree = "<group>"; };
+		ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileInteractor.swift; sourceTree = "<group>"; };
+		ED9A7A9F2B9F667C0037BAF9 /* EmployeeProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileRouter.swift; sourceTree = "<group>"; };
+		ED9A7AA42B9F66F80037BAF9 /* EmployeeProfileModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileModuleBuilder.swift; sourceTree = "<group>"; };
+		ED9A7AA62B9F67130037BAF9 /* ListOfEmployeesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesViewController.swift; sourceTree = "<group>"; };
+		ED9A7AA92B9F67290037BAF9 /* ListOfEmployeesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesPresenter.swift; sourceTree = "<group>"; };
+		ED9A7AAB2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesModuleBuilder.swift; sourceTree = "<group>"; };
+		ED9A7AAD2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesInteractor.swift; sourceTree = "<group>"; };
+		ED9A7AAF2B9F67470037BAF9 /* ListOfEmployeesPouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesPouter.swift; sourceTree = "<group>"; };
+		EDDC905C2B9F6C41002515D7 /* EmployeeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileView.swift; sourceTree = "<group>"; };
+		EDDC905E2B9F6C51002515D7 /* DetailEmployeeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmployeeProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +105,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04EE819539580A03186AAC5 /* Pods_TestAppForKODE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50E20CD2612F23A050CB4FEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3824CFDE07CEC4FB659A2354 /* Pods_TestAppForKODE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ED4DA4F92B9F36AF00895EAC = {
 			isa = PBXGroup;
 			children = (
 				ED4DA5042B9F36AF00895EAC /* TestAppForKODE */,
 				ED4DA5032B9F36AF00895EAC /* Products */,
+				FA98B9D35C958ED6CFA88BBF /* Pods */,
+				50E20CD2612F23A050CB4FEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,11 +141,14 @@
 		ED4DA5042B9F36AF00895EAC /* TestAppForKODE */ = {
 			isa = PBXGroup;
 			children = (
+				ED5E2B762BA061710033B19B /* NetworkLayer */,
+				ED9A7AA12B9F669C0037BAF9 /* NavigationManager */,
+				ED4DA51A2B9F4AFD00895EAC /* SupportingFiles */,
 				ED4DA52A2B9F4FB600895EAC /* Helpers */,
 				ED4DA51C2B9F4B4500895EAC /* Resources */,
 				ED4DA5192B9F4AEF00895EAC /* Application */,
-				ED4DA5092B9F36AF00895EAC /* ViewController.swift */,
-				ED4DA51A2B9F4AFD00895EAC /* SupportingFiles */,
+				ED4DA5392B9F5DDA00895EAC /* EmployeeProfile */,
+				ED4DA5382B9F5CF200895EAC /* ListOfEmployees */,
 			);
 			path = TestAppForKODE;
 			sourceTree = "<group>";
@@ -144,8 +210,94 @@
 			isa = PBXGroup;
 			children = (
 				ED4DA52C2B9F4FF600895EAC /* UIColor + extension.swift */,
+				ED5E2B632B9F8A170033B19B /* UIView + extension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		ED4DA5382B9F5CF200895EAC /* ListOfEmployees */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E2B6D2B9FE2560033B19B /* ListOfEmployeesViews */,
+				ED9A7AA62B9F67130037BAF9 /* ListOfEmployeesViewController.swift */,
+				ED9A7AA92B9F67290037BAF9 /* ListOfEmployeesPresenter.swift */,
+				ED9A7AAB2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift */,
+				ED9A7AAD2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift */,
+				ED9A7AAF2B9F67470037BAF9 /* ListOfEmployeesPouter.swift */,
+			);
+			path = ListOfEmployees;
+			sourceTree = "<group>";
+		};
+		ED4DA5392B9F5DDA00895EAC /* EmployeeProfile */ = {
+			isa = PBXGroup;
+			children = (
+				EDDC905B2B9F6BE0002515D7 /* EmployeeProfileViews */,
+				ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */,
+				ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */,
+				ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */,
+				ED9A7A9F2B9F667C0037BAF9 /* EmployeeProfileRouter.swift */,
+				ED9A7AA42B9F66F80037BAF9 /* EmployeeProfileModuleBuilder.swift */,
+			);
+			path = EmployeeProfile;
+			sourceTree = "<group>";
+		};
+		ED5E2B6D2B9FE2560033B19B /* ListOfEmployeesViews */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E2B752B9FE3740033B19B /* FilterListProfessionStack */,
+				ED5E2B702B9FE2D40033B19B /* TableListOfEmployeesView.swift */,
+			);
+			path = ListOfEmployeesViews;
+			sourceTree = "<group>";
+		};
+		ED5E2B752B9FE3740033B19B /* FilterListProfessionStack */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E2B6E2B9FE2A90033B19B /* FilterForProfessionVIew.swift */,
+				ED5E2B722B9FE3630033B19B /* ViewForStackProfession.swift */,
+			);
+			path = FilterListProfessionStack;
+			sourceTree = "<group>";
+		};
+		ED5E2B762BA061710033B19B /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E2B802BA062D00033B19B /* CreaterURL.swift */,
+				ED5E2B7A2BA062260033B19B /* CreaterRequest.swift */,
+				ED5E2B822BA06D9E0033B19B /* JSONCodable.swift */,
+				ED5E2B7E2BA062470033B19B /* CreaterSession.swift */,
+				ED5E2B7C2BA062370033B19B /* CreaterTask.swift */,
+				ED5E2B772BA061F30033B19B /* BuilderForGetEmployee.swift */,
+				ED5E2B842BA087A70033B19B /* ModelEmployeeList.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		ED9A7AA12B9F669C0037BAF9 /* NavigationManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NavigationManager;
+			sourceTree = "<group>";
+		};
+		EDDC905B2B9F6BE0002515D7 /* EmployeeProfileViews */ = {
+			isa = PBXGroup;
+			children = (
+				EDDC905C2B9F6C41002515D7 /* EmployeeProfileView.swift */,
+				EDDC905E2B9F6C51002515D7 /* DetailEmployeeProfileView.swift */,
+				ED5E2B672B9F9F010033B19B /* DetailEmployeProfileCell.swift */,
+				ED5E2B652B9F98A90033B19B /* ModelDetailProfile.swift */,
+			);
+			path = EmployeeProfileViews;
+			sourceTree = "<group>";
+		};
+		FA98B9D35C958ED6CFA88BBF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				748ABC391ED249477E34AD08 /* Pods-TestAppForKODE.debug.xcconfig */,
+				C9D0884CF64C89A15F49A75B /* Pods-TestAppForKODE.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,9 +307,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED4DA5162B9F36B100895EAC /* Build configuration list for PBXNativeTarget "TestAppForKODE" */;
 			buildPhases = (
+				D570E46DE3358EEEDE0B9A2D /* [CP] Check Pods Manifest.lock */,
 				ED4DA4FE2B9F36AF00895EAC /* Sources */,
 				ED4DA4FF2B9F36AF00895EAC /* Frameworks */,
 				ED4DA5002B9F36AF00895EAC /* Resources */,
+				1E6263CD01890D45C73F635E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,15 +377,81 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1E6263CD01890D45C73F635E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestAppForKODE/Pods-TestAppForKODE-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestAppForKODE/Pods-TestAppForKODE-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestAppForKODE/Pods-TestAppForKODE-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D570E46DE3358EEEDE0B9A2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestAppForKODE-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ED4DA4FE2B9F36AF00895EAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED4DA50A2B9F36AF00895EAC /* ViewController.swift in Sources */,
+				ED5E2B712B9FE2D40033B19B /* TableListOfEmployeesView.swift in Sources */,
+				ED9A7A9C2B9F66410037BAF9 /* EmployeeProfilePresenter.swift in Sources */,
+				ED9A7AA72B9F67130037BAF9 /* ListOfEmployeesViewController.swift in Sources */,
+				ED9A7AA52B9F66F80037BAF9 /* EmployeeProfileModuleBuilder.swift in Sources */,
+				ED9A7AAA2B9F67290037BAF9 /* ListOfEmployeesPresenter.swift in Sources */,
+				ED5E2B642B9F8A170033B19B /* UIView + extension.swift in Sources */,
+				ED5E2B7B2BA062260033B19B /* CreaterRequest.swift in Sources */,
+				ED5E2B7F2BA062470033B19B /* CreaterSession.swift in Sources */,
 				ED4DA52D2B9F4FF600895EAC /* UIColor + extension.swift in Sources */,
 				ED4DA5292B9F4F7800895EAC /* Resources.swift in Sources */,
+				ED9A7AAE2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift in Sources */,
+				ED5E2B682B9F9F010033B19B /* DetailEmployeProfileCell.swift in Sources */,
+				ED5E2B832BA06D9E0033B19B /* JSONCodable.swift in Sources */,
+				ED5E2B662B9F98A90033B19B /* ModelDetailProfile.swift in Sources */,
+				ED9A7AAC2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift in Sources */,
 				ED4DA5062B9F36AF00895EAC /* AppDelegate.swift in Sources */,
+				ED5E2B782BA061F40033B19B /* BuilderForGetEmployee.swift in Sources */,
+				ED5E2B732B9FE3630033B19B /* ViewForStackProfession.swift in Sources */,
+				ED5E2B7D2BA062380033B19B /* CreaterTask.swift in Sources */,
+				ED5E2B6F2B9FE2A90033B19B /* FilterForProfessionVIew.swift in Sources */,
+				EDDC905F2B9F6C51002515D7 /* DetailEmployeeProfileView.swift in Sources */,
+				ED9A7AA02B9F667C0037BAF9 /* EmployeeProfileRouter.swift in Sources */,
+				ED9A7A9A2B9F66160037BAF9 /* EmployeeProfileVIewController.swift in Sources */,
+				ED5E2B852BA087A70033B19B /* ModelEmployeeList.swift in Sources */,
+				EDDC905D2B9F6C41002515D7 /* EmployeeProfileView.swift in Sources */,
+				ED5E2B812BA062D00033B19B /* CreaterURL.swift in Sources */,
+				ED9A7AB02B9F67470037BAF9 /* ListOfEmployeesPouter.swift in Sources */,
+				ED9A7A9E2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift in Sources */,
 				ED4DA5082B9F36AF00895EAC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +496,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -287,7 +507,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -339,7 +559,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -350,7 +570,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -371,6 +591,7 @@
 		};
 		ED4DA5172B9F36B100895EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 748ABC391ED249477E34AD08 /* Pods-TestAppForKODE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -403,6 +624,7 @@
 		};
 		ED4DA5182B9F36B100895EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9D0884CF64C89A15F49A75B /* Pods-TestAppForKODE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -1,0 +1,16 @@
+PODS:
+  - BaseUIComponents (0.1.0)
+
+DEPENDENCIES:
+  - BaseUIComponents (from `./Frameworks/BaseUIComponents`)
+
+EXTERNAL SOURCES:
+  BaseUIComponents:
+    :path: "./Frameworks/BaseUIComponents"
+
+SPEC CHECKSUMS:
+  BaseUIComponents: a26d95475e15609e49cedeaaeb8e362aacbc4032
+
+PODFILE CHECKSUM: b6bb18f252e4c1320d19de79d978835062c899d0
+
+COCOAPODS: 1.15.2
