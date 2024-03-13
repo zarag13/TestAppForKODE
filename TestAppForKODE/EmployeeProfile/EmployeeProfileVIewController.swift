@@ -8,22 +8,32 @@
 import UIKit
 import BaseUIComponents
 
+//MARK: - протокол по которому view получит данные
+protocol DetailEmployeeProfileVIewControllerProtocol: AnyObject {
+    func showDetailInfo(employee: Employee)
+}
+
 
 class EmployeeProfileVIewController: BaseController {
+    
+    var presenter: DetailEmployeeProfilePresenterProtocol?
     
     let profileView = ProfileView()
     let detailProfileView = DetailProfileView(frame: .zero, style: .grouped)
     
     override func setupViews() {
         super.setupViews()
-        let image = UIImage(named: " Avatar")!
+        
+        presenter?.viewDidLoad()
+        
+        //let image = UIImage(named: " Avatar")!
+        
+        
 #warning("Мока для профиля - исправить при парсинге данных и конкретной разрабтки арихтектуры")
-        profileView.configureView(avatarImage: image, nameLabel: "Алиса Иванова", markingLabel: "al", professionLabel: "Designer")
+        //profileView.configureView(avatarImage: image, nameLabel: "Алиса Иванова", markingLabel: "al", professionLabel: "Designer")
         view.addView(profileView)
-        
-        
         view.addView(detailProfileView)
-        view.addView(detailProfileView)
+        //view.addView(detailProfileView)
     }
     
     override func setupLayoutViews() {
@@ -55,5 +65,22 @@ class EmployeeProfileVIewController: BaseController {
         statusBarView.backgroundColor = Resources.Colors.employeeProfileView
         view.addSubview(statusBarView)
         
+    }
+}
+
+
+//MARK: - распределяем данные по view
+extension EmployeeProfileVIewController: DetailEmployeeProfileVIewControllerProtocol {
+    
+    #warning("здесь нужно будет обработать полученные данные передав их в конфигураторы наших view")
+    func showDetailInfo(employee: Employee) {
+        guard let image = UIImage(data: employee) else { return }
+        profileView.configureView(avatarImage: image,
+                                  nameLabel: employee.firstName,
+                                  markingLabel: employee.userTag,
+                                  professionLabel: employee.department)
+        
+        
+        detailProfileView.configureDiffableDataSourceee(employee: <#T##Employer#>)
     }
 }

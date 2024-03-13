@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+//MARK: - сборка Второго контроллера
+class ListOfEmployeesModuleBuilder {
+    static func builder() -> ListOfEmployeesViewController {
+        
+        let view = ListOfEmployeesViewController()
+
+        return view
+    }
+}

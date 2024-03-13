@@ -221,9 +221,9 @@
 				ED5E2B6D2B9FE2560033B19B /* ListOfEmployeesViews */,
 				ED9A7AA62B9F67130037BAF9 /* ListOfEmployeesViewController.swift */,
 				ED9A7AA92B9F67290037BAF9 /* ListOfEmployeesPresenter.swift */,
-				ED9A7AAB2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift */,
 				ED9A7AAD2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift */,
 				ED9A7AAF2B9F67470037BAF9 /* ListOfEmployeesPouter.swift */,
+				ED9A7AAB2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift */,
 			);
 			path = ListOfEmployees;
 			sourceTree = "<group>";

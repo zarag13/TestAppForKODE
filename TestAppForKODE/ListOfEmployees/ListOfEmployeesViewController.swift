@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import BaseUIComponents
+
+protocol ListOfEmployeesViewControllerProtocol: AnyObject {
+    
+}
+
+class ListOfEmployeesViewController : BaseController {
+    var presenter: ListOfEmployeesPresenter?
+}
+
+extension ListOfEmployeesViewController: ListOfEmployeesViewControllerProtocol {
+    
+}

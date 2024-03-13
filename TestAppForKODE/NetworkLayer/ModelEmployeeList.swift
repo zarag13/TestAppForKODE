@@ -15,12 +15,12 @@ struct ModelEmployeeList: Codable {
     enum CodingKeys: String, CodingKey {
         case employee = "items"
     }
-}
-
-// MARK: - One item == Employee
-struct Employee: Codable {
-    let id: String
-    let avatarUrl: String
-    let firstName, lastName, userTag, department: String
-    let position, birthday, phone: String
+    
+    // MARK: - One item == Employee
+    struct Employee: Codable {
+        let id: String
+        let avatarUrl: String
+        let firstName, lastName, userTag, department: String
+        let position, birthday, phone: String
+    }
 }

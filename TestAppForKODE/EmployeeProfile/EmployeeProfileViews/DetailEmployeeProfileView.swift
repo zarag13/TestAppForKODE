@@ -19,7 +19,6 @@ extension DetailProfileView {
     override func registerCell() {
         super.registerCell()
         self.register(DetailEmployeProfileCell.self, forCellReuseIdentifier: DetailEmployeProfileCell.reuseIdentifier)
-        configureDiffableDataSourceee()
     }
     
     override func configureAppearance() {
@@ -36,6 +35,11 @@ extension DetailProfileView {
         
     }
 }
+
+
+
+
+
 
 
 
@@ -69,10 +73,19 @@ extension DetailProfileView {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
 extension DetailProfileView {
     
-    
-    func configureDiffableDataSourceee() {
+    func configureDiffableDataSourceee(employee: Employer) {
         
 #warning("Мока для таблицы - исправить при парсинге данных и конкретной разрабтки арихтектуры")
         let sections = MockData.shared.pageDta

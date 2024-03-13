@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol DetailEmployeeProfileRouterProtocol: AnyObject {
+    
+}
+
+
+class DetailEmployeeProfileRouter {
+    
+}
+
+extension DetailEmployeeProfileRouter: DetailEmployeeProfileRouterProtocol {
+    
+}

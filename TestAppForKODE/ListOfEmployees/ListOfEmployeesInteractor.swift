@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol ListOfEmployeesInteractorProtocol: AnyObject {
+    
+}
+
+class ListOfEmployeesInteractor {
+    weak var presenter: ListOfEmployeesPresenterProtocol?
+    
+}
+
+extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
+    
+}
