@@ -10,7 +10,7 @@ import BaseUIComponents
 
 //MARK: - протокол по которому view получит данные
 protocol DetailEmployeeProfileVIewControllerProtocol: AnyObject {
-    func showDetailInfo(employee: Employee)
+    //func showDetailInfo(employee: Employee)
 }
 
 
@@ -73,14 +73,14 @@ class EmployeeProfileVIewController: BaseController {
 extension EmployeeProfileVIewController: DetailEmployeeProfileVIewControllerProtocol {
     
     #warning("здесь нужно будет обработать полученные данные передав их в конфигураторы наших view")
-    func showDetailInfo(employee: Employee) {
-        guard let image = UIImage(data: employee) else { return }
-        profileView.configureView(avatarImage: image,
-                                  nameLabel: employee.firstName,
-                                  markingLabel: employee.userTag,
-                                  professionLabel: employee.department)
-        
-        
-        detailProfileView.configureDiffableDataSourceee(employee: <#T##Employer#>)
-    }
+//    func showDetailInfo(employee: Employee) {
+//        guard let image = UIImage(data: employee) else { return }
+//        profileView.configureView(avatarImage: image,
+//                                  nameLabel: employee.firstName,
+//                                  markingLabel: employee.userTag,
+//                                  professionLabel: employee.department)
+//        
+//        
+//        detailProfileView.configureDiffableDataSourceee(employee: <#T##Employer#>)
+//    }
 }

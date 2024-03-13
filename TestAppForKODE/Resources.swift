@@ -26,6 +26,8 @@ enum Resources {
     enum Image {
         static var starIcon = UIImage(named: "star")
         static var phoneIcon = UIImage(named: "phone")
+        
+        static var flyingSaucer = "flyingSaucer"
     }
     
     //MARK: - lits of fonts for progect

@@ -15,11 +15,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = EmployeeProfileVIewController()
+        window?.rootViewController = ErrorModuleBuilder.builder()
         window?.makeKeyAndVisible()
         
-        let a = BuilderForGetEmployee()
-        a.get()
+//        let a = BuilderForGetEmployee()
+//        a.get()
     }
 
 }

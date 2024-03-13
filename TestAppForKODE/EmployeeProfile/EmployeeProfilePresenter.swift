@@ -28,6 +28,6 @@ extension DetailEmployeeProfilePresenter : DetailEmployeeProfilePresenterProtoco
     func viewDidLoad() {
         //Здесь получаем данные от iteractor и передаем их в view
         let employe = iteractor.gettingData()
-        view?.showDetailInfo(employee: employe)
+        //view?.showDetailInfo(employee: employe)
     }
 }
