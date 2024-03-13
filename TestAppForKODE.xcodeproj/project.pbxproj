@@ -48,7 +48,6 @@
 		ED5E2B9C2BA1E1BA0033B19B /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B9B2BA1E1BA0033B19B /* UIButton + extension.swift */; };
 		ED5E2BA02BA1F0F00033B19B /* CategoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B9F2BA1F0F00033B19B /* CategoriesCollectionView.swift */; };
 		ED5E2BA52BA1F4300033B19B /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BA42BA1F4300033B19B /* CategoriesCollectionViewCell.swift */; };
-		ED5E2BA92BA1F91B0033B19B /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BA82BA1F91B0033B19B /* CategoriesViewController.swift */; };
 		ED5E2BAB2BA1FAA30033B19B /* String + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BAA2BA1FAA30033B19B /* String + extension.swift */; };
 		ED5E2BB12BA21F250033B19B /* NavigationBarTableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */; };
 		ED9A7A9A2B9F66160037BAF9 /* EmployeeProfileVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */; };
@@ -111,7 +110,6 @@
 		ED5E2B9B2BA1E1BA0033B19B /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		ED5E2B9F2BA1F0F00033B19B /* CategoriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionView.swift; sourceTree = "<group>"; };
 		ED5E2BA42BA1F4300033B19B /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
-		ED5E2BA82BA1F91B0033B19B /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		ED5E2BAA2BA1FAA30033B19B /* String + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + extension.swift"; sourceTree = "<group>"; };
 		ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTableList.swift; sourceTree = "<group>"; };
 		ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileVIewController.swift; sourceTree = "<group>"; };
@@ -339,7 +337,6 @@
 		ED5E2BAF2BA21EFE0033B19B /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				ED5E2BA82BA1F91B0033B19B /* CategoriesViewController.swift */,
 				ED5E2B9F2BA1F0F00033B19B /* CategoriesCollectionView.swift */,
 				ED5E2BA42BA1F4300033B19B /* CategoriesCollectionViewCell.swift */,
 				ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */,
@@ -525,7 +522,6 @@
 				ED4DA5062B9F36AF00895EAC /* AppDelegate.swift in Sources */,
 				ED5E2B782BA061F40033B19B /* BuilderForGetEmployee.swift in Sources */,
 				ED5E2B732B9FE3630033B19B /* ViewForStackProfession.swift in Sources */,
-				ED5E2BA92BA1F91B0033B19B /* CategoriesViewController.swift in Sources */,
 				ED5E2B7D2BA062380033B19B /* CreaterTask.swift in Sources */,
 				ED5E2BB12BA21F250033B19B /* NavigationBarTableList.swift in Sources */,
 				ED5E2B6F2B9FE2A90033B19B /* FilterForProfessionVIew.swift in Sources */,
