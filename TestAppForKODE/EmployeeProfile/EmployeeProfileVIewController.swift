@@ -54,7 +54,12 @@ class EmployeeProfileVIewController: BaseController {
         super.configureAppearance()
         view.backgroundColor = Resources.Colors.empliyeeProfileBacground
         
-        
+        //MARK: - setup navigationBar
+        navigationController?.navigationItem.backButtonTitle = nil
+        let apperance = UINavigationBarAppearance()
+        apperance.configureWithOpaqueBackground()
+        apperance.backgroundColor = .clear
+        navigationController?.navigationBar.standardAppearance = apperance
         
         
         #warning("Смена цвета статус бара - скорее всего придется избавиться при добавлении в naviggation")
