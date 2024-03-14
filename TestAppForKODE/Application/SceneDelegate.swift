@@ -21,8 +21,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         
-//        let a = BuilderForGetEmployee()
-//        a.get()
     }
 
 }
