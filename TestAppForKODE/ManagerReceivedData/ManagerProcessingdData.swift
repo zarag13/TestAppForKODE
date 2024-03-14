@@ -1,5 +1,5 @@
 //
-//  ManagerReceivedData.swift
+//  ManagerProcessingdData.swift
 //  TestAppForKODE
 //
 //  Created by Kirill on 14.03.2024.
@@ -7,53 +7,79 @@
 
 import UIKit
 
-class ManagerReceivedData {
+class ManagerProcessingdData {
     //Логика
     //Iteractor обращается к NetworkNagare - он отдает Result
     //В Result мы обращаемся к этому менеджеру, он будет принимать дефолтный массив данных - обрабаотываеть их и возращать уже необходимые данные
     
     //1. Основной метод в котором произойдет преобразование
-    func receivedDecoderJSONData(data: ModelEmployeeList) -> [Employee] {
-        var newData = [Employee]()
+    var taskForDownloadAvatarImage: CreaterTaskForSession?
+    
+    let semaf = DispatchSemaphore(value: 0)
+    
+    func processingDecoderJSONData(data: ModelEmployeeList, task: CreaterTaskForSession) -> [Employee] {
+        taskForDownloadAvatarImage = task
+
         let jsonData = data.employee
         
+        var newData = [Employee]()
+
         newData = jsonData.map({ user -> Employee in
+            print("enter MAP \(Thread.current)")
             return Employee(id: user.id,
                            firstName: user.firstName,
                            lastName: user.lastName,
                            department: user.department,
                            position: user.position,
                            userTag: lowerTag(name: user.userTag),
-                           phone: receivedPhoneNumber(phone: user.phone), // +79969593262
+                           phone: processingPhoneNumber(phone: user.phone), // +79969593262
                            avatarImage: downloadImage(url: user.avatarUrl),
-                           birthday: receivedBirthday(date: user.birthday),
+                           birthday: processingBirthday(date: user.birthday),
                            currentAge: createCurrentAgefromBirthday(date: user.birthday))
         })
         
+        print(newData[0].avatarImage.size.width)
         return newData
         
     }
     
     
-    func lowerTag(name: String) -> String {
+    private func lowerTag(name: String) -> String {
+        print("lowerTag")
         return name.lowercased()
     }
     
-    func receivedPhoneNumber(phone: String) -> String {
+    private func processingPhoneNumber(phone: String) -> String {
         let result = phone.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         return "+7\(result)"
     }
     
-    func downloadImage(url: String) -> UIImage {
+    private func downloadImage(url: String) -> UIImage {
         //здесь делаем запрос к API
         //если sesess - возвращаем скаченную
         //если failure - возвращаем моку
-        return UIImage()
+        
+        var image = UIImage()
+        
+        self.taskForDownloadAvatarImage?.employeeDownloadAvatarImageTask(url: url, completion: { result in
+            switch result {
+            case .success(let data):
+                image = UIImage(data: data)!
+                self.semaf.signal()
+            case .failure(let error):
+                image = UIImage(named: Resources.Image.mockAvatarImage)!
+                self.semaf.signal()
+            }
+        })
+        semaf.wait()
+        
+        
+        return image
     }
     
     
     
-    func receivedPhoneNumberWithSeparate(phone: String) -> String {
+    private func processingPhoneNumberWithSeparate(phone: String) -> String {
         //+79969593262
         //+7 (999) 900 90 90
         var result = phone
@@ -69,7 +95,7 @@ class ManagerReceivedData {
         return result
     }
     
-    func receivedBirthday(date: String) -> String {
+    private func processingBirthday(date: String) -> String {
         
         //на основе строки создает дату
         let dateFormatter = DateFormatter()
@@ -96,7 +122,7 @@ class ManagerReceivedData {
         return dateString
     }
     
-    func createCurrentAgefromBirthday(date: String) -> String {
+    private func createCurrentAgefromBirthday(date: String) -> String {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

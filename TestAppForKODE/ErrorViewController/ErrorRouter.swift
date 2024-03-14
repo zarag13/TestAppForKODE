@@ -8,13 +8,15 @@
 import Foundation
 
 protocol ErrorRouterProtocol: AnyObject {
-    
+    func openStartVC()
 }
 
 class ErrorRouter {
-    weak var view: ErrorViewControllerProtocol?
+    weak var view: ErrorViewController?
 }
 
 extension ErrorRouter: ErrorRouterProtocol {
-    
+    func openStartVC() {
+        view?.navigationController?.popViewController(animated: true)
+    }
 }

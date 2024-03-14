@@ -7,23 +7,11 @@
 
 import Foundation
 
-//MARK: - Error Create URL
-enum ErrorURL: Error, CustomStringConvertible {
-    case transform
-    
-    var description: String {
-        switch self {
-            
-        case .transform:
-            return "error converting url from string"
-        }
-    }
-}
 
 //MARK: - Protocol Create URL
 protocol CreaterURLProtocol {
-    func eployeeListGetURL(completion: @escaping (Result<URL, ErrorURL>) -> Void)
-    func employeeAvatarImage(url: String, completion: @escaping (Result<URL, ErrorURL>) -> Void)
+    func eployeeListGetURL(completion: @escaping (Result<URL, ErrorForNetworkManager>) -> Void)
+    func employeeAvatarImage(url: String, completion: @escaping (Result<URL, ErrorForNetworkManager>) -> Void)
 }
 
 
@@ -31,10 +19,10 @@ protocol CreaterURLProtocol {
 class CreaterURL: CreaterURLProtocol {
     
     //MARK: - create url for download image
-    func employeeAvatarImage(url: String, completion: @escaping (Result<URL, ErrorURL>) -> Void) {
+    func employeeAvatarImage(url: String, completion: @escaping (Result<URL, ErrorForNetworkManager>) -> Void) {
         let strURL = url
         guard let url = URL(string: strURL) else {
-            completion(.failure(.transform))
+            completion(.failure(.createURLFromString))
             return
         }
         completion(.success(url))
@@ -42,10 +30,10 @@ class CreaterURL: CreaterURLProtocol {
     
     
     //MARK: - create url for download json
-    func eployeeListGetURL(completion: @escaping (Result<URL, ErrorURL>) -> Void) {
+    func eployeeListGetURL(completion: @escaping (Result<URL, ErrorForNetworkManager>) -> Void) {
         let strURL = "https://stoplight.io/mocks/kode-api/trainee-test/331141861/users"
         guard let url = URL(string: strURL) else {
-            completion(.failure(.transform))
+            completion(.failure(.createURLFromString))
             return
         }
         completion(.success(url))

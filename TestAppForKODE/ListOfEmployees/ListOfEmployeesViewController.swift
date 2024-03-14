@@ -9,7 +9,7 @@ import Foundation
 import BaseUIComponents
 
 protocol ListOfEmployeesViewControllerProtocol: AnyObject {
-    
+    func showData(data: [Employee])
 }
 
 class ListOfEmployeesViewController : BaseController {
@@ -21,7 +21,15 @@ class ListOfEmployeesViewController : BaseController {
 
 extension ListOfEmployeesViewController {
     override func setupViews() {
-        
+        print("viewDidLoad")
+        view.addView(categoriesMenu)
+        view.addView(tableListOfEmployees)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.viewDidLoad()
     }
     
     override func setupLayoutViews() {
@@ -39,12 +47,12 @@ extension ListOfEmployeesViewController {
     }
     
     override func configureAppearance() {
-        view.addView(categoriesMenu)
-        view.addView(tableListOfEmployees)
         view.backgroundColor = .white
     }
 }
 
 extension ListOfEmployeesViewController: ListOfEmployeesViewControllerProtocol {
-    
+    func showData(data: [Employee]) {
+        
+    }
 }

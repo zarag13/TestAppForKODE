@@ -10,9 +10,10 @@ import Foundation
 //MARK: - сборка экрана с ошибкой
 class ErrorModuleBuilder {
     static func builder() -> ErrorViewController {
+        let view = ErrorViewController()
         let interactor = ErrorInteractor()
         let router = ErrorRouter()
-        let view = ErrorViewController()
+        router.view = view
         let presenter = ErrorPresenter(interactor: interactor, router: router)
         view.presenter = presenter
         presenter.view = view

@@ -8,7 +8,9 @@
 import Foundation
 
 protocol ListOfEmployeesPresenterProtocol: AnyObject {
-    
+    func viewDidLoad()
+    func didLoad(data: [Employee])
+    func obtainError()
 }
 
 class ListOfEmployeesPresenter {
@@ -23,5 +25,15 @@ class ListOfEmployeesPresenter {
 }
 
 extension ListOfEmployeesPresenter: ListOfEmployeesPresenterProtocol {
+    func obtainError() {
+        router.openErrorVC()
+    }
     
+    func didLoad(data: [Employee]) {
+        view?.showData(data: data)
+    }
+    
+    func viewDidLoad() {
+        interactor.loadData()
+    }
 }

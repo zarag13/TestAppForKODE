@@ -7,25 +7,11 @@
 
 import Foundation
 
-//MARK: - Enum Error create URLSession
-enum ErrorSession: Error, CustomStringConvertible {
-    case errorCreateConfigSession
-    case errorCreateSession
-    
-    var description: String {
-        switch self {
-        case .errorCreateConfigSession:
-            return "error create URLRequest"
-        case .errorCreateSession:
-            return "error create URLSession"
-        }
-    }
-}
 
 //MARK: - Protocol create URLSession
 protocol CreaterSessionProtocol {
-    func eployeeListGetSession(completion: @escaping (Result<URLSession, ErrorSession>) -> Void)
-    func eployeeAvatarDownloadSession(url: String, completion: @escaping (Result<URLSession, ErrorSession>) -> Void)
+    func eployeeListGetSession(completion: @escaping (Result<URLSession, ErrorForNetworkManager>) -> Void)
+    func eployeeAvatarDownloadSession(url: String, completion: @escaping (Result<URLSession, ErrorForNetworkManager>) -> Void)
 }
 
 //MARK: - Class create URLSession
@@ -38,36 +24,38 @@ final class CreaterSession: NSObject, CreaterSessionProtocol {
     var urlSession: URLSession?
     
     //MARK: - func create URLSession for download JSON
-    func eployeeListGetSession(completion: @escaping (Result<URLSession, ErrorSession>) -> Void) {
+    func eployeeListGetSession(completion: @escaping (Result<URLSession, ErrorForNetworkManager>) -> Void) {
         configurationSession = setupConfigSession(cahePolicy: .useProtocolCachePolicy)
         guard let config = configurationSession else {
-            completion(.failure(.errorCreateConfigSession))
+            completion(.failure(.createConfigSession))
             return
         }
         
         urlSession = URLSession(configuration: config, delegate: self, delegateQueue: operationQueue)
         guard let session = urlSession else {
-            completion(.failure(.errorCreateSession))
+            completion(.failure(.createSession))
             return
         }
         completion(.success(session))
     }
     
+    
     //MARK: - func create URLSession for download IMAGE
-    func eployeeAvatarDownloadSession(url: String, completion: @escaping (Result<URLSession, ErrorSession>) -> Void) {
+    func eployeeAvatarDownloadSession(url: String, completion: @escaping (Result<URLSession, ErrorForNetworkManager>) -> Void) {
         configurationSession = setupConfigSession(cahePolicy: .returnCacheDataElseLoad)
         guard let config = configurationSession else {
-            completion(.failure(.errorCreateConfigSession))
+            completion(.failure(.createConfigSession))
             return
         }
         
         urlSession = URLSession(configuration: config, delegate: self, delegateQueue: operationQueue)
         guard let session = urlSession else {
-            completion(.failure(.errorCreateSession))
+            completion(.failure(.createSession))
             return
         }
         completion(.success(session))
     }
+    
     
     
     //MARK: - create URLSessionConfiguration
@@ -82,6 +70,7 @@ final class CreaterSession: NSObject, CreaterSessionProtocol {
         return config
     }
 }
+
 
 extension CreaterSession: URLSessionDelegate {
     //Сообщает URLSession, что сеанс признан недействительным.

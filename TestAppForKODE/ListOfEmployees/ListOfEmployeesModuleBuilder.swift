@@ -12,7 +12,13 @@ class ListOfEmployeesModuleBuilder {
     static func builder() -> ListOfEmployeesViewController {
         
         let view = ListOfEmployeesViewController()
-
+        let router = ListOfEmployeesPouter()
+        router.view = view
+        let interactor = ListOfEmployeesInteractor()
+        let presenter = ListOfEmployeesPresenter(interactor: interactor, router: router)
+        view.presenter = presenter
+        presenter.view = view
+        interactor.presenter = presenter
         return view
     }
 }
