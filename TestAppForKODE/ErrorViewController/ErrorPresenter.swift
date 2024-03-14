@@ -10,6 +10,7 @@ import Foundation
 protocol ErrorPresenterProtocol: AnyObject {
     func getData(data: ErrorData)
     func viewDidLoad()
+    func reloadData()
 }
 
 class ErrorPresenter {
@@ -24,6 +25,10 @@ class ErrorPresenter {
 }
 
 extension ErrorPresenter: ErrorPresenterProtocol {
+    func reloadData() {
+        router.openStartVC()
+    }
+    
     func viewDidLoad() {
         interactor.loadData()
     }

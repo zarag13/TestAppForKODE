@@ -7,17 +7,6 @@
 
 import Foundation
 
-//MARK: - Enum == Erorr create Request
-enum ErrorRequest: Error, CustomStringConvertible {
-    case createError
-    
-    var description: String {
-        switch self {
-        case .createError:
-            return "error create URLRequest"
-        }
-    }
-}
 
 //MARK: - Enum == Response server status (200 or 500)
 enum ResultState {
@@ -27,8 +16,8 @@ enum ResultState {
 
 //MARK: - Protocol create Request
 protocol CreaterRequestProtocol {
-    func getRequestEmployeeeList(state: ResultState, completion: @escaping (Result<URLRequest, ErrorRequest>) -> Void)
-    func getRequestForDownloadAvatar(urL: String, completion: @escaping (Result<URLRequest, ErrorRequest>) -> Void)
+    func getRequestEmployeeeList(state: ResultState, completion: @escaping (Result<URLRequest, ErrorForNetworkManager>) -> Void)
+    func getRequestForDownloadAvatar(urL: String, completion: @escaping (Result<URLRequest, ErrorForNetworkManager>) -> Void)
 }
 
 
@@ -44,7 +33,7 @@ class CreaterRequest: CreaterRequestProtocol {
     }
     
     //MARK: - create Request for download JSON (settings + state(200 or 500)
-    func getRequestEmployeeeList(state: ResultState, completion: @escaping (Result<URLRequest, ErrorRequest>) -> Void) {
+    func getRequestEmployeeeList(state: ResultState, completion: @escaping (Result<URLRequest, ErrorForNetworkManager>) -> Void) {
         
         url.eployeeListGetURL { [weak self] result in
             guard let strSelf = self else { return }
@@ -61,20 +50,20 @@ class CreaterRequest: CreaterRequestProtocol {
                 strSelf.request?.httpMethod = "GET"
                 
                 guard let request = strSelf.request else {
-                    completion(.failure(.createError))
+                    completion(.failure(.createRequest))
                     return
                 }
                 completion(.success(request))
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }
     
     
     //MARK: - create Request for download ImageData (settings)
-    func getRequestForDownloadAvatar(urL: String, completion: @escaping (Result<URLRequest, ErrorRequest>) -> Void) {
+    func getRequestForDownloadAvatar(urL: String, completion: @escaping (Result<URLRequest, ErrorForNetworkManager>) -> Void) {
         url.employeeAvatarImage(url: urL) { [weak self] result in
             guard let strSelf = self else { return }
             switch result {
@@ -83,13 +72,13 @@ class CreaterRequest: CreaterRequestProtocol {
                 strSelf.request?.httpMethod = "GET"
                 
                 guard let request = strSelf.request else {
-                    completion(.failure(.createError))
+                    completion(.failure(.createRequest))
                     return
                 }
                 completion(.success(request))
                 
             case .failure(let error):
-                print(error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

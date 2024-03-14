@@ -48,6 +48,6 @@ extension ErrorViewController: ErrorViewControllerProtocol {
 #warning("Доделать переход к стартовому контроллеру и вызов у него повтороной загрузки данных")
 extension ErrorViewController: ButtonForReloadDataProtocol {
     func reloadData() {
-        print("reloadData")
+        presenter?.reloadData()
     }
 }

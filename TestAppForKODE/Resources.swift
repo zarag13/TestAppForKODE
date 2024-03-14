@@ -27,6 +27,7 @@ enum Resources {
         static var starIcon = UIImage(named: "star")
         static var phoneIcon = UIImage(named: "phone")
         
+        static var mockAvatarImage = "mockAvatarImage"
         static var flyingSaucer = "flyingSaucer"
     }
     

@@ -49,7 +49,7 @@ extension CategoriesCollectionViewCell {
             categoryNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            lineView.heightAnchor.constraint(equalToConstant: 3),
+            lineView.heightAnchor.constraint(equalToConstant: 2),
             lineView.widthAnchor.constraint(equalToConstant: contentView.frame.width),
         ])
     }

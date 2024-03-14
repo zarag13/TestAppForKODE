@@ -15,8 +15,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = CategoriesViewController()
+        let rootvc = ListOfEmployeesModuleBuilder.builder()
+        let navVC = UINavigationController(rootViewController: rootvc)
+        window?.rootViewController = navVC
         window?.makeKeyAndVisible()
+        
         
 //        let a = BuilderForGetEmployee()
 //        a.get()
