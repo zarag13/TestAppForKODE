@@ -50,6 +50,8 @@
 		ED5E2BB92BA231360033B19B /* ListOfEmployeesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BB82BA231360033B19B /* ListOfEmployeesTableView.swift */; };
 		ED5E2BBB2BA231420033B19B /* ListOfEmployeesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BBA2BA231420033B19B /* ListOfEmployeesTableViewCell.swift */; };
 		ED5E2BBD2BA2319B0033B19B /* MockViewForTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BBC2BA2319B0033B19B /* MockViewForTableViewCell.swift */; };
+		ED5E2BC32BA32C160033B19B /* ManagerReceivedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BC22BA32C160033B19B /* ManagerReceivedData.swift */; };
+		ED5E2BC52BA367170033B19B /* ModelEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BC42BA367170033B19B /* ModelEmployee.swift */; };
 		ED9A7A9A2B9F66160037BAF9 /* EmployeeProfileVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */; };
 		ED9A7A9C2B9F66410037BAF9 /* EmployeeProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */; };
 		ED9A7A9E2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */; };
@@ -112,6 +114,8 @@
 		ED5E2BB82BA231360033B19B /* ListOfEmployeesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesTableView.swift; sourceTree = "<group>"; };
 		ED5E2BBA2BA231420033B19B /* ListOfEmployeesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesTableViewCell.swift; sourceTree = "<group>"; };
 		ED5E2BBC2BA2319B0033B19B /* MockViewForTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewForTableViewCell.swift; sourceTree = "<group>"; };
+		ED5E2BC22BA32C160033B19B /* ManagerReceivedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerReceivedData.swift; sourceTree = "<group>"; };
+		ED5E2BC42BA367170033B19B /* ModelEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEmployee.swift; sourceTree = "<group>"; };
 		ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileVIewController.swift; sourceTree = "<group>"; };
 		ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfilePresenter.swift; sourceTree = "<group>"; };
 		ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileInteractor.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 		ED4DA5042B9F36AF00895EAC /* TestAppForKODE */ = {
 			isa = PBXGroup;
 			children = (
+				ED5E2BC02BA32BDE0033B19B /* ManagerReceivedData */,
 				ED5E2B862BA1B9BF0033B19B /* ErrorViewController */,
 				ED5E2B762BA061710033B19B /* NetworkLayer */,
 				ED9A7AA12B9F669C0037BAF9 /* NavigationManager */,
@@ -344,6 +349,15 @@
 			path = ListEployeesTableView;
 			sourceTree = "<group>";
 		};
+		ED5E2BC02BA32BDE0033B19B /* ManagerReceivedData */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E2BC22BA32C160033B19B /* ManagerReceivedData.swift */,
+				ED5E2BC42BA367170033B19B /* ModelEmployee.swift */,
+			);
+			path = ManagerReceivedData;
+			sourceTree = "<group>";
+		};
 		ED9A7AA12B9F669C0037BAF9 /* NavigationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +512,7 @@
 				ED9A7A9C2B9F66410037BAF9 /* EmployeeProfilePresenter.swift in Sources */,
 				ED9A7AA72B9F67130037BAF9 /* ListOfEmployeesViewController.swift in Sources */,
 				ED5E2B9C2BA1E1BA0033B19B /* UIButton + extension.swift in Sources */,
+				ED5E2BC52BA367170033B19B /* ModelEmployee.swift in Sources */,
 				ED5E2BAB2BA1FAA30033B19B /* String + extension.swift in Sources */,
 				ED5E2B8E2BA1D0C30033B19B /* ErrorInteractor.swift in Sources */,
 				ED9A7AA52B9F66F80037BAF9 /* EmployeeProfileModuleBuilder.swift in Sources */,
@@ -520,6 +535,7 @@
 				ED5E2B662B9F98A90033B19B /* ModelDetailProfile.swift in Sources */,
 				ED9A7AAC2B9F67360037BAF9 /* ListOfEmployeesModuleBuilder.swift in Sources */,
 				ED5E2B8C2BA1D0B30033B19B /* ErrorPresenter.swift in Sources */,
+				ED5E2BC32BA32C160033B19B /* ManagerReceivedData.swift in Sources */,
 				ED4DA5062B9F36AF00895EAC /* AppDelegate.swift in Sources */,
 				ED5E2BB92BA231360033B19B /* ListOfEmployeesTableView.swift in Sources */,
 				ED5E2B782BA061F40033B19B /* BuilderForGetEmployee.swift in Sources */,
