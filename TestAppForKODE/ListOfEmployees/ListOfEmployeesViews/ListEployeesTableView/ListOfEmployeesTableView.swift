@@ -7,8 +7,19 @@
 
 import BaseUIComponents
 
+protocol ListOfEmployeesTableViewDelegate: AnyObject {
+    func reloadData(sender: UIRefreshControl)
+}
+
 class ListOfEmployeesTableView: BaseTableView {
+    var employees: [Employee]? {
+        didSet {
+            reloadData()
+            isScrollEnabled = true
+        }
+    }
     
+    weak var tableViewdelegate: ListOfEmployeesTableViewDelegate?
 }
 
 extension ListOfEmployeesTableView {
@@ -21,11 +32,19 @@ extension ListOfEmployeesTableView {
         dataSource = self
         separatorStyle = .none
         
-        if contentSize.height < frame.size.height {
-            isScrollEnabled = true
-        } else {
-            isScrollEnabled = false
-        }
+        isScrollEnabled = false
+        showsVerticalScrollIndicator = false
+        
+        self.refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = .red
+        refreshControl?.addTarget(self, action: #selector(refreshReloadData(sender:)), for: .valueChanged)
+    }
+    
+    
+    @objc func refreshReloadData(sender: UIRefreshControl) {
+        print("refresh")
+        refreshControl?.beginRefreshing()
+        tableViewdelegate?.reloadData(sender: sender)
     }
 }
 
@@ -36,7 +55,7 @@ extension ListOfEmployeesTableView: UITableViewDelegate {
 }
 extension ListOfEmployeesTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        8
+        employees?.count ?? 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,6 +63,9 @@ extension ListOfEmployeesTableView: UITableViewDataSource {
             print("error")
             return UITableViewCell()
         }
+        guard let employee = employees?[indexPath.row] else { return cell }
+        
+        cell.configurationCell(employee: employee)
         
         return cell
     }

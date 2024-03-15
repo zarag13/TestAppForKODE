@@ -44,6 +44,7 @@ extension CategoriesCollectionViewCell {
     }
     
     override func setupLayoutViews() {
+        print(contentView.frame.size.width)
         NSLayoutConstraint.activate([
             categoryNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             categoryNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

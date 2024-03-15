@@ -25,7 +25,6 @@ class ManagerProcessingdData {
         var newData = [Employee]()
 
         newData = jsonData.map({ user -> Employee in
-            print("enter MAP \(Thread.current)")
             return Employee(id: user.id,
                            firstName: user.firstName,
                            lastName: user.lastName,
@@ -37,15 +36,12 @@ class ManagerProcessingdData {
                            birthday: processingBirthday(date: user.birthday),
                            currentAge: createCurrentAgefromBirthday(date: user.birthday))
         })
-        
-        print(newData[0].avatarImage.size.width)
         return newData
         
     }
     
     
     private func lowerTag(name: String) -> String {
-        print("lowerTag")
         return name.lowercased()
     }
     

@@ -47,3 +47,12 @@ extension ListOfEmployeesTableViewCell {
     override func configureAppearance() {
     }
 }
+
+extension ListOfEmployeesTableViewCell {
+    func configurationCell(employee: Employee) {
+        avatarImage.configureViewWithAvatarImage(image: employee.avatarImage)
+        let fullName = "\(employee.firstName) \(employee.firstName)"
+        nameTitleLabel.configureViewWithTitle(title: fullName, style: .name)
+        positionTitleLabel.configureViewWithTitle(title: employee.position, style: .position)
+    }
+}

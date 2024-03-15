@@ -39,47 +39,49 @@ class MockViewForTableViewCell: BaseView {
 extension MockViewForTableViewCell {
     override func setupViews() {
         layer.addSublayer(gradient)
+        clipsToBounds = true
     }
     
     override func configureAppearance() {
         #warning("хорошая анимация но нужно сделать градиент отдельным view и менять у него alpa - что бы было не важно в какой момент остановится анимация - и что будет с его alpha - иначе потом текст будет прозранчый, при неудачной остановке, а может вообще ее убрать??")
-        var animator: UIViewPropertyAnimator!
-
-        func start(_ reversed: Bool = false) {
-            animator = UIViewPropertyAnimator(duration: 1.5, curve: .easeInOut)
-            animator.addAnimations {
-                if reversed == true {
-                    self.alpha = 0
-                } else {
-                    self.alpha = 1
-                }
-            }
-            animator.addCompletion { _ in
-                start(!reversed)
-            }
-            animator.startAnimation()
-        }
-
-        func stop() {
-            animator.stopAnimation(true)
-        }
-        
-        start(true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            stop()
-        }
+//        var animator: UIViewPropertyAnimator!
+//
+//        func start(_ reversed: Bool = false) {
+//            animator = UIViewPropertyAnimator(duration: 1.5, curve: .easeInOut)
+//            animator.addAnimations {
+//                if reversed == true {
+//                    self.alpha = 0
+//                } else {
+//                    self.alpha = 1
+//                }
+//            }
+//            animator.addCompletion { _ in
+//                start(!reversed)
+//            }
+//            animator.startAnimation()
+//        }
+//
+//        func stop() {
+//            animator.stopAnimation(true)
+//        }
+//        
+//        start(true)
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//            stop()
+//        }
     }
 
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         gradient.frame = bounds
         switch styleView {
         case .title:
-            gradient.cornerRadius = frame.height / 2
+            layer.cornerRadius = frame.height / 2
         case .avatar:
-            gradient.cornerRadius = frame.width / 2
+            layer.cornerRadius = frame.width / 2
         }
     }
 }
@@ -115,6 +117,7 @@ extension MockViewForTableViewCell {
     func configureViewWithAvatarImage(image: UIImage) {
         addView(avatarImage)
         gradient.removeFromSuperlayer()
+        avatarImage.layer.cornerRadius = avatarImage.frame.width / 2
         avatarImage.image = image
         setupLayout(view: avatarImage)
     }

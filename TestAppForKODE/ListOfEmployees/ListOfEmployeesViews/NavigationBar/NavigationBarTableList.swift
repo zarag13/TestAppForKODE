@@ -33,7 +33,6 @@ extension NavigationBarTableList {
         addView(searchBar)
         addView(categoriesMenu)
         addView(lineView)
-        categoriesMenu.categoriesDelegate = self
     }
     
     override func setupLayoutViews() {
@@ -56,12 +55,5 @@ extension NavigationBarTableList {
     }
     
     override func configureAppearance() {
-    }
-}
-
-
-extension NavigationBarTableList: CategoriesProtocol {
-    func move(originX: CGFloat, width: CGFloat) {
-        print(originX)
     }
 }

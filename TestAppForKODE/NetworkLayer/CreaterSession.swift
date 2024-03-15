@@ -64,7 +64,7 @@ final class CreaterSession: NSObject, CreaterSessionProtocol {
         config.allowsCellularAccess = false
         config.waitsForConnectivity = true
         config.timeoutIntervalForRequest = 30
-        config.timeoutIntervalForResource = 300
+        config.timeoutIntervalForResource = 30
         config.multipathServiceType = .handover
         config.requestCachePolicy = cahePolicy
         return config

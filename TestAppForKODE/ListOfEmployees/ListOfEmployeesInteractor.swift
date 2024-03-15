@@ -22,7 +22,7 @@ class ListOfEmployeesInteractor {
 extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
     func loadData() {
         let task = networkManager.createTaskManagerr()
-        task.eployeeListGetTask(state: .code500) { result in
+        task.eployeeListGetTask(state: .code200) { result in
             switch result {
                 
             case .success(let data):

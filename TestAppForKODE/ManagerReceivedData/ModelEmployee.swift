@@ -25,28 +25,3 @@ struct Employee {
     // 24 года
     var currentAge: String
 }
-
-
-class SafeArray<T> {
-    //2. Приватный массив, для внутреннего использования
-    private var _array = [T]()
-    //3. Параллельная очередь, для внутреннего использования
-    private let queue = DispatchQueue(label: "myQueue", attributes: .concurrent)
-
-    //4. Метод записи данных в массив(2)
-    func append(_ value: T) {
-        //5. Асинхронно относительно той очереди где вызываем(например: Main) - записываем данные в массив(2), т.к тут Barrier - создается впечатление что у нас последовательная(serial) очередь
-        queue.async(flags: .barrier) {
-            self._array.append(value)
-        }
-    }
-
-    //6. Копьютер проперти - которое синхронно(блокируя другую очредь - делает чтение данных)
-    var valueArray: [T] {
-        var result = [T]()
-        queue.sync {
-            result = self._array
-        }
-        return result
-    }
-}

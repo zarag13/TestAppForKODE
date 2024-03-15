@@ -53,6 +53,7 @@
 		ED5E2BC32BA32C160033B19B /* ManagerProcessingdData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BC22BA32C160033B19B /* ManagerProcessingdData.swift */; };
 		ED5E2BC52BA367170033B19B /* ModelEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BC42BA367170033B19B /* ModelEmployee.swift */; };
 		ED5E2BC72BA36A9F0033B19B /* EnumErrorForWorkNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BC62BA36A9F0033B19B /* EnumErrorForWorkNetworkManager.swift */; };
+		ED5E2BCC2BA3C17C0033B19B /* ModelDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BCB2BA3C17C0033B19B /* ModelDepartment.swift */; };
 		ED9A7A9A2B9F66160037BAF9 /* EmployeeProfileVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */; };
 		ED9A7A9C2B9F66410037BAF9 /* EmployeeProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */; };
 		ED9A7A9E2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */; };
@@ -118,6 +119,7 @@
 		ED5E2BC22BA32C160033B19B /* ManagerProcessingdData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerProcessingdData.swift; sourceTree = "<group>"; };
 		ED5E2BC42BA367170033B19B /* ModelEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelEmployee.swift; sourceTree = "<group>"; };
 		ED5E2BC62BA36A9F0033B19B /* EnumErrorForWorkNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumErrorForWorkNetworkManager.swift; sourceTree = "<group>"; };
+		ED5E2BCB2BA3C17C0033B19B /* ModelDepartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDepartment.swift; sourceTree = "<group>"; };
 		ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileVIewController.swift; sourceTree = "<group>"; };
 		ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfilePresenter.swift; sourceTree = "<group>"; };
 		ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileInteractor.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		ED4DA5382B9F5CF200895EAC /* ListOfEmployees */ = {
 			isa = PBXGroup;
 			children = (
+				ED5E2BCA2BA3C1500033B19B /* Entity */,
 				ED5E2B6D2B9FE2560033B19B /* ListOfEmployeesViews */,
 				ED9A7AA62B9F67130037BAF9 /* ListOfEmployeesViewController.swift */,
 				ED9A7AA92B9F67290037BAF9 /* ListOfEmployeesPresenter.swift */,
@@ -345,9 +348,9 @@
 		ED5E2BB72BA230E20033B19B /* ListEployeesTableView */ = {
 			isa = PBXGroup;
 			children = (
-				ED5E2BB82BA231360033B19B /* ListOfEmployeesTableView.swift */,
-				ED5E2BBA2BA231420033B19B /* ListOfEmployeesTableViewCell.swift */,
 				ED5E2BBC2BA2319B0033B19B /* MockViewForTableViewCell.swift */,
+				ED5E2BBA2BA231420033B19B /* ListOfEmployeesTableViewCell.swift */,
+				ED5E2BB82BA231360033B19B /* ListOfEmployeesTableView.swift */,
 			);
 			path = ListEployeesTableView;
 			sourceTree = "<group>";
@@ -359,6 +362,14 @@
 				ED5E2BC42BA367170033B19B /* ModelEmployee.swift */,
 			);
 			path = ManagerReceivedData;
+			sourceTree = "<group>";
+		};
+		ED5E2BCA2BA3C1500033B19B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E2BCB2BA3C17C0033B19B /* ModelDepartment.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		ED9A7AA12B9F669C0037BAF9 /* NavigationManager */ = {
@@ -525,6 +536,7 @@
 				ED5E2B962BA1D3970033B19B /* ErrorData.swift in Sources */,
 				ED5E2B642B9F8A170033B19B /* UIView + extension.swift in Sources */,
 				ED5E2B7B2BA062260033B19B /* CreaterRequest.swift in Sources */,
+				ED5E2BCC2BA3C17C0033B19B /* ModelDepartment.swift in Sources */,
 				ED5E2BA52BA1F4300033B19B /* CategoriesCollectionViewCell.swift in Sources */,
 				ED5E2B8A2BA1D08C0033B19B /* ErrorView.swift in Sources */,
 				ED5E2B882BA1CCDA0033B19B /* ErrorViewController.swift in Sources */,

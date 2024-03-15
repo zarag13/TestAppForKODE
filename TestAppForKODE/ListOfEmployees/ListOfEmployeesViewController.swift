@@ -17,6 +17,20 @@ class ListOfEmployeesViewController : BaseController {
     
     let categoriesMenu = NavigationBarTableList()
     let tableListOfEmployees = ListOfEmployeesTableView()
+    
+    var employees = [Employee]() {
+        didSet {
+            tableListOfEmployees.employees = employees
+        }
+    }
+    
+    var filteredEmployee = [Employee]() {
+        didSet {
+            tableListOfEmployees.employees = filteredEmployee
+        }
+    }
+    
+    var refresh = UIRefreshControl()
 }
 
 extension ListOfEmployeesViewController {
@@ -25,6 +39,8 @@ extension ListOfEmployeesViewController {
         view.addView(categoriesMenu)
         view.addView(tableListOfEmployees)
         navigationController?.navigationBar.isHidden = true
+        categoriesMenu.categoriesMenu.categoriesDelegate = self
+        tableListOfEmployees.tableViewdelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +69,27 @@ extension ListOfEmployeesViewController {
 
 extension ListOfEmployeesViewController: ListOfEmployeesViewControllerProtocol {
     func showData(data: [Employee]) {
-        
+        employees = data
+        refresh.endRefreshing()
+    }
+}
+
+extension ListOfEmployeesViewController: ListOfEmployeesTableViewDelegate {
+    func reloadData(sender: UIRefreshControl) {
+        refresh = sender
+        presenter?.viewDidLoad()
+    }
+}
+
+extension ListOfEmployeesViewController: CategoriesProtocol {
+    
+    func move(departamen: Department) {
+        filteredEmployee = employees.filter { eployee in
+            if departamen.rawValue == "Все" {
+                return true
+            }else {
+                return eployee.department == "\(departamen)"
+            }
+        }
     }
 }
