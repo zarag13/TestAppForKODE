@@ -87,6 +87,10 @@ extension ListOfEmployeesViewController: ListOfEmployeesViewControllerProtocol {
 }
 
 extension ListOfEmployeesViewController: ListOfEmployeesTableViewDelegate {
+    func selectedEmployee(employee: Employee) {
+        presenter?.selectedEmployee(employee: employee)
+    }
+    
     func reloadData(callback: any ListOfEmployeesViewControllerCallBackProtocol) {
         callBackDelegate = callback
         presenter?.viewDidLoad()

@@ -11,6 +11,7 @@ protocol ListOfEmployeesPresenterProtocol: AnyObject {
     func viewDidLoad()
     func didLoad(data: [Employee])
     func obtainError()
+    func selectedEmployee(employee: Employee)
 }
 
 class ListOfEmployeesPresenter {
@@ -25,6 +26,10 @@ class ListOfEmployeesPresenter {
 }
 
 extension ListOfEmployeesPresenter: ListOfEmployeesPresenterProtocol {
+    func selectedEmployee(employee: Employee) {
+        router.openDetailVC(employee: employee)
+    }
+    
     func obtainError() {
         router.openErrorVC()
     }

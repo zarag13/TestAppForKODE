@@ -9,6 +9,7 @@ import BaseUIComponents
 
 protocol ListOfEmployeesTableViewDelegate: AnyObject {
     func reloadData(callback: ListOfEmployeesViewControllerCallBackProtocol)
+    func selectedEmployee(employee: Employee)
 }
 
 class ListOfEmployeesTableView: BaseTableView {
@@ -48,7 +49,10 @@ extension ListOfEmployeesTableView {
 }
 
 extension ListOfEmployeesTableView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let employe = employees?[indexPath.row] else { return }
+        tableViewdelegate?.selectedEmployee(employee: employe)
+    }
 }
 extension ListOfEmployeesTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

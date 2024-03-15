@@ -10,8 +10,8 @@ import Foundation
 
 //MARK: - сборка Второго контроллера
 class EmployeeProfileBuilder {
-    static func builder(employe: Employer) -> EmployeeProfileVIewController {
-        let iteractor = DetailEmployeeProfileIteractor(employe: employe)
+    static func builder(employee: Employee) -> EmployeeProfileVIewController {
+        let iteractor = DetailEmployeeProfileIteractor(employe: employee)
         let router = DetailEmployeeProfileRouter()
         let view = EmployeeProfileVIewController()
         let presenter = DetailEmployeeProfilePresenter(router: router, iteractor: iteractor)
