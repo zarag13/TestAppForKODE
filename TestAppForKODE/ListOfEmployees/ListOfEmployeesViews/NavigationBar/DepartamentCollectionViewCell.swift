@@ -1,5 +1,5 @@
 //
-//  CategoriesCollectionViewCell.swift
+//  DepartamenCollectionViewCell.swift
 //  TestAppForKODE
 //
 //  Created by Kirill on 13.03.2024.
@@ -7,11 +7,11 @@
 
 import BaseUIComponents
 
-class CategoriesCollectionViewCell: BaseCollectionViewCell{
+class DepartamentCollectionViewCell: BaseCollectionViewCell{
     
-    static let reuseIdentifier = String(describing: CategoriesCollectionViewCell.self)
+    static let reuseIdentifier = String(describing: DepartamentCollectionViewCell.self)
     
-    private let categoryNameLabel: UILabel = {
+    private let departamentNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = Resources.Founts.interMedium(with: 15)
@@ -19,8 +19,6 @@ class CategoriesCollectionViewCell: BaseCollectionViewCell{
         return label
     }()
     
-    
-    ///11111
     let lineView: UIView = {
         let view = UIView()
         view.backgroundColor = Resources.Colors.titleErrorTextColor
@@ -29,16 +27,16 @@ class CategoriesCollectionViewCell: BaseCollectionViewCell{
     
     override var isSelected: Bool {
         didSet {
-            categoryNameLabel.textColor = isSelected ? Resources.Colors.titleTextColor : Resources.Colors.metaTextColor
-            categoryNameLabel.font = isSelected ? Resources.Founts.interBold(with: 15): Resources.Founts.interMedium(with: 15)
+            departamentNameLabel.textColor = isSelected ? Resources.Colors.titleTextColor : Resources.Colors.metaTextColor
+            departamentNameLabel.font = isSelected ? Resources.Founts.interBold(with: 15): Resources.Founts.interMedium(with: 15)
             lineView.isHidden = isSelected ? false : true
         }
     }
 }
 
-extension CategoriesCollectionViewCell {
+extension DepartamentCollectionViewCell {
     override func setupViews() {
-        contentView.addView(categoryNameLabel)
+        contentView.addView(departamentNameLabel)
         contentView.addView(lineView)
         lineView.isHidden = true
     }
@@ -46,12 +44,13 @@ extension CategoriesCollectionViewCell {
     override func setupLayoutViews() {
         print(contentView.frame.size.width)
         NSLayoutConstraint.activate([
-            categoryNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            categoryNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            departamentNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            departamentNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             lineView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             lineView.heightAnchor.constraint(equalToConstant: 2),
-            lineView.widthAnchor.constraint(equalToConstant: contentView.frame.width),
+            lineView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
     
@@ -60,8 +59,8 @@ extension CategoriesCollectionViewCell {
     }
 }
 
-extension CategoriesCollectionViewCell {
+extension DepartamentCollectionViewCell {
     func configure(title: String) {
-        categoryNameLabel.text = title
+        departamentNameLabel.text = title
     }
 }

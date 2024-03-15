@@ -43,8 +43,8 @@
 		ED5E2B962BA1D3970033B19B /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B952BA1D3970033B19B /* ErrorData.swift */; };
 		ED5E2B982BA1D7980033B19B /* ErrorStackSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B972BA1D7980033B19B /* ErrorStackSubview.swift */; };
 		ED5E2B9C2BA1E1BA0033B19B /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B9B2BA1E1BA0033B19B /* UIButton + extension.swift */; };
-		ED5E2BA02BA1F0F00033B19B /* CategoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B9F2BA1F0F00033B19B /* CategoriesCollectionView.swift */; };
-		ED5E2BA52BA1F4300033B19B /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BA42BA1F4300033B19B /* CategoriesCollectionViewCell.swift */; };
+		ED5E2BA02BA1F0F00033B19B /* DepartamentsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2B9F2BA1F0F00033B19B /* DepartamentsCollectionView.swift */; };
+		ED5E2BA52BA1F4300033B19B /* DepartamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BA42BA1F4300033B19B /* DepartamentCollectionViewCell.swift */; };
 		ED5E2BAB2BA1FAA30033B19B /* String + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BAA2BA1FAA30033B19B /* String + extension.swift */; };
 		ED5E2BB12BA21F250033B19B /* NavigationBarTableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */; };
 		ED5E2BB92BA231360033B19B /* ListOfEmployeesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BB82BA231360033B19B /* ListOfEmployeesTableView.swift */; };
@@ -109,8 +109,8 @@
 		ED5E2B952BA1D3970033B19B /* ErrorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorData.swift; sourceTree = "<group>"; };
 		ED5E2B972BA1D7980033B19B /* ErrorStackSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStackSubview.swift; sourceTree = "<group>"; };
 		ED5E2B9B2BA1E1BA0033B19B /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
-		ED5E2B9F2BA1F0F00033B19B /* CategoriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionView.swift; sourceTree = "<group>"; };
-		ED5E2BA42BA1F4300033B19B /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED5E2B9F2BA1F0F00033B19B /* DepartamentsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartamentsCollectionView.swift; sourceTree = "<group>"; };
+		ED5E2BA42BA1F4300033B19B /* DepartamentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartamentCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED5E2BAA2BA1FAA30033B19B /* String + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + extension.swift"; sourceTree = "<group>"; };
 		ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTableList.swift; sourceTree = "<group>"; };
 		ED5E2BB82BA231360033B19B /* ListOfEmployeesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeesTableView.swift; sourceTree = "<group>"; };
@@ -338,8 +338,8 @@
 		ED5E2BAF2BA21EFE0033B19B /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				ED5E2B9F2BA1F0F00033B19B /* CategoriesCollectionView.swift */,
-				ED5E2BA42BA1F4300033B19B /* CategoriesCollectionViewCell.swift */,
+				ED5E2B9F2BA1F0F00033B19B /* DepartamentsCollectionView.swift */,
+				ED5E2BA42BA1F4300033B19B /* DepartamentCollectionViewCell.swift */,
 				ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */,
 			);
 			path = NavigationBar;
@@ -531,13 +531,13 @@
 				ED5E2B8E2BA1D0C30033B19B /* ErrorInteractor.swift in Sources */,
 				ED9A7AA52B9F66F80037BAF9 /* EmployeeProfileModuleBuilder.swift in Sources */,
 				ED5E2BBB2BA231420033B19B /* ListOfEmployeesTableViewCell.swift in Sources */,
-				ED5E2BA02BA1F0F00033B19B /* CategoriesCollectionView.swift in Sources */,
+				ED5E2BA02BA1F0F00033B19B /* DepartamentsCollectionView.swift in Sources */,
 				ED9A7AAA2B9F67290037BAF9 /* ListOfEmployeesPresenter.swift in Sources */,
 				ED5E2B962BA1D3970033B19B /* ErrorData.swift in Sources */,
 				ED5E2B642B9F8A170033B19B /* UIView + extension.swift in Sources */,
 				ED5E2B7B2BA062260033B19B /* CreaterRequest.swift in Sources */,
 				ED5E2BCC2BA3C17C0033B19B /* ModelDepartment.swift in Sources */,
-				ED5E2BA52BA1F4300033B19B /* CategoriesCollectionViewCell.swift in Sources */,
+				ED5E2BA52BA1F4300033B19B /* DepartamentCollectionViewCell.swift in Sources */,
 				ED5E2B8A2BA1D08C0033B19B /* ErrorView.swift in Sources */,
 				ED5E2B882BA1CCDA0033B19B /* ErrorViewController.swift in Sources */,
 				ED5E2B7F2BA062470033B19B /* CreaterSession.swift in Sources */,

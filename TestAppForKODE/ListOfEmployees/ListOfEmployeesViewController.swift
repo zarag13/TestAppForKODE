@@ -12,11 +12,17 @@ protocol ListOfEmployeesViewControllerProtocol: AnyObject {
     func showData(data: [Employee])
 }
 
+protocol ListOfEmployeesViewControllerCallBackProtocol: AnyObject {
+    func reloadDataDone()
+}
+
 class ListOfEmployeesViewController : BaseController {
     var presenter: ListOfEmployeesPresenter?
     
-    let categoriesMenu = NavigationBarTableList()
+    let navigationBar = NavigationBarTableList()
     let tableListOfEmployees = ListOfEmployeesTableView()
+    
+    weak var callBackDelegate: ListOfEmployeesViewControllerCallBackProtocol?
     
     var employees = [Employee]() {
         didSet {
@@ -30,16 +36,16 @@ class ListOfEmployeesViewController : BaseController {
         }
     }
     
-    var refresh = UIRefreshControl()
+    var selectedDepartament: Department?
 }
 
 extension ListOfEmployeesViewController {
     override func setupViews() {
         print("viewDidLoad")
-        view.addView(categoriesMenu)
+        view.addView(navigationBar)
         view.addView(tableListOfEmployees)
         navigationController?.navigationBar.isHidden = true
-        categoriesMenu.categoriesMenu.categoriesDelegate = self
+        navigationBar.departamentMenu.departamentsDelegate = self
         tableListOfEmployees.tableViewdelegate = self
     }
     
@@ -50,12 +56,12 @@ extension ListOfEmployeesViewController {
     
     override func setupLayoutViews() {
         NSLayoutConstraint.activate([
-            categoriesMenu.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            categoriesMenu.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            categoriesMenu.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            categoriesMenu.heightAnchor.constraint(equalToConstant: 96),
+            navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navigationBar.heightAnchor.constraint(equalToConstant: 96),
             
-            tableListOfEmployees.topAnchor.constraint(equalTo: categoriesMenu.bottomAnchor, constant: 16),
+            tableListOfEmployees.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 16),
             tableListOfEmployees.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableListOfEmployees.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableListOfEmployees.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -69,21 +75,28 @@ extension ListOfEmployeesViewController {
 
 extension ListOfEmployeesViewController: ListOfEmployeesViewControllerProtocol {
     func showData(data: [Employee]) {
-        employees = data
-        refresh.endRefreshing()
+        if selectedDepartament == nil || selectedDepartament?.rawValue == "Все" {
+            employees = data
+        } else {
+            filteredEmployee = data.filter { employee in
+                return employee.department == "\(selectedDepartament!)"
+            }
+        }
+        callBackDelegate?.reloadDataDone()
     }
 }
 
 extension ListOfEmployeesViewController: ListOfEmployeesTableViewDelegate {
-    func reloadData(sender: UIRefreshControl) {
-        refresh = sender
+    func reloadData(callback: any ListOfEmployeesViewControllerCallBackProtocol) {
+        callBackDelegate = callback
         presenter?.viewDidLoad()
     }
 }
 
-extension ListOfEmployeesViewController: CategoriesProtocol {
+extension ListOfEmployeesViewController: DepartamentsProtocol {
     
     func move(departamen: Department) {
+        selectedDepartament = departamen
         filteredEmployee = employees.filter { eployee in
             if departamen.rawValue == "Все" {
                 return true

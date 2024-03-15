@@ -8,7 +8,7 @@
 import BaseUIComponents
 
 protocol ListOfEmployeesTableViewDelegate: AnyObject {
-    func reloadData(sender: UIRefreshControl)
+    func reloadData(callback: ListOfEmployeesViewControllerCallBackProtocol)
 }
 
 class ListOfEmployeesTableView: BaseTableView {
@@ -42,16 +42,13 @@ extension ListOfEmployeesTableView {
     
     
     @objc func refreshReloadData(sender: UIRefreshControl) {
-        print("refresh")
         refreshControl?.beginRefreshing()
-        tableViewdelegate?.reloadData(sender: sender)
+        tableViewdelegate?.reloadData(callback: self)
     }
 }
 
 extension ListOfEmployeesTableView: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 343
-//    }
+    
 }
 extension ListOfEmployeesTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,7 +57,6 @@ extension ListOfEmployeesTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = dequeueReusableCell(withIdentifier: ListOfEmployeesTableViewCell.reuseIdentifier, for: indexPath) as? ListOfEmployeesTableViewCell else {
-            print("error")
             return UITableViewCell()
         }
         guard let employee = employees?[indexPath.row] else { return cell }
@@ -68,5 +64,11 @@ extension ListOfEmployeesTableView: UITableViewDataSource {
         cell.configurationCell(employee: employee)
         
         return cell
+    }
+}
+
+extension ListOfEmployeesTableView: ListOfEmployeesViewControllerCallBackProtocol {
+    func reloadDataDone() {
+        refreshControl?.endRefreshing()
     }
 }

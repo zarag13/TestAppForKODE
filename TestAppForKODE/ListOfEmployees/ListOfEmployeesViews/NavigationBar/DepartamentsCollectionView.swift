@@ -8,15 +8,15 @@
 import UIKit
 import BaseUIComponents
 
-protocol CategoriesProtocol: AnyObject {
+protocol DepartamentsProtocol: AnyObject {
     func move(departamen: Department)
 }
 
-class CategoriesCollectionView: BaseCollectionView {
-    weak var categoriesDelegate: CategoriesProtocol?
+class DepartamentsCollectionView: BaseCollectionView {
+    weak var departamentsDelegate: DepartamentsProtocol?
 }
 
-extension CategoriesCollectionView {
+extension DepartamentsCollectionView {
     override func setupViews() {
         
     }
@@ -32,31 +32,31 @@ extension CategoriesCollectionView {
         backgroundColor = .white
         bounces = false
         showsHorizontalScrollIndicator = false
-        register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier)
+        register(DepartamentCollectionViewCell.self, forCellWithReuseIdentifier: DepartamentCollectionViewCell.reuseIdentifier)
         selectItem(at: [0, 0], animated: false, scrollPosition: [])
     }
 }
 
 
-extension CategoriesCollectionView {
+extension DepartamentsCollectionView {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         let departament = Department.allCases[indexPath.row]
-        categoriesDelegate?.move(departamen: departament)
+        departamentsDelegate?.move(departamen: departament)
         
     }
 }
 
 
 
-extension CategoriesCollectionView: UICollectionViewDataSource {
+extension DepartamentsCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         Department.allDepartments.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseIdentifier, for: indexPath) as! CategoriesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DepartamentCollectionViewCell.reuseIdentifier, for: indexPath) as! DepartamentCollectionViewCell
         let name = Department.allCases[indexPath.row].rawValue
         cell.configure(title: name)
         return cell

@@ -19,7 +19,7 @@ class NavigationBarTableList: BaseView {
         return searchBar
     }()
     
-    let categoriesMenu = CategoriesCollectionView()
+    let departamentMenu = DepartamentsCollectionView()
     
     let lineView: UIView = {
         let view = UIView()
@@ -31,7 +31,7 @@ class NavigationBarTableList: BaseView {
 extension NavigationBarTableList {
     override func setupViews() {
         addView(searchBar)
-        addView(categoriesMenu)
+        addView(departamentMenu)
         addView(lineView)
     }
     
@@ -42,10 +42,10 @@ extension NavigationBarTableList {
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             searchBar.heightAnchor.constraint(equalToConstant: 52),
             
-            categoriesMenu.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            categoriesMenu.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            categoriesMenu.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            categoriesMenu.heightAnchor.constraint(equalToConstant: 44),
+            departamentMenu.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            departamentMenu.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            departamentMenu.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            departamentMenu.heightAnchor.constraint(equalToConstant: 44),
             
             lineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             lineView.heightAnchor.constraint(equalToConstant: 0.5),
