@@ -42,7 +42,6 @@ extension DepartamentCollectionViewCell {
     }
     
     override func setupLayoutViews() {
-        print(contentView.frame.size.width)
         NSLayoutConstraint.activate([
             departamentNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             departamentNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

@@ -40,6 +40,7 @@ class ProfileView: BaseView {
     lazy var avatarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -62,7 +63,7 @@ extension ProfileView {
     override func setupLayoutViews() {
         super.setupLayoutViews()
         NSLayoutConstraint.activate([
-            avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 28),
+            avatarImage.topAnchor.constraint(equalTo: topAnchor, constant: 72),
             avatarImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             avatarImage.widthAnchor.constraint(equalToConstant: 104),
             avatarImage.heightAnchor.constraint(equalToConstant: 104),
@@ -84,16 +85,21 @@ extension ProfileView {
         super.configureAppearance()
         backgroundColor = Resources.Colors.employeeProfileView
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        avatarImage.layer.cornerRadius = avatarImage.frame.width / 2
+    }
 }
 
 
 //MARK: - func configure contents for View
 extension ProfileView {
     
-    func configureView(avatarImage: UIImage, nameLabel: String, markingLabel: String, professionLabel: String) {
-        self.avatarImage.image = avatarImage
-        self.nameLabel.text = nameLabel
-        self.markingLabel.text = markingLabel
-        self.professionLabel.text = professionLabel
+    func configureView(employee: Employee) {
+        self.avatarImage.image = employee.avatarImage
+        self.nameLabel.text = "\(employee.firstName) \(employee.lastName)"
+        self.markingLabel.text = employee.userTag
+        self.professionLabel.text = employee.position
     }
 }

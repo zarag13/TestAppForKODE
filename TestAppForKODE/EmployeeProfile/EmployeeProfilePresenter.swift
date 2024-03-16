@@ -10,6 +10,8 @@ import Foundation
 //MARK: - протокол по которому view заправшивает у презентера данные - что view загружено и можешь передавать нам данные
 protocol DetailEmployeeProfilePresenterProtocol: AnyObject {
     func viewDidLoad()
+    func returnDataFromInteractor(employee: Employee)
+    func popToViewController()
 }
 
 class DetailEmployeeProfilePresenter {
@@ -25,9 +27,15 @@ class DetailEmployeeProfilePresenter {
 }
 
 extension DetailEmployeeProfilePresenter : DetailEmployeeProfilePresenterProtocol {
+    func popToViewController() {
+        router.loadBackView()
+    }
+    
+    func returnDataFromInteractor(employee: Employee) {
+        view?.showDetailInfo(employee: employee)
+    }
+    
     func viewDidLoad() {
-        //Здесь получаем данные от iteractor и передаем их в view
-        let employe = iteractor.gettingData()
-        //view?.showDetailInfo(employee: employe)
+        iteractor.gettingData()
     }
 }

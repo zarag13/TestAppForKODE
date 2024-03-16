@@ -47,16 +47,19 @@ extension ListOfEmployeesViewController {
         navigationController?.navigationBar.isHidden = true
         navigationBar.departamentMenu.departamentsDelegate = self
         tableListOfEmployees.tableViewdelegate = self
+        
+        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter?.viewDidLoad()
+        //presenter?.viewDidLoad()
     }
     
     override func setupLayoutViews() {
+        
         NSLayoutConstraint.activate([
-            navigationBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: Resources.Size.sizeStatusBar?.height ?? 44),
             navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.heightAnchor.constraint(equalToConstant: 96),
@@ -70,6 +73,7 @@ extension ListOfEmployeesViewController {
     
     override func configureAppearance() {
         view.backgroundColor = .white
+        
     }
 }
 

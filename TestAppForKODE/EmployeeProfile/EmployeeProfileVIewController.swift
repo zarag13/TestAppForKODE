@@ -10,7 +10,7 @@ import BaseUIComponents
 
 //MARK: - протокол по которому view получит данные
 protocol DetailEmployeeProfileVIewControllerProtocol: AnyObject {
-    //func showDetailInfo(employee: Employee)
+    func showDetailInfo(employee: Employee)
 }
 
 
@@ -19,57 +19,43 @@ class EmployeeProfileVIewController: BaseController {
     var presenter: DetailEmployeeProfilePresenterProtocol?
     
     let profileView = ProfileView()
-    let detailProfileView = DetailProfileView(frame: .zero, style: .grouped)
+    let detailProfileView = DetailProfileView(frame: .zero, style: .insetGrouped)
+    let navigationBar = SimpleNavigationBar()
     
     override func setupViews() {
         super.setupViews()
-        
         presenter?.viewDidLoad()
-        
-        //let image = UIImage(named: " Avatar")!
-        
-        
-#warning("Мока для профиля - исправить при парсинге данных и конкретной разрабтки арихтектуры")
-        //profileView.configureView(avatarImage: image, nameLabel: "Алиса Иванова", markingLabel: "al", professionLabel: "Designer")
         view.addView(profileView)
         view.addView(detailProfileView)
-        //view.addView(detailProfileView)
+        view.addView(navigationBar)
+        navigationBar.leftBurButtomItemDelegate = self
     }
     
     override func setupLayoutViews() {
         super.setupLayoutViews()
         NSLayoutConstraint.activate([
-            profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: Resources.Size.sizeStatusBar?.height ?? 44),
+            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navigationBar.heightAnchor.constraint(equalToConstant: 52),
+            
+            profileView.topAnchor.constraint(equalTo: view.topAnchor),
             profileView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            detailProfileView.topAnchor.constraint(equalTo: profileView.bottomAnchor),
-            detailProfileView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            detailProfileView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailProfileView.topAnchor.constraint(equalTo: profileView.bottomAnchor, constant: 8),
+            detailProfileView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            detailProfileView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             detailProfileView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
+    
+    
+    
     override func configureAppearance() {
         super.configureAppearance()
         view.backgroundColor = Resources.Colors.empliyeeProfileBacground
-        
-        //MARK: - setup navigationBar
-        navigationController?.navigationItem.backButtonTitle = nil
-        let apperance = UINavigationBarAppearance()
-        apperance.configureWithOpaqueBackground()
-        apperance.backgroundColor = .clear
-        navigationController?.navigationBar.standardAppearance = apperance
-        
-        
-        #warning("Смена цвета статус бара - скорее всего придется избавиться при добавлении в naviggation")
-        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
-        let windowScene = sceneDelegate.window?.windowScene
-        let frameStatus = (windowScene?.statusBarManager?.statusBarFrame)!
-        let statusBarView = UIView(frame: frameStatus)
-        statusBarView.backgroundColor = Resources.Colors.employeeProfileView
-        view.addSubview(statusBarView)
-        
     }
 }
 
@@ -77,15 +63,14 @@ class EmployeeProfileVIewController: BaseController {
 //MARK: - распределяем данные по view
 extension EmployeeProfileVIewController: DetailEmployeeProfileVIewControllerProtocol {
     
-    #warning("здесь нужно будет обработать полученные данные передав их в конфигураторы наших view")
-//    func showDetailInfo(employee: Employee) {
-//        guard let image = UIImage(data: employee) else { return }
-//        profileView.configureView(avatarImage: image,
-//                                  nameLabel: employee.firstName,
-//                                  markingLabel: employee.userTag,
-//                                  professionLabel: employee.department)
-//        
-//        
-//        detailProfileView.configureDiffableDataSourceee(employee: <#T##Employer#>)
-//    }
+    func showDetailInfo(employee: Employee) {
+        profileView.configureView(employee: employee)
+        detailProfileView.configureDataSourceee(employee: employee)
+    }
+}
+
+extension EmployeeProfileVIewController: BackButtonViewProtocol {
+    func goBack() {
+        presenter?.popToViewController()
+    }
 }

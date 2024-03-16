@@ -35,7 +35,6 @@ extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
                 }
                 
             case .failure(let error):
-                print(error.description)
                 DispatchQueue.main.async {
                     self.presenter?.obtainError()
                 }

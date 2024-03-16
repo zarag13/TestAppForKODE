@@ -7,7 +7,8 @@
 
 import UIKit
 
-struct Employee {
+struct Employee: Hashable, Identifiable {
+    
     var id: String
     var firstName: String
     var lastName: String

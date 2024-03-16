@@ -23,7 +23,7 @@ extension ListOfEmployeesPouter: ListOfEmployeesPouterProtocol {
     }
     
     func openDetailVC(employee: Employee) {
-        let vc = EmployeeProfileBuilder.builder(employe: employee)
+        let vc = EmployeeProfileBuilder.builder(employee: employee)
         view?.navigationController?.pushViewController(vc, animated: true)
     }
 }

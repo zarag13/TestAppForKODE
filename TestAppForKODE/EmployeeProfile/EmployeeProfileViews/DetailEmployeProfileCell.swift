@@ -17,6 +17,8 @@ class DetailEmployeProfileCell: BaseTableViewCell {
     
     static let reuseIdentifier = String(describing: DetailEmployeProfileCell.self)
     
+    var state: State?
+    
     let firstTitle: UILabel = {
         let label = UILabel()
         label.font = Resources.Founts.interMedium(with: 16)
@@ -56,8 +58,8 @@ extension DetailEmployeProfileCell {
         NSLayoutConstraint.activate([
             //iconView
             iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 17),
-            iconView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
-            iconView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -25),
+            iconView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            iconView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             iconView.widthAnchor.constraint(equalToConstant: 24),
             iconView.heightAnchor.constraint(equalToConstant: 24),
             
@@ -81,16 +83,17 @@ extension DetailEmployeProfileCell {
 
 
 extension DetailEmployeProfileCell {
-    func configure(user: Employer, state: State) {
+    func configure(employee: Employee, state: State) {
+        self.state = state
         
         switch state {
         case .one:
-            self.firstTitle.text = user.date
+            self.firstTitle.text = employee.birthday
             self.iconView.image = Resources.Image.starIcon
-            self.secondaryTitle.text = user.years
+            self.secondaryTitle.text = employee.currentAge
         case .two:
             self.iconView.image = Resources.Image.phoneIcon
-            firstTitle.text = user.phoneNumber
+            firstTitle.text = employee.phone
             secondaryTitle.text = ""
 
         }

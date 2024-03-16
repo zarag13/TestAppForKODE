@@ -44,5 +44,13 @@ enum Resources {
         }
     }
     
+    enum Size {
+        static var sizeStatusBar: CGRect? {
+            let appDelegate = (UIApplication.shared.connectedScenes.first as! UIWindowScene).windows.first
+            let size = appDelegate?.windowScene?.statusBarManager?.statusBarFrame
+            return size
+        }
+    }
+    
     
 }

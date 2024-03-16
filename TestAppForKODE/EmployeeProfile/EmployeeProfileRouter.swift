@@ -8,14 +8,16 @@
 import Foundation
 
 protocol DetailEmployeeProfileRouterProtocol: AnyObject {
-    
+    func loadBackView()
 }
 
 
 class DetailEmployeeProfileRouter {
-    
+    weak var view: EmployeeProfileVIewController?
 }
 
 extension DetailEmployeeProfileRouter: DetailEmployeeProfileRouterProtocol {
-    
+    func loadBackView() {
+        view?.navigationController?.popViewController(animated: true)
+    }
 }

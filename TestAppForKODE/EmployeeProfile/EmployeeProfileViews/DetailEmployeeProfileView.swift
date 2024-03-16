@@ -11,8 +11,11 @@ import BaseUIComponents
 
 class DetailProfileView: BaseTableView{
     
-    lazy var dpDataSource: UITableViewDiffableDataSource<DetailSection, Employer> = self.configureDiffableDataSource()
-    
+    var employee: Employee? {
+        didSet {
+            self.reloadData()
+        }
+    }
 }
 
 extension DetailProfileView {
@@ -24,7 +27,8 @@ extension DetailProfileView {
     override func configureAppearance() {
         super.configureAppearance()
         delegate = self
-        separatorStyle = .none
+        dataSource = self
+        separatorColor = .black
         backgroundColor = Resources.Colors.empliyeeProfileBacground
         
         if contentSize.height < frame.size.height {
@@ -32,125 +36,61 @@ extension DetailProfileView {
         } else {
             isScrollEnabled = false
         }
-        
     }
 }
 
-
-
-
-
-
-
-
-//MARK: - configureDifableDataSource
-extension DetailProfileView {
-    //1. Метод создания UICollectionViewDiffableDataSource
-    func configureDiffableDataSource() -> UITableViewDiffableDataSource<DetailSection, Employer> {
+extension DetailProfileView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var returnCell = BaseTableViewCell()
         
+        guard let employee = employee else { return UITableViewCell() }
         
-        //3. Создаем UICollectionViewDiffableDataSource
-        let dataSource = UITableViewDiffableDataSource<DetailSection, Employer>(tableView: self) { tableView, indexPath, item in
-            
-            
-            //4. Из UICollectionViewDiffableDataSource достаем snapshot + данные по indexPath
-            let sectionType = self.dpDataSource.snapshot().sectionIdentifiers[indexPath.section]
-            
-            
-            //5. В зависимости от того, какие придут данные - распределяем их по ячейкам
-            switch sectionType {
-            case .dateSection(let user):
-                let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
-                cell.configure(user: user, state: .one)
-                return cell
-            case .phoneSection(let user):
-                let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
-                cell.configure(user: user, state: .two)
-                return cell
-            }
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
+            cell.configure(employee: employee, state: .one)
+            returnCell = cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
+            cell.configure(employee: employee, state: .two)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: tableView.bounds.width)
+            returnCell = cell
         }
-        return dataSource
+        return returnCell
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 extension DetailProfileView {
     
-    func configureDiffableDataSourceee(employee: Employer) {
-        
-#warning("Мока для таблицы - исправить при парсинге данных и конкретной разрабтки арихтектуры")
-        let sections = MockData.shared.pageDta
-        
-        var snapshot = NSDiffableDataSourceSnapshot<DetailSection, Employer>()
-        snapshot.appendSections(sections)
-        
-        sections.forEach { section in
-            switch section {
-            case .dateSection(let user), .phoneSection(let user):
-                snapshot.appendItems([user], toSection: section)
-            }
-        }
-
-        //2. Передаем snapshot с данными в DiffableDataSource
-        dpDataSource.apply(snapshot, animatingDifferences: true, completion: nil)
+    func configureDataSourceee(employee: Employee) {
+        self.employee = employee
     }
 }
 
 extension DetailProfileView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
-    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
+        return UIView()
     }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let headerView = UIView()
-        
-        if section == 0{
-            headerView.backgroundColor = UIColor(hexString: "#F7F7F8")
-        } else {
-            headerView.backgroundColor = UIColor.clear
-        }
-        return headerView
-    }
-    
-    
-    
-    
-    
-    
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let sectionType = self.dpDataSource.snapshot().sectionIdentifiers[indexPath.section]
-        switch sectionType {
-        case .dateSection(_):
-            break
-        case .phoneSection(let user):
-            callNumber(phoneNumber: user.phoneNumber)
+        guard let cell = tableView.cellForRow(at: indexPath) as? DetailEmployeProfileCell else { return }
+        
+        if cell.state == .two {
+            callNumber(phoneNumber: employee?.phone)
         }
-        
-        
     }
     
-    private func callNumber(phoneNumber: String) {
+    private func callNumber(phoneNumber: String?) {
+        guard let phoneNumber = phoneNumber else { return }
         if let url = URL(string: "tel://\(phoneNumber)") {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
