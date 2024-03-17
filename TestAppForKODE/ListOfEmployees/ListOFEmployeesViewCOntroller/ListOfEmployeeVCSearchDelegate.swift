@@ -9,11 +9,11 @@ import UIKit
 
 extension ListOfEmployeesViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        navigationBar.searchBar.didBeginEditing = .begun
+        
+        navigationBar.didBeginEditing = .begun
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        navigationBar.searchBar.didBeginEditing = .end
         return textField.resignFirstResponder()
     }
 }

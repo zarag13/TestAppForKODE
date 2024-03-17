@@ -17,18 +17,9 @@ class SortedCheckBoxController: BaseController {
     
     var checkBoxState: ((CheckBoxState)->Void)?
     
-    let stackCheckBoxView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = 0
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-    
     let navigationBar = SimpleNavigationBar()
-    
-    var sortedCheckBoxValue = [String]()
+    let stackCheckBoxView = SortedStackCheckBoxView()
+
 }
 
 
@@ -39,15 +30,8 @@ extension SortedCheckBoxController {
         view.addView(navigationBar)
         navigationBar.titleLabel.text = "Сортировка"
         navigationBar.leftBurButtomItemDelegate = self
-        
         view.addView(stackCheckBoxView)
-        sortedCheckBoxValue.forEach { value in
-            print("1231321321231321231321231231231232312 \(value)")
-            let checkBoxView = SortedCheckBoxView()
-            checkBoxView.descriptionForButton.text = value
-            print("1312313213213213212313213212313- \(checkBoxView.frame.height)")
-            stackCheckBoxView.addArrangedSubview(checkBoxView)
-        }
+        stackCheckBoxView.delegate = self
     }
     
     override func configureAppearance() {
@@ -59,7 +43,6 @@ extension SortedCheckBoxController {
     
     override func setupLayoutViews() {
         super.setupLayoutViews()
-        print("asdsdaadsadadadadadadadadadad \(stackCheckBoxView.arrangedSubviews[0].frame.height)")
         NSLayoutConstraint.activate([
             navigationBar.topAnchor.constraint(equalTo: view.topAnchor),
             navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -77,12 +60,41 @@ extension SortedCheckBoxController {
 
 extension SortedCheckBoxController: SortedCheckBoxControllerProtocol {
     func showCheckBoxView(value: [String]) {
-        sortedCheckBoxValue = value
+        stackCheckBoxView.sortedCheckBoxValue = value
     }
 }
 
 extension SortedCheckBoxController: BackButtonViewProtocol {
     func goBack() {
         presenter?.tapBackBarItem()
+    }
+}
+
+extension SortedCheckBoxController: SortedCheckBoxButtonProtocol {
+    func selectCheckBox(sortedCeckBoox: CheckBoxState) {
+        guard let views = stackCheckBoxView.stackCheckBoxView.arrangedSubviews as? [SortedCheckBoxView] else { return }
+        
+        switch sortedCeckBoox {
+        case .none:
+            break
+        case .alphabet:
+            for checkBoxView in views {
+                if checkBoxView.checkBoxButton.sotredCheckBoxState == .birthday {
+                    if checkBoxView.checkBoxButton.changeState == .selected {
+                        checkBoxView.checkBoxButton.changeState = .deselected
+                    }
+                }
+            }
+        case .birthday:
+            for checkBoxView in views {
+                if checkBoxView.checkBoxButton.sotredCheckBoxState == .alphabet {
+                    if checkBoxView.checkBoxButton.changeState == .selected {
+                        checkBoxView.checkBoxButton.changeState = .deselected
+                    }
+                }
+            }
+        }
+        print("12312313213133")
+        checkBoxState?(sortedCeckBoox)
     }
 }

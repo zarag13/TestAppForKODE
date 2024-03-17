@@ -13,13 +13,14 @@ final class SearchBarTextField: UITextField {
     var rightSearchBarItem = SearchSortedButton(configure: .moved, image: UIImage(named: "list.ui.alt")!)
     var leftSearchBarItem = SearchSortedButton(configure: .unmoved, image: UIImage(systemName: "magnifyingglass")!)
     
-    private let padding = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
+    private var padding = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupTextField()
         
     }
+    
     
     override var delegate: (any UITextFieldDelegate)? {
         didSet {
@@ -28,11 +29,13 @@ final class SearchBarTextField: UITextField {
         }
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setupTextField() {
+        
         leftView = leftSearchBarItem
         leftViewMode = .always
         rightView = rightSearchBarItem
@@ -46,7 +49,6 @@ final class SearchBarTextField: UITextField {
         
         defaultTextAttributes = [.font: Resources.Founts.interMedium(with: 15), .foregroundColor: Resources.Colors.titleTextColor]
         attributedPlaceholder = NSAttributedString(string: "Ведите имя, тег, почту...", attributes: [.font: Resources.Founts.interMedium(with: 15), .foregroundColor: Resources.Colors.metaTextColor])
-        
     }
 }
 

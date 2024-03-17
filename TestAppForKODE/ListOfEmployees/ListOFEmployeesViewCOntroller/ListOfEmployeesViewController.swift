@@ -37,6 +37,13 @@ class ListOfEmployeesViewController : BaseController {
     }
     
     var selectedDepartament: Department?
+    
+    var sortedState: CheckBoxState? {
+        didSet {
+            print(sortedState?.rawValue)
+            navigationBar.sortedState = sortedState
+        }
+    }
 }
 
 extension ListOfEmployeesViewController {
@@ -49,7 +56,7 @@ extension ListOfEmployeesViewController {
         tableListOfEmployees.tableViewdelegate = self
         
         #warning("Отключил запрос в сеть")
-        //presenter?.viewDidLoad()
+        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {

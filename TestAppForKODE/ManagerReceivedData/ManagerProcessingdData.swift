@@ -75,7 +75,7 @@ class ManagerProcessingdData {
     
     
     
-    private func processingPhoneNumberWithSeparate(phone: String) -> String {
+    func processingPhoneNumberWithSeparate(phone: String) -> String {
         //+79969593262
         //+7 (999) 900 90 90
         var result = phone

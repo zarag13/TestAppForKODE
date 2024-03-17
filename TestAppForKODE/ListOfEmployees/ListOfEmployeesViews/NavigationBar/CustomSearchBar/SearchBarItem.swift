@@ -75,9 +75,6 @@ extension SearchSortedButton {
     }
     
     @objc func selectCheckBox() {
-        let newValue: StateSearchSortedButton = changeState == .deselected ? .selected : .deselected
-        changeState = newValue
-        print(changeState)
         delegate?.selectLeftButton()
     }
     

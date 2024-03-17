@@ -31,8 +31,9 @@ extension ListOfEmployeesPouter: ListOfEmployeesPouterProtocol {
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
         }
         
-        vc.checkBoxState = { state in
+        vc.checkBoxState = { [weak self] state in
             #warning("обработать полученные состояния фильтрации - передатьих в view и там уже потом решить что делать")
+            self?.view?.sortedState = state
         }
         
         view?.present(vc, animated: true)

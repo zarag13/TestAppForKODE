@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum CheckBoxState {
+enum CheckBoxState: String {
     case none
-    case alphabet
-    case birthday
+    case alphabet = "По алфавиту"
+    case birthday = "По дню рождения"
 }

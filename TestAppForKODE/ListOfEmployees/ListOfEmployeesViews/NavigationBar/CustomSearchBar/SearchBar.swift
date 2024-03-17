@@ -13,16 +13,25 @@ enum DidBeginEditingSearchBar {
 }
 
 class SearchBar: BaseView {
-    let textField = SearchBarTextField()
+    let textField: SearchBarTextField = {
+        let textField = SearchBarTextField()
+        
+        return textField
+    }()
     
     var didBeginEditing: DidBeginEditingSearchBar? {
         didSet {
             textField.leftSearchBarItem.changeState = didBeginEditing == .begun ? .selected : .deselected
+            self.textField.rightView = self.didBeginEditing == .begun ? nil : self.textField.rightSearchBarItem
+            UIView.animate(withDuration: 0.3, delay: 0.2) {
+                self.layoutIfNeeded()
+            }
         }
     }
 }
 
 extension SearchBar {
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.height / 2.5

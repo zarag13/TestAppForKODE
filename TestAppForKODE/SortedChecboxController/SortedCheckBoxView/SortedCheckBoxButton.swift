@@ -12,16 +12,31 @@ enum CheckBoxButtonState {
     case deselected
 }
 
+protocol SortedCheckBoxButtonProtocol: AnyObject {
+    func selectCheckBox(sortedCeckBoox: CheckBoxState)
+}
+
 class SortedCheckBoxButton: BaseView {
     
     let circleLayer = CAShapeLayer()
     
+    private var noSotredCheckBoxState: CheckBoxState = .none
+    var sotredCheckBoxState : CheckBoxState = .none
+    
     var changeState: CheckBoxButtonState = .deselected {
         didSet {
+            switch changeState {
+            case .selected:
+                delegate?.selectCheckBox(sortedCeckBoox: sotredCheckBoxState)
+            case .deselected:
+                delegate?.selectCheckBox(sortedCeckBoox: noSotredCheckBoxState)
+            }
             circleLayer.removeFromSuperlayer()
             setNeedsLayout()
         }
     }
+    
+    weak var delegate: SortedCheckBoxButtonProtocol?
     
 }
 
