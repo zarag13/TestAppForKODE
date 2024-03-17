@@ -12,6 +12,7 @@ protocol ListOfEmployeesPresenterProtocol: AnyObject {
     func didLoad(data: [Employee])
     func obtainError()
     func selectedEmployee(employee: Employee)
+    func selectedSortedButton()
 }
 
 class ListOfEmployeesPresenter {
@@ -26,6 +27,10 @@ class ListOfEmployeesPresenter {
 }
 
 extension ListOfEmployeesPresenter: ListOfEmployeesPresenterProtocol {
+    func selectedSortedButton() {
+        router.openSortedController()
+    }
+    
     func selectedEmployee(employee: Employee) {
         router.openDetailVC(employee: employee)
     }

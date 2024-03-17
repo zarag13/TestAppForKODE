@@ -8,13 +8,17 @@
 import Foundation
 
 protocol SortedCheckBoxInteractorProtocol: AnyObject {
-    
+    func getData()
 }
 
 class SortedCheckBoxInteractor {
     weak var presenter: SortedCheckBoxPresenterProtocol?
+    
+    let sortedValue = ["По алфавиту", "По дню рождения"]
 }
 
 extension SortedCheckBoxInteractor: SortedCheckBoxInteractorProtocol {
-    
+    func getData() {
+        presenter?.returnData(value: sortedValue)
+    }
 }

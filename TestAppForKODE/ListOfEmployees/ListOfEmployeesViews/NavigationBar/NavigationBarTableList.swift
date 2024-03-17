@@ -9,15 +9,7 @@ import BaseUIComponents
 
 class NavigationBarTableList: BaseView {
     
-    let searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.backgroundColor = .white
-        searchBar.placeholder = "Ведите имя, тег, почту..."
-        searchBar.searchBarStyle = .minimal
-        searchBar.searchTextField.backgroundColor = UIColor(hexString: "#F7F7F8")
-        searchBar.searchTextField.borderStyle = .roundedRect
-        return searchBar
-    }()
+    let searchBar = SearchBar()
     
     let departamentMenu = DepartamentsCollectionView()
     
@@ -37,15 +29,15 @@ extension NavigationBarTableList {
     
     override func setupLayoutViews() {
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            searchBar.heightAnchor.constraint(equalToConstant: 52),
+            searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 6),
+            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            searchBar.heightAnchor.constraint(equalToConstant: 40),
             
-            departamentMenu.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            departamentMenu.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 14),
             departamentMenu.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             departamentMenu.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            departamentMenu.heightAnchor.constraint(equalToConstant: 44),
+            departamentMenu.heightAnchor.constraint(equalToConstant: 36),
             
             lineView.bottomAnchor.constraint(equalTo: bottomAnchor),
             lineView.heightAnchor.constraint(equalToConstant: 0.5),

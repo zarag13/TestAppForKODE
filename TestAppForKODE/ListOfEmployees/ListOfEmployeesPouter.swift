@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ListOfEmployeesPouterProtocol: AnyObject {
     func openErrorVC()
     func openDetailVC(employee: Employee)
+    func openSortedController()
 }
 
 class ListOfEmployeesPouter {
@@ -17,6 +19,25 @@ class ListOfEmployeesPouter {
 }
 
 extension ListOfEmployeesPouter: ListOfEmployeesPouterProtocol {
+    func openSortedController() {
+        let vc = SortedCheckBoxBuilder.build()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersEdgeAttachedInCompactHeight = true
+            sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
+        }
+        
+        vc.checkBoxState = { state in
+            #warning("обработать полученные состояния фильтрации - передатьих в view и там уже потом решить что делать")
+        }
+        
+        view?.present(vc, animated: true)
+    }
+    
     func openErrorVC() {
         let vc = ErrorModuleBuilder.builder()
         view?.navigationController?.pushViewController(vc, animated: true)

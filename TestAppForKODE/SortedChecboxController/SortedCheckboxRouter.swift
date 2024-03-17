@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SortedCheckboxRouterProtocol: AnyObject {
-    
+    func closeСurrentController()
 }
 
 class SortedCheckboxRouter {
@@ -16,5 +16,7 @@ class SortedCheckboxRouter {
 }
 
 extension SortedCheckboxRouter: SortedCheckboxRouterProtocol {
-    
+    func closeСurrentController() {
+        view?.dismiss(animated: true)
+    }
 }

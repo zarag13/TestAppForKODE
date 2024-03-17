@@ -16,7 +16,7 @@ class SortedCheckBoxBuilder {
         let presenter = SortedCheckBoxPresenter(interactor: interactor, router: router)
         presenter.view = view
         interactor.presenter = presenter
-        
+        view.presenter = presenter
         return view
     }
 }

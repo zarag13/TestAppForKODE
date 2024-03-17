@@ -48,7 +48,8 @@ extension ListOfEmployeesViewController {
         navigationBar.departamentMenu.departamentsDelegate = self
         tableListOfEmployees.tableViewdelegate = self
         
-        presenter?.viewDidLoad()
+        #warning("Отключил запрос в сеть")
+        //presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +74,7 @@ extension ListOfEmployeesViewController {
     
     override func configureAppearance() {
         view.backgroundColor = .white
-        
+        navigationBar.searchBar.textField.delegate = self
     }
 }
 

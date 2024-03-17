@@ -45,6 +45,7 @@ extension ListOfEmployeesTableViewCell {
     }
     
     override func configureAppearance() {
+        super.configureAppearance()
     }
 }
 

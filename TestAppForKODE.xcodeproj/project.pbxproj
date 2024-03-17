@@ -55,7 +55,7 @@
 		ED5E2BCC2BA3C17C0033B19B /* ModelDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BCB2BA3C17C0033B19B /* ModelDepartment.swift */; };
 		ED5E2BCE2BA495FB0033B19B /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BCD2BA495FB0033B19B /* BackButtonView.swift */; };
 		ED5E2BD02BA4B9D30033B19B /* BackBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BCF2BA4B9D30033B19B /* BackBarButtonView.swift */; };
-		ED5E2BD32BA4CFAA0033B19B /* EmployeeNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BD22BA4CFAA0033B19B /* EmployeeNavigationBar.swift */; };
+		ED5E2BD32BA4CFAA0033B19B /* SimpleNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BD22BA4CFAA0033B19B /* SimpleNavigationBar.swift */; };
 		ED5E2BD82BA4F52C0033B19B /* SortedCheckBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BD72BA4F52C0033B19B /* SortedCheckBoxController.swift */; };
 		ED5E2BDA2BA4F55A0033B19B /* SortedCheckBoxPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BD92BA4F55A0033B19B /* SortedCheckBoxPresenter.swift */; };
 		ED5E2BDC2BA4F56A0033B19B /* SortedCheckBoxInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BDB2BA4F56A0033B19B /* SortedCheckBoxInteractor.swift */; };
@@ -64,6 +64,10 @@
 		ED5E2BE32BA5A33A0033B19B /* ModelCheckBoxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BE22BA5A33A0033B19B /* ModelCheckBoxState.swift */; };
 		ED5E2BE62BA5A3EE0033B19B /* SortedCheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BE52BA5A3EE0033B19B /* SortedCheckBoxButton.swift */; };
 		ED5E2BE82BA5A4020033B19B /* SortedCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BE72BA5A4020033B19B /* SortedCheckBoxView.swift */; };
+		ED5E2BF32BA5FCDF0033B19B /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BF22BA5FCDF0033B19B /* SearchBar.swift */; };
+		ED5E2BF52BA6048F0033B19B /* SearchBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BF42BA6048F0033B19B /* SearchBarItem.swift */; };
+		ED5E2BF72BA604B00033B19B /* SearchBarTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BF62BA604B00033B19B /* SearchBarTextField.swift */; };
+		ED5E2BFA2BA66DBA0033B19B /* ListOfEmployeeVCSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5E2BF92BA66DBA0033B19B /* ListOfEmployeeVCSearchDelegate.swift */; };
 		ED9A7A9A2B9F66160037BAF9 /* EmployeeProfileVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */; };
 		ED9A7A9C2B9F66410037BAF9 /* EmployeeProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */; };
 		ED9A7A9E2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */; };
@@ -131,7 +135,7 @@
 		ED5E2BCB2BA3C17C0033B19B /* ModelDepartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDepartment.swift; sourceTree = "<group>"; };
 		ED5E2BCD2BA495FB0033B19B /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		ED5E2BCF2BA4B9D30033B19B /* BackBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBarButtonView.swift; sourceTree = "<group>"; };
-		ED5E2BD22BA4CFAA0033B19B /* EmployeeNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeNavigationBar.swift; sourceTree = "<group>"; };
+		ED5E2BD22BA4CFAA0033B19B /* SimpleNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNavigationBar.swift; sourceTree = "<group>"; };
 		ED5E2BD72BA4F52C0033B19B /* SortedCheckBoxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedCheckBoxController.swift; sourceTree = "<group>"; };
 		ED5E2BD92BA4F55A0033B19B /* SortedCheckBoxPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedCheckBoxPresenter.swift; sourceTree = "<group>"; };
 		ED5E2BDB2BA4F56A0033B19B /* SortedCheckBoxInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedCheckBoxInteractor.swift; sourceTree = "<group>"; };
@@ -140,6 +144,10 @@
 		ED5E2BE22BA5A33A0033B19B /* ModelCheckBoxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCheckBoxState.swift; sourceTree = "<group>"; };
 		ED5E2BE52BA5A3EE0033B19B /* SortedCheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedCheckBoxButton.swift; sourceTree = "<group>"; };
 		ED5E2BE72BA5A4020033B19B /* SortedCheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedCheckBoxView.swift; sourceTree = "<group>"; };
+		ED5E2BF22BA5FCDF0033B19B /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		ED5E2BF42BA6048F0033B19B /* SearchBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarItem.swift; sourceTree = "<group>"; };
+		ED5E2BF62BA604B00033B19B /* SearchBarTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarTextField.swift; sourceTree = "<group>"; };
+		ED5E2BF92BA66DBA0033B19B /* ListOfEmployeeVCSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfEmployeeVCSearchDelegate.swift; sourceTree = "<group>"; };
 		ED9A7A992B9F66160037BAF9 /* EmployeeProfileVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileVIewController.swift; sourceTree = "<group>"; };
 		ED9A7A9B2B9F66410037BAF9 /* EmployeeProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfilePresenter.swift; sourceTree = "<group>"; };
 		ED9A7A9D2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeProfileInteractor.swift; sourceTree = "<group>"; };
@@ -279,7 +287,7 @@
 			children = (
 				ED5E2BCA2BA3C1500033B19B /* Entity */,
 				ED5E2B6D2B9FE2560033B19B /* ListOfEmployeesViews */,
-				ED9A7AA62B9F67130037BAF9 /* ListOfEmployeesViewController.swift */,
+				ED5E2BF82BA66D840033B19B /* ListOFEmployeesViewCOntroller */,
 				ED9A7AA92B9F67290037BAF9 /* ListOfEmployeesPresenter.swift */,
 				ED9A7AAD2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift */,
 				ED9A7AAF2B9F67470037BAF9 /* ListOfEmployeesPouter.swift */,
@@ -359,6 +367,7 @@
 		ED5E2BAF2BA21EFE0033B19B /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				ED5E2BED2BA5FC930033B19B /* CustomSearchBar */,
 				ED5E2B9F2BA1F0F00033B19B /* DepartamentsCollectionView.swift */,
 				ED5E2BA42BA1F4300033B19B /* DepartamentCollectionViewCell.swift */,
 				ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */,
@@ -398,7 +407,7 @@
 			children = (
 				ED5E2BCD2BA495FB0033B19B /* BackButtonView.swift */,
 				ED5E2BCF2BA4B9D30033B19B /* BackBarButtonView.swift */,
-				ED5E2BD22BA4CFAA0033B19B /* EmployeeNavigationBar.swift */,
+				ED5E2BD22BA4CFAA0033B19B /* SimpleNavigationBar.swift */,
 			);
 			path = SimpleNavigationBar;
 			sourceTree = "<group>";
@@ -432,6 +441,25 @@
 				ED5E2BE72BA5A4020033B19B /* SortedCheckBoxView.swift */,
 			);
 			path = SortedCheckBoxView;
+			sourceTree = "<group>";
+		};
+		ED5E2BED2BA5FC930033B19B /* CustomSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				ED5E2BF42BA6048F0033B19B /* SearchBarItem.swift */,
+				ED5E2BF62BA604B00033B19B /* SearchBarTextField.swift */,
+				ED5E2BF22BA5FCDF0033B19B /* SearchBar.swift */,
+			);
+			path = CustomSearchBar;
+			sourceTree = "<group>";
+		};
+		ED5E2BF82BA66D840033B19B /* ListOFEmployeesViewCOntroller */ = {
+			isa = PBXGroup;
+			children = (
+				ED9A7AA62B9F67130037BAF9 /* ListOfEmployeesViewController.swift */,
+				ED5E2BF92BA66DBA0033B19B /* ListOfEmployeeVCSearchDelegate.swift */,
+			);
+			path = ListOFEmployeesViewCOntroller;
 			sourceTree = "<group>";
 		};
 		ED9A7AA12B9F669C0037BAF9 /* NavigationManager */ = {
@@ -597,11 +625,14 @@
 				ED5E2BA02BA1F0F00033B19B /* DepartamentsCollectionView.swift in Sources */,
 				ED9A7AAA2B9F67290037BAF9 /* ListOfEmployeesPresenter.swift in Sources */,
 				ED5E2B962BA1D3970033B19B /* ErrorData.swift in Sources */,
-				ED5E2BD32BA4CFAA0033B19B /* EmployeeNavigationBar.swift in Sources */,
+				ED5E2BD32BA4CFAA0033B19B /* SimpleNavigationBar.swift in Sources */,
 				ED5E2B642B9F8A170033B19B /* UIView + extension.swift in Sources */,
+				ED5E2BFA2BA66DBA0033B19B /* ListOfEmployeeVCSearchDelegate.swift in Sources */,
 				ED5E2B7B2BA062260033B19B /* CreaterRequest.swift in Sources */,
 				ED5E2BCC2BA3C17C0033B19B /* ModelDepartment.swift in Sources */,
+				ED5E2BF52BA6048F0033B19B /* SearchBarItem.swift in Sources */,
 				ED5E2BA52BA1F4300033B19B /* DepartamentCollectionViewCell.swift in Sources */,
+				ED5E2BF32BA5FCDF0033B19B /* SearchBar.swift in Sources */,
 				ED5E2BCE2BA495FB0033B19B /* BackButtonView.swift in Sources */,
 				ED5E2B8A2BA1D08C0033B19B /* ErrorView.swift in Sources */,
 				ED5E2B882BA1CCDA0033B19B /* ErrorViewController.swift in Sources */,
@@ -637,6 +668,7 @@
 				ED5E2BDE2BA4F57D0033B19B /* SortedCheckboxRouter.swift in Sources */,
 				ED5E2B902BA1D0D20033B19B /* ErrorModuleBuilder.swift in Sources */,
 				ED9A7AB02B9F67470037BAF9 /* ListOfEmployeesPouter.swift in Sources */,
+				ED5E2BF72BA604B00033B19B /* SearchBarTextField.swift in Sources */,
 				ED5E2BE62BA5A3EE0033B19B /* SortedCheckBoxButton.swift in Sources */,
 				ED5E2B982BA1D7980033B19B /* ErrorStackSubview.swift in Sources */,
 				ED9A7A9E2B9F665A0037BAF9 /* EmployeeProfileInteractor.swift in Sources */,

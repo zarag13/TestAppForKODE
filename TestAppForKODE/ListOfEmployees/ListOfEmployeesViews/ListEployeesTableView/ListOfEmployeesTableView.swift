@@ -50,6 +50,7 @@ extension ListOfEmployeesTableView {
 
 extension ListOfEmployeesTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        deselectRow(at: indexPath, animated: true)
         guard let employe = employees?[indexPath.row] else { return }
         tableViewdelegate?.selectedEmployee(employee: employe)
     }
