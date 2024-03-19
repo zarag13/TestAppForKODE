@@ -10,7 +10,7 @@ import UIKit
 
 class BuilderNetworkLayer {
     
-    func createTaskManagerr() ->  CreaterTaskForSession {
+    static func createTaskManagerr() ->  CreaterTaskForSession {
         let url = CreaterURL()
         let request = CreaterRequest(url: url)
         let decoder = JSONCodable()

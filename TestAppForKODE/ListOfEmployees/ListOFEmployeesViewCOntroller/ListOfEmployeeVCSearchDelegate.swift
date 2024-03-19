@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - получение данных от navigationBar == SearchController
 extension ListOfEmployeesViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
@@ -18,8 +19,19 @@ extension ListOfEmployeesViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: - действие при нажатии на правую кнопку navigationBar == searchBar
 extension ListOfEmployeesViewController: SearchSortedButtonDelegate {
     func selectLeftButton() {
-        presenter?.selectedSortedButton()
+        presenter?.selectedSortedButton(sortedState: self.sortedState)
+    }
+}
+
+extension ListOfEmployeesViewController: NavigationBarTableListDelegate {
+    func cancelEditing() {
+        self.searchText = ""
+    }
+    
+    func searchText(text: String) {
+        self.searchText = text
     }
 }

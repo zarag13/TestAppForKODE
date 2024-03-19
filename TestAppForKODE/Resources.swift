@@ -21,11 +21,15 @@ enum Resources {
         static var mainViewBackgroundColor = UIColor(hexString: "#E5E5E5")
         static var employeeProfileView = UIColor(hexString: "#F7F7F8")
         static var empliyeeProfileBacground = UIColor(hexString: "#FFFFFF")
+        
+        //MARK: -
+        static var birthdayHeader = UIColor(hexString: "#C3C3C6")
     }
     
     enum Image {
         static var starIcon = UIImage(named: "star")
         static var phoneIcon = UIImage(named: "phone")
+        static var magnifyingGlass = UIImage(named: "magnifying-glass")
         
         static var mockAvatarImage = "mockAvatarImage"
         static var flyingSaucer = "flyingSaucer"

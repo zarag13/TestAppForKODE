@@ -8,11 +8,19 @@
 import Foundation
 
 protocol ListOfEmployeesPresenterProtocol: AnyObject {
+    //MARK: - первая загрузка данных
     func viewDidLoad()
+    //MARK: - перезагрузка данных
+    func reloadData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String)
+    //MARK: - фильтрация данных
+    func loadFilteredData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String)
+    
+    func didLoadFilteredData(data: [Employee], state: Bool)
+    
     func didLoad(data: [Employee])
     func obtainError()
     func selectedEmployee(employee: Employee)
-    func selectedSortedButton()
+    func selectedSortedButton(sortedState: CheckBoxState)
 }
 
 class ListOfEmployeesPresenter {
@@ -27,8 +35,20 @@ class ListOfEmployeesPresenter {
 }
 
 extension ListOfEmployeesPresenter: ListOfEmployeesPresenterProtocol {
-    func selectedSortedButton() {
-        router.openSortedController()
+    func didLoadFilteredData(data: [Employee], state: Bool) {
+        view?.showFilteredData(data: data, state: state)
+    }
+    
+    func loadFilteredData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String) {
+        interactor.loadFilteredData(selectedDepartament: selectedDepartament, sortedState: sortedState, searchText: searchText)
+    }
+    
+    func reloadData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String) {
+        interactor.reloadData(selectedDepartament: selectedDepartament, sortedState: sortedState, searchText: searchText)
+    }
+    
+    func selectedSortedButton(sortedState: CheckBoxState) {
+        router.openSortedController(sortedState: sortedState)
     }
     
     func selectedEmployee(employee: Employee) {
@@ -43,6 +63,7 @@ extension ListOfEmployeesPresenter: ListOfEmployeesPresenterProtocol {
         view?.showData(data: data)
     }
     
+    //MARK: - первая загрузка данных
     func viewDidLoad() {
         interactor.loadData()
     }

@@ -15,7 +15,6 @@ enum DidBeginEditingSearchBar {
 class SearchBar: BaseView {
     let textField: SearchBarTextField = {
         let textField = SearchBarTextField()
-        
         return textField
     }()
     

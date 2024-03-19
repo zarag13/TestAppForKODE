@@ -9,7 +9,7 @@ import Foundation
 
 protocol SortedCheckBoxPresenterProtocol: AnyObject {
     func viewDidLoad()
-    func returnData(value: [String])
+    func returnData(value: [String], checkBoxState: CheckBoxState)
     func tapBackBarItem()
 }
 
@@ -29,8 +29,8 @@ extension SortedCheckBoxPresenter: SortedCheckBoxPresenterProtocol{
         router.closeСurrentController()
     }
     
-    func returnData(value: [String]) {
-        view?.showCheckBoxView(value: value)
+    func returnData(value: [String], checkBoxState: CheckBoxState) {
+        view?.showCheckBoxView(value: value, checkBoxState: checkBoxState)
     }
     
     func viewDidLoad() {

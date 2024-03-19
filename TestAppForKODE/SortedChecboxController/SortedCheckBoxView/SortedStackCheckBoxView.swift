@@ -32,7 +32,7 @@ class SortedStackCheckBoxView: BaseView {
                 let checkBoxView = SortedCheckBoxView()
                 checkBoxView.descriptionForButton.text = value
                 checkBoxView.checkBoxButton.sotredCheckBoxState = CheckBoxState(rawValue: value)!
-                checkBoxView.checkBoxButton.delegate = self.delegate
+                //checkBoxView.checkBoxButton.delegate = self.delegate
                 stackCheckBoxView.addArrangedSubview(checkBoxView)
             }
         }

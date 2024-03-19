@@ -25,4 +25,7 @@ struct Employee: Hashable, Identifiable {
     var birthday: String
     // 24 года
     var currentAge: String
+    
+    //для фильтрации по году рождения(определении секции)
+    var birzdayYear: String?
 }

@@ -8,11 +8,11 @@
 import Foundation
 
 class SortedCheckBoxBuilder {
-    static func build() -> SortedCheckBoxController {
+    static func build(checkBoxState: CheckBoxState) -> SortedCheckBoxController {
         let view = SortedCheckBoxController()
         let router = SortedCheckboxRouter()
         router.view = view
-        let interactor = SortedCheckBoxInteractor()
+        let interactor = SortedCheckBoxInteractor(checkBoxState: checkBoxState)
         let presenter = SortedCheckBoxPresenter(interactor: interactor, router: router)
         presenter.view = view
         interactor.presenter = presenter

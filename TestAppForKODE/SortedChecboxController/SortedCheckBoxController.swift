@@ -8,7 +8,7 @@
 import BaseUIComponents
 
 protocol SortedCheckBoxControllerProtocol: AnyObject {
-    func showCheckBoxView(value: [String])
+    func showCheckBoxView(value: [String], checkBoxState: CheckBoxState)
 }
 
 class SortedCheckBoxController: BaseController {
@@ -26,7 +26,7 @@ class SortedCheckBoxController: BaseController {
 extension SortedCheckBoxController {
     override func setupViews() {
         super.setupViews()
-        presenter?.viewDidLoad()
+        self.presenter?.viewDidLoad()
         view.addView(navigationBar)
         navigationBar.titleLabel.text = "Сортировка"
         navigationBar.leftBurButtomItemDelegate = self
@@ -37,7 +37,7 @@ extension SortedCheckBoxController {
     override func configureAppearance() {
         super.configureAppearance()
         view.backgroundColor = .white
-#warning("поставить наблюдателя, если получится, что бы отслеживать состояние и отображать или нет кастомную полоску - инидкатор")
+        #warning("поставить наблюдателя, если получится, что бы отслеживать состояние и отображать или нет кастомную полоску - инидкатор для sheetPresentationController ")
         sheetPresentationController?.selectedDetentIdentifier = .large
     }
     
@@ -49,8 +49,6 @@ extension SortedCheckBoxController {
             navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navigationBar.heightAnchor.constraint(equalToConstant: 52),
             
-            
-            
             stackCheckBoxView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 8),
             stackCheckBoxView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             stackCheckBoxView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
@@ -58,18 +56,29 @@ extension SortedCheckBoxController {
     }
 }
 
+//MARK: - Здесь получаем данные о первой загрузке контроллера
 extension SortedCheckBoxController: SortedCheckBoxControllerProtocol {
-    func showCheckBoxView(value: [String]) {
+    func showCheckBoxView(value: [String], checkBoxState: CheckBoxState) {
         stackCheckBoxView.sortedCheckBoxValue = value
+        #warning("обработать получаемые данные о состаянии и сделать сразу одну из кнопок активной")
+        guard let views = stackCheckBoxView.stackCheckBoxView.arrangedSubviews as? [SortedCheckBoxView] else { return }
+        views.forEach { view in
+            if view.checkBoxButton.sotredCheckBoxState == checkBoxState {
+                print("11111111 - \(view.checkBoxButton.sotredCheckBoxState.rawValue)")
+                view.checkBoxButton.changeState = .selected
+            }
+        }
     }
 }
 
+//MARK: - когда нажали на кнопку вернуть назад
 extension SortedCheckBoxController: BackButtonViewProtocol {
     func goBack() {
         presenter?.tapBackBarItem()
     }
 }
 
+//MARK: -
 extension SortedCheckBoxController: SortedCheckBoxButtonProtocol {
     func selectCheckBox(sortedCeckBoox: CheckBoxState) {
         guard let views = stackCheckBoxView.stackCheckBoxView.arrangedSubviews as? [SortedCheckBoxView] else { return }
@@ -94,7 +103,6 @@ extension SortedCheckBoxController: SortedCheckBoxButtonProtocol {
                 }
             }
         }
-        print("12312313213133")
         checkBoxState?(sortedCeckBoox)
     }
 }

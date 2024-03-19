@@ -19,7 +19,7 @@ class FilteredDataManager {
     func filteringBySearchText(searchText: String, employees: [Employee]) -> [Employee] {
         var filteredEmployee = [Employee]()
         
-        if let value = Int(searchText) {
+        if Int(searchText) != nil {
             //обработка номера
             filteredEmployee = employees.filter({ employee in
                 employee.phone.contains(searchText)
@@ -49,10 +49,15 @@ private extension FilteredDataManager {
     //фильтрация по имени и фамилии (поиск)
     private func searchNameFiltered(searchText: String, employees: [Employee]) -> [Employee] {
         var filteredEmployee = [Employee]()
+        let lowerSearch = searchText.lowercased()
         filteredEmployee = employees.filter({ employee in
-            if employee.firstName.lowercased().contains(searchText.lowercased()) {
+            if employee.firstName.lowercased().contains(lowerSearch) {
                 return true
-            } else if employee.lastName.lowercased().contains(searchText.lowercased()) {
+            } else if employee.lastName.lowercased().contains(lowerSearch) {
+                return true
+            } else if "\(employee.firstName) \(employee.lastName)".lowercased().contains(lowerSearch) {
+                print("\(employee.firstName) \(employee.lastName)".lowercased())
+                print(lowerSearch)
                 return true
             }
             return false
@@ -62,7 +67,7 @@ private extension FilteredDataManager {
     
     //Возвращает данные отфильтрованные по departament
     private func filteringByDepartament(departament: Department, employees: [Employee]) -> [Employee] {
-        var filteredEmployee = employees.filter { eployee in
+        let filteredEmployee = employees.filter { eployee in
             if departament == .all {
                 return true
             } else {
@@ -75,23 +80,20 @@ private extension FilteredDataManager {
     
     //фильтрация по чекбоксу
     private func filteringByCheckBox(sortedCheckBoxFiltered: CheckBoxState, employees: [Employee]) -> [Employee] {
-        
         switch sortedCheckBoxFiltered {
         case .none:
             return employees
         case .alphabet:
             return  employees.sorted { $0.firstName.lowercased() < $1.firstName.lowercased() }
         case .birthday:
-            #warning("Жесткая сортирровка по дате рождения - нужно помимо фильтрации даты рождения в текущем году - разделить хедерами - таблицу на тех, у кого др уже в следующем году")
-            return employees
-            
+            let filteredBirthdayEmployee = filteredBirthday(employees: employees)
+            return self.filteredBirzdayYear(employees: filteredBirthdayEmployee)
         }
     }
     
-    //фильтруем по дате рождения от меньшего к большему
-#warning("сделаем фильтрацию по др отдельной")
+    //фильтруем по дате рождения от меньшего к большему - по числу + месяцу
     private func filteredBirthday(employees: [Employee]) -> [Employee] {
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         dateFormatter.locale = Locale(identifier: "ru_RU")
@@ -118,18 +120,20 @@ private extension FilteredDataManager {
                 return false
             }
         }
-        return employees
+        return sortedEmployee
     }
     
     
     //здесь сразу две фильтрации в одной из массива находим тех у кого др в этом году - второй у к кого в следующем
     //в теории елси придет массив уже отфильтрованный по дате - то этот метод вернет так же все отфильтрованное по порядку
     #warning("Здесь мы получили два массива с разными данными - у кого в этом году др, у кого в следующем")
-    private func filteredBirzdayYear(employees: [Employee]) {
+    private func filteredBirzdayYear(employees: [Employee]) -> [Employee] {
+        //1. Приходит массив отфильтрованных данных по дате рождения
+        
         var birzdayCurrentYear = [Employee]()
         var birzdaySecondYear = [Employee]()
         
-        var calendar = Calendar.current
+        let calendar = Calendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         dateFormatter.locale = Locale(identifier: "ru_RU")
@@ -150,14 +154,21 @@ private extension FilteredDataManager {
             switch newNowDate!.compare(newDateEmployee!) {
             case .orderedAscending:
                 //дата сейчас меньше чем дата пользователя
-                return false
+                return true
             case .orderedSame:
                 return true
             case .orderedDescending:
                 //дата сейчас больше чем дата пользователя
-                return true
+                return false
             }
         })
+        
+        birzdayCurrentYear = birzdayCurrentYear.map { employee in
+            var newEmployee = employee
+            newEmployee.birzdayYear = "2024"
+            return newEmployee
+        }
+        
         
         birzdaySecondYear = employees.filter({ employee in
             //преобразуем дату работнику
@@ -172,13 +183,21 @@ private extension FilteredDataManager {
             switch newNowDate!.compare(newDateEmployee!) {
             case .orderedAscending:
                 //дата сейчас меньше чем дата пользователя
-                return true
+                return false
             case .orderedSame:
                 return false
             case .orderedDescending:
                 //дата сейчас больше чем дата пользователя
-                return false
+                return true
             }
         })
+        
+        birzdaySecondYear = birzdaySecondYear.map { employee in
+            var newEmployee = employee
+            newEmployee.birzdayYear = "2025"
+            return newEmployee
+        }
+        
+        return birzdayCurrentYear + birzdaySecondYear
     }
 }

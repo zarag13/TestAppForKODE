@@ -94,8 +94,7 @@ extension DetailEmployeProfileCell {
         case .two:
             self.iconView.image = Resources.Image.phoneIcon
             firstTitle.text = employee.phone
-            secondaryTitle.text = ""
-
+            //secondaryTitle.text = ""
         }
     }
 }

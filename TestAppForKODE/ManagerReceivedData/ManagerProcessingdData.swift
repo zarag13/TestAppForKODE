@@ -57,14 +57,16 @@ class ManagerProcessingdData {
         
         var image = UIImage()
         
-        self.taskForDownloadAvatarImage?.employeeDownloadAvatarImageTask(url: url, completion: { result in
+        
+        self.taskForDownloadAvatarImage?.employeeDownloadAvatarImageTask(url: url, completion: { [weak self] result in
+            guard let strSelf = self else { return }
             switch result {
             case .success(let data):
                 image = UIImage(data: data)!
-                self.semaf.signal()
-            case .failure(let error):
+                strSelf.semaf.signal()
+            case .failure(_):
                 image = UIImage(named: Resources.Image.mockAvatarImage)!
-                self.semaf.signal()
+                strSelf.semaf.signal()
             }
         })
         semaf.wait()
@@ -110,10 +112,18 @@ class ManagerProcessingdData {
         
         
         //убираем лишнее из строки
-        let tldEndIndex = dateString.endIndex
-        let tldStartIndex = dateString.index(tldEndIndex, offsetBy: -2)
-        let range = Range(uncheckedBounds: (lower: tldStartIndex, upper: tldEndIndex)) // г.
+        let endIndex = dateString.endIndex
+        let startIndexOffset = dateString.index(endIndex, offsetBy: -2)
+        let range = Range(uncheckedBounds: (lower: startIndexOffset, upper: endIndex)) // г.
         dateString.removeSubrange(range)
+        
+        
+        //убираем первый 0 елси он есть
+        let startCharacter = dateString[dateString.startIndex]
+        if startCharacter == "0" {
+            dateString.remove(at: dateString.startIndex)
+        }
+        
         
         return dateString
     }

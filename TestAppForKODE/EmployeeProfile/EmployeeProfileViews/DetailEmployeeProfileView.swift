@@ -52,6 +52,7 @@ extension DetailProfileView: UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
             cell.configure(employee: employee, state: .one)
+            cell.selectionStyle = .none
             returnCell = cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell

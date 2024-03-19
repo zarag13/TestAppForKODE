@@ -11,7 +11,7 @@ import UIKit
 protocol ListOfEmployeesPouterProtocol: AnyObject {
     func openErrorVC()
     func openDetailVC(employee: Employee)
-    func openSortedController()
+    func openSortedController(sortedState: CheckBoxState)
 }
 
 class ListOfEmployeesPouter {
@@ -19,8 +19,8 @@ class ListOfEmployeesPouter {
 }
 
 extension ListOfEmployeesPouter: ListOfEmployeesPouterProtocol {
-    func openSortedController() {
-        let vc = SortedCheckBoxBuilder.build()
+    func openSortedController(sortedState: CheckBoxState) {
+        let vc = SortedCheckBoxBuilder.build(checkBoxState: sortedState)
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
             sheet.largestUndimmedDetentIdentifier = .medium
@@ -32,7 +32,6 @@ extension ListOfEmployeesPouter: ListOfEmployeesPouterProtocol {
         }
         
         vc.checkBoxState = { [weak self] state in
-            #warning("обработать полученные состояния фильтрации - передатьих в view и там уже потом решить что делать")
             self?.view?.sortedState = state
         }
         

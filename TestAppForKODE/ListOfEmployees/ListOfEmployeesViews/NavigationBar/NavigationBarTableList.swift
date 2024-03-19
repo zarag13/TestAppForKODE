@@ -7,11 +7,18 @@
 
 import BaseUIComponents
 
+protocol NavigationBarTableListDelegate: AnyObject {
+    func searchText(text: String)
+    func cancelEditing() 
+}
+
 class NavigationBarTableList: BaseView {
     
     let searchBar = SearchBar()
     
     let departamentMenu = DepartamentsCollectionView()
+    
+    weak var delegate: NavigationBarTableListDelegate?
     
     let lineView: UIView = {
         let view = UIView()
@@ -72,21 +79,29 @@ class NavigationBarTableList: BaseView {
 
 extension NavigationBarTableList {
     override func setupViews() {
+        super.setupViews()
         addView(searchBar)
         addView(departamentMenu)
         addView(lineView)
         addView(cancelButton)
         cancelButton.makeSystemButtonAnimation()
         cancelButton.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
+        searchBar.textField.addTarget(self, action: #selector(changeText(sender:)), for: .editingChanged)
+    }
+    
+    @objc func changeText(sender: UITextField) {
+        delegate?.searchText(text: sender.text!)
     }
     
     @objc func tapCancelButton() {
         searchBar.textField.text = ""
         searchBar.textField.resignFirstResponder()
         didBeginEditing = .end
+        delegate?.cancelEditing()
     }
     
     override func setupLayoutViews() {
+        super.setupLayoutViews()
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: topAnchor, constant: 6),
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -111,5 +126,6 @@ extension NavigationBarTableList {
     }
     
     override func configureAppearance() {
+        super.configureAppearance()
     }
 }
