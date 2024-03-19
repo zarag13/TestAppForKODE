@@ -63,7 +63,7 @@ extension SearchSortedButton {
     override func configureAppearance() {
         super.configureAppearance()
         backgroundColor = .clear
-        translatesAutoresizingMaskIntoConstraints = false
+        //translatesAutoresizingMaskIntoConstraints = false
         
         switch config {
         case .unmoved:
@@ -89,9 +89,6 @@ extension SearchSortedButton {
     
     override func setupLayoutViews() {
         super.setupLayoutViews()
-        
-        heightAnchor.constraint(equalToConstant: 24).isActive = true
-        widthAnchor.constraint(equalToConstant: 24).isActive = true
         
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
