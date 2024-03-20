@@ -91,7 +91,7 @@ extension ListOfEmployeesTableView: UITableViewDataSource {
     }
     
     
-    //MARK: - убираем отступы междлу секциями
+    //MARK: - убираем отступы между секциями
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }

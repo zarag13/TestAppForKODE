@@ -19,7 +19,7 @@ class EmployeeProfileVIewController: BaseController {
     var presenter: DetailEmployeeProfilePresenterProtocol?
     
     let profileView = ProfileView()
-    let detailProfileView = DetailProfileView(frame: .zero, style: .insetGrouped)
+    let detailProfileView = DetailProfileView(frame: .zero, style: .grouped)
     let navigationBar = SimpleNavigationBar()
     
     override func setupViews() {
@@ -29,6 +29,7 @@ class EmployeeProfileVIewController: BaseController {
         view.addView(detailProfileView)
         view.addView(navigationBar)
         navigationBar.leftBurButtomItemDelegate = self
+        detailProfileView.delegateAction = self
     }
     
     override func setupLayoutViews() {
@@ -72,5 +73,13 @@ extension EmployeeProfileVIewController: DetailEmployeeProfileVIewControllerProt
 extension EmployeeProfileVIewController: BackButtonViewProtocol {
     func goBack() {
         presenter?.popToViewController()
+    }
+}
+
+extension EmployeeProfileVIewController: DetailProfileTableViewDelegate {
+    func showAlertCallPhone() {
+        let alert = AlertForCallPhone(superView: self.view)
+        self.view.addSubview(alert)
+        alert.showAlert()
     }
 }

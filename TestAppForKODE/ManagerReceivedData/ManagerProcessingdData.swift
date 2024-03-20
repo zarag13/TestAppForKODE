@@ -77,13 +77,14 @@ class ManagerProcessingdData {
     
     
     
-    func processingPhoneNumberWithSeparate(phone: String) -> String {
+    static func processingPhoneNumberWithSeparate(phone: String) -> String {
         //+79969593262
         //+7 (999) 900 90 90
         var result = phone
         let next = result.index(after: result.firstIndex(of: "7")!)
         result.insert("(", at: next)
-        let next2 = result.index(next, offsetBy: 4)
+        result.insert(" ", at: next)
+        let next2 = result.index(next, offsetBy: 5)
         result.insert(" ", at: next2)
         result.insert(")", at: next2)
         let end1 = result.index(result.endIndex, offsetBy: -2)

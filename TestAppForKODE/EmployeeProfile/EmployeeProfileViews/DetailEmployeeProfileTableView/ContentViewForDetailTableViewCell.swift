@@ -1,24 +1,13 @@
 //
-//  DetailEmployeProfileCell.swift
+//  ContentViewForDetailTableViewCell.swift
 //  TestAppForKODE
 //
-//  Created by Kirill on 11.03.2024.
+//  Created by Kirill on 19.03.2024.
 //
 
-import UIKit
 import BaseUIComponents
 
-enum State {
-    case one
-    case two
-}
-
-class DetailEmployeProfileCell: BaseTableViewCell {
-    
-    static let reuseIdentifier = String(describing: DetailEmployeProfileCell.self)
-    
-    var state: State?
-    
+class ContentViewForDetailTableViewCell: BaseView {
     let firstTitle: UILabel = {
         let label = UILabel()
         label.font = Resources.Founts.interMedium(with: 16)
@@ -43,13 +32,11 @@ class DetailEmployeProfileCell: BaseTableViewCell {
     }()
 }
 
-
-extension DetailEmployeProfileCell {
-    
+extension ContentViewForDetailTableViewCell {
     override func setupViews() {
         super.setupViews()
         [firstTitle, secondaryTitle, iconView].forEach { item in
-            contentView.addView(item)
+            addView(item)
         }
     }
     
@@ -57,19 +44,19 @@ extension DetailEmployeProfileCell {
         super.setupLayoutViews()
         NSLayoutConstraint.activate([
             //iconView
-            iconView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 17),
-            iconView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            iconView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            iconView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            iconView.topAnchor.constraint(equalTo: topAnchor, constant: 18),
+            iconView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -18),
             iconView.widthAnchor.constraint(equalToConstant: 24),
             iconView.heightAnchor.constraint(equalToConstant: 24),
             
             //firstTitle
-            firstTitle.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 14),
+            firstTitle.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 12),
             firstTitle.centerYAnchor.constraint(equalTo: iconView.centerYAnchor),
             
             
             //secondaryTitle
-            secondaryTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            secondaryTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
             secondaryTitle.centerYAnchor.constraint(equalTo: iconView.centerYAnchor),
             
         ])
@@ -77,24 +64,6 @@ extension DetailEmployeProfileCell {
     
     override func configureAppearance() {
         super.configureAppearance()
-        contentView.backgroundColor = Resources.Colors.empliyeeProfileBacground
-    }
-}
-
-
-extension DetailEmployeProfileCell {
-    func configure(employee: Employee, state: State) {
-        self.state = state
         
-        switch state {
-        case .one:
-            self.firstTitle.text = employee.birthday
-            self.iconView.image = Resources.Image.starIcon
-            self.secondaryTitle.text = employee.currentAge
-        case .two:
-            self.iconView.image = Resources.Image.phoneIcon
-            firstTitle.text = employee.phone
-            //secondaryTitle.text = ""
-        }
     }
 }
