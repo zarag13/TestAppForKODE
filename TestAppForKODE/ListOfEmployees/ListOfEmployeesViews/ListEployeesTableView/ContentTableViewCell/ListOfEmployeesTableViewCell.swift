@@ -47,19 +47,17 @@ extension ListOfEmployeesTableViewCell {
         
         //MARK: - здесь реализована загрузка аватарки - но она должна быть в интеракторе - не успел придумать как ее туда вынести, что бы корректно работало
         let networkManager = BuilderNetworkLayer.createTaskManagerr()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            networkManager.employeeDownloadAvatarImageTask(url: employee.avatarImage) { result in
-                switch result {
-                case .success(let data):
-                    if employee.id == self.path {
-                        DispatchQueue.main.async {
-                            self.contentViewCell.avatarImage.image = UIImage(data: data)
-                        }
-                    }
-                case .failure(_):
+        networkManager.employeeDownloadAvatarImageTask(url: employee.avatarImage) { result in
+            switch result {
+            case .success(let data):
+                if employee.id == self.path {
                     DispatchQueue.main.async {
-                        self.contentViewCell.avatarImage.image = UIImage(named: Resources.Image.mockAvatarImage)
+                        self.contentViewCell.avatarImage.image = UIImage(data: data)
                     }
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.contentViewCell.avatarImage.image = UIImage(named: Resources.Image.mockAvatarImage)
                 }
             }
         }
