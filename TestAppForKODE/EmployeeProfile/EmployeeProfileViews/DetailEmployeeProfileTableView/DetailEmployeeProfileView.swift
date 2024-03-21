@@ -63,7 +63,7 @@ extension DetailProfileView: UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
-            cell.configure(image: Resources.Image.starIcon!, firstTitle: employee.birthday, secondTitle: employee.birzdayYear)
+            cell.configure(image: Resources.Image.starIcon!, firstTitle: employee.birthday, secondTitle: employee.currentAge)
             cell.selectionStyle = .none
             returnCell = cell
         } else {

@@ -10,8 +10,8 @@ import UIKit
 //MARK: - SearchBar == кастомный TextField
 final class SearchBarTextField: UITextField {
     
-    var rightSearchBarItem = SearchSortedButton(configure: .moved, image: UIImage(named: "list.ui.alt")!, selectColor: UIColor(hexString: "#6534FF"), deselectColor: UIColor(hexString: "#C3C3C6"))
-    var leftSearchBarItem = SearchSortedButton(configure: .unmoved, image: UIImage(systemName: "magnifyingglass")!, selectColor: UIColor(hexString: "#050510"), deselectColor: UIColor(hexString: "#C3C3C6"))
+    var rightSearchBarItem = SearchSortedButton(configure: .moved, image: UIImage(named: "list.ui.alt")!, selectColor: Resources.Colors.titleErrorTextColor, deselectColor: Resources.Colors.metaTextColor)
+    var leftSearchBarItem = SearchSortedButton(configure: .unmoved, image: UIImage(systemName: "magnifyingglass")!, selectColor: Resources.Colors.titleTextColor, deselectColor: Resources.Colors.metaTextColor)
     
     private var padding = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
     

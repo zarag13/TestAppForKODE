@@ -15,7 +15,7 @@ final class ContentViewForDetailTableViewCell: BaseView {
         label.font = Resources.Founts.interMedium(with: 16)
         label.textColor = Resources.Colors.titleTextColor
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }()
     
@@ -24,7 +24,7 @@ final class ContentViewForDetailTableViewCell: BaseView {
         label.font = Resources.Founts.interMedium(with: 16)
         label.textColor = Resources.Colors.metaTextColor
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        label.textAlignment = .center
+        label.textAlignment = .right
         return label
     }()
     

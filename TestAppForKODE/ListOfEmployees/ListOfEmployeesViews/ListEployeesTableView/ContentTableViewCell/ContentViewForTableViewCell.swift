@@ -64,7 +64,7 @@ extension ContentViewForTableViewCell {
     
     override func configureAppearance() {
         super.configureAppearance()
-        backgroundColor = .clear
+        backgroundColor = Resources.Colors.empliyeeProfileBacground
     }
     
     override func setupLayoutViews() {

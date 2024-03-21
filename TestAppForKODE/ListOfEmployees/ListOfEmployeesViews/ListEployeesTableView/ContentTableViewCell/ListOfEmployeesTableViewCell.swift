@@ -34,6 +34,7 @@ extension ListOfEmployeesTableViewCell {
     
     override func configureAppearance() {
         super.configureAppearance()
+        backgroundColor = Resources.Colors.empliyeeProfileBacground
     }
     
     override func prepareForReuse() {

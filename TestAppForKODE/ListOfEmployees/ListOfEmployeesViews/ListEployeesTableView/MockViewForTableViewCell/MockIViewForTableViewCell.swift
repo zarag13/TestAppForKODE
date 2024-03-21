@@ -24,7 +24,7 @@ extension MockIViewForTableViewCell {
     
     override func configureAppearance() {
         super.configureAppearance()
-        backgroundColor = .clear
+        backgroundColor = Resources.Colors.empliyeeProfileBacground
     }
     
     override func setupLayoutViews() {
@@ -51,6 +51,5 @@ extension MockIViewForTableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //avatarImage.layer.cornerRadius = avatarImage.frame.width / 2
     }
 }

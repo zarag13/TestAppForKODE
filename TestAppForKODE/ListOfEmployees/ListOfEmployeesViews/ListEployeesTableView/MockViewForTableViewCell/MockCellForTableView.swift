@@ -35,5 +35,6 @@ extension MockCellForTableView {
     override func configureAppearance() {
         super.configureAppearance()
         selectionStyle = .none
+        backgroundColor = Resources.Colors.empliyeeProfileBacground
     }
 }
