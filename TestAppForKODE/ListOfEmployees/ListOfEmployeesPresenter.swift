@@ -17,6 +17,8 @@ protocol ListOfEmployeesPresenterProtocol: AnyObject {
     
     func didLoadFilteredData(data: [Employee], state: Bool)
     
+    func didLoadFilteredDataWithError(error: ErrorReloadDataAlertState)
+    
     func didLoad(data: [Employee])
     func obtainError()
     func selectedEmployee(employee: Employee)
@@ -35,6 +37,10 @@ class ListOfEmployeesPresenter {
 }
 
 extension ListOfEmployeesPresenter: ListOfEmployeesPresenterProtocol {
+    func didLoadFilteredDataWithError(error: ErrorReloadDataAlertState) {
+        view?.showLoadFilteredDataWithError(error: error)
+    }
+    
     func didLoadFilteredData(data: [Employee], state: Bool) {
         view?.showFilteredData(data: data, state: state)
     }

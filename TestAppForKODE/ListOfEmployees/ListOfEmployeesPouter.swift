@@ -34,17 +34,19 @@ extension ListOfEmployeesPouter: ListOfEmployeesPouterProtocol {
         vc.checkBoxState = { [weak self] state in
             self?.view?.sortedState = state
         }
-        
+        view?.reloadDataIfNeeds = false
         view?.present(vc, animated: true)
     }
     
     func openErrorVC() {
         let vc = ErrorModuleBuilder.builder()
+        view?.reloadDataIfNeeds = true
         view?.navigationController?.pushViewController(vc, animated: true)
     }
     
     func openDetailVC(employee: Employee) {
         let vc = EmployeeProfileBuilder.builder(employee: employee)
+        view?.reloadDataIfNeeds = false
         view?.navigationController?.pushViewController(vc, animated: true)
     }
 }

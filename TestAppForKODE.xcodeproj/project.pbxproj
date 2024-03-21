@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B04EE819539580A03186AAC5 /* Pods_TestAppForKODE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3824CFDE07CEC4FB659A2354 /* Pods_TestAppForKODE.framework */; };
+		ED26347B2BAB655A00D9577A /* BlureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED26347A2BAB655A00D9577A /* BlureView.swift */; };
+		ED26347E2BAC47A300D9577A /* ErrorReloadDataAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED26347D2BAC47A300D9577A /* ErrorReloadDataAlert.swift */; };
 		ED4DA5062B9F36AF00895EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DA5052B9F36AF00895EAC /* AppDelegate.swift */; };
 		ED4DA5082B9F36AF00895EAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4DA5072B9F36AF00895EAC /* SceneDelegate.swift */; };
 		ED4DA50F2B9F36B100895EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED4DA50E2B9F36B100895EAC /* Assets.xcassets */; };
@@ -97,6 +99,8 @@
 		3824CFDE07CEC4FB659A2354 /* Pods_TestAppForKODE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppForKODE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		748ABC391ED249477E34AD08 /* Pods-TestAppForKODE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppForKODE.debug.xcconfig"; path = "Target Support Files/Pods-TestAppForKODE/Pods-TestAppForKODE.debug.xcconfig"; sourceTree = "<group>"; };
 		C9D0884CF64C89A15F49A75B /* Pods-TestAppForKODE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppForKODE.release.xcconfig"; path = "Target Support Files/Pods-TestAppForKODE/Pods-TestAppForKODE.release.xcconfig"; sourceTree = "<group>"; };
+		ED26347A2BAB655A00D9577A /* BlureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlureView.swift; sourceTree = "<group>"; };
+		ED26347D2BAC47A300D9577A /* ErrorReloadDataAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReloadDataAlert.swift; sourceTree = "<group>"; };
 		ED4DA5022B9F36AF00895EAC /* TestAppForKODE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAppForKODE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED4DA5052B9F36AF00895EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED4DA5072B9F36AF00895EAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +208,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ED26347C2BAC478500D9577A /* ErrorReloadDataAlert */ = {
+			isa = PBXGroup;
+			children = (
+				ED26347D2BAC47A300D9577A /* ErrorReloadDataAlert.swift */,
+			);
+			path = ErrorReloadDataAlert;
+			sourceTree = "<group>";
+		};
 		ED4DA4F92B9F36AF00895EAC = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +301,7 @@
 		ED4DA52A2B9F4FB600895EAC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ED26347A2BAB655A00D9577A /* BlureView.swift */,
 				ED4DA52B2B9F4FBE00895EAC /* Extensions */,
 			);
 			name = Helpers;
@@ -335,6 +348,7 @@
 		ED5E2B6D2B9FE2560033B19B /* ListOfEmployeesViews */ = {
 			isa = PBXGroup;
 			children = (
+				ED26347C2BAC478500D9577A /* ErrorReloadDataAlert */,
 				ED5E2C002BA82F480033B19B /* ErrorSearchView */,
 				ED5E2BB72BA230E20033B19B /* ListEployeesTableView */,
 				ED5E2BAF2BA21EFE0033B19B /* NavigationBar */,
@@ -741,6 +755,8 @@
 				ED5E2C142BAA36970033B19B /* ContentViewForDetailTableViewCell.swift in Sources */,
 				ED5E2BE02BA4F58E0033B19B /* SortedCheckBoxBuilder.swift in Sources */,
 				ED9A7AAE2B9F673E0037BAF9 /* ListOfEmployeesInteractor.swift in Sources */,
+				ED26347B2BAB655A00D9577A /* BlureView.swift in Sources */,
+				ED26347E2BAC47A300D9577A /* ErrorReloadDataAlert.swift in Sources */,
 				ED5E2C0F2BA9D9EF0033B19B /* HeaderCellForBirthdaySorted.swift in Sources */,
 				ED5E2BD82BA4F52C0033B19B /* SortedCheckBoxController.swift in Sources */,
 				ED5E2B682B9F9F010033B19B /* DetailEmployeProfileCell.swift in Sources */,

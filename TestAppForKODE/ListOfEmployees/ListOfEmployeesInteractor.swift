@@ -39,13 +39,20 @@ extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
                 //MARK: - приводим список к нужному виду
                 self.employees = self.managerProcessingData.processingDecoderJSONData(data: data, task: networkManager)
                 DispatchQueue.main.async {
-                    //MARK: -здесь возвращаем отвильтрованный тип данных
+                    //MARK: -здесь возвращаем отфильтрованный тип данных
                     self.loadFilteredData(selectedDepartament: selectedDepartament, sortedState: sortedState, searchText: searchText)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    //MARK: -здесь возвращаем отвильтрованный тип данных
-                    self.loadFilteredData(selectedDepartament: selectedDepartament, sortedState: sortedState, searchText: searchText)
+                    //MARK: -здесь возвращаем отфильтрованный тип данных
+                    print(error.description)
+                    switch error {
+                    case .statusCode400before500, .errorDecodeData :
+                        self.presenter?.didLoadFilteredDataWithError(error: .errorFromServer)
+                    case .statusCode500AndMore:
+                        self.presenter?.didLoadFilteredDataWithError(error: .networkConnectionError)
+                    default: break
+                    }
                 }
             }
         }
@@ -74,8 +81,9 @@ extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
     
     //
     func loadFilteredData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String) {
-        //1. если приешл все по стандарту без поисковых слов
+        //защита при первой загрузке данных - если данные еще не были загружены - что бы не пропали mockViewCell и не обновлялась таблица
         let state = employees.count != 0
+        //1. если приешл все по стандарту без поисковых слов
         guard selectedDepartament == .all && sortedState == .none && searchText.isEmpty else {
             
             //2. Есть ли текст

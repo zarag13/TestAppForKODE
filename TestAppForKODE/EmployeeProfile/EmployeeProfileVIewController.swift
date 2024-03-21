@@ -10,7 +10,7 @@ import BaseUIComponents
 
 //MARK: - протокол по которому view получит данные
 protocol DetailEmployeeProfileVIewControllerProtocol: AnyObject {
-    func showDetailInfo(employee: Employee)
+    func showDetailInfo(employee: Employee, avatar: UIImage)
 }
 
 
@@ -51,9 +51,6 @@ class EmployeeProfileVIewController: BaseController {
         ])
     }
     
-    
-    
-    
     override func configureAppearance() {
         super.configureAppearance()
         view.backgroundColor = Resources.Colors.empliyeeProfileBacground
@@ -64,8 +61,8 @@ class EmployeeProfileVIewController: BaseController {
 //MARK: - распределяем данные по view
 extension EmployeeProfileVIewController: DetailEmployeeProfileVIewControllerProtocol {
     
-    func showDetailInfo(employee: Employee) {
-        profileView.configureView(employee: employee)
+    func showDetailInfo(employee: Employee, avatar: UIImage) {
+        profileView.configureView(employee: employee, avatar: avatar)
         detailProfileView.configureDataSourceee(employee: employee)
     }
 }
@@ -77,9 +74,10 @@ extension EmployeeProfileVIewController: BackButtonViewProtocol {
 }
 
 extension EmployeeProfileVIewController: DetailProfileTableViewDelegate {
-    func showAlertCallPhone() {
-        let alert = AlertForCallPhone(superView: self.view)
-        self.view.addSubview(alert)
+    func showAlertCallPhone(phone: String) {
+        let alert = AlertForCallPhone(superView: self.view, phone: phone)
+        self.view.addView(alert)
+        alert.addConstraintForSuperView()
         alert.showAlert()
     }
 }

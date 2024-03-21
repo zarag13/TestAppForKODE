@@ -26,15 +26,16 @@ class ManagerProcessingdData {
 
         newData = jsonData.map({ user -> Employee in
             return Employee(id: user.id,
-                           firstName: user.firstName,
-                           lastName: user.lastName,
-                           department: user.department,
-                           position: user.position,
-                           userTag: lowerTag(name: user.userTag),
-                           phone: processingPhoneNumber(phone: user.phone), // +79969593262
-                           avatarImage: downloadImage(url: user.avatarUrl),
-                           birthday: processingBirthday(date: user.birthday),
-                           currentAge: createCurrentAgefromBirthday(date: user.birthday))
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            department: user.department,
+                            position: user.position,
+                            userTag: lowerTag(name: user.userTag),
+                            phone: processingPhoneNumber(phone: user.phone), // +79969593262
+                            //avatarImage: downloadImage(url: user.avatarUrl),
+                            avatarImage: user.avatarUrl ,
+                            birthday: processingBirthday(date: user.birthday),
+                            currentAge: createCurrentAgefromBirthday(date: user.birthday))
         })
         return newData
         

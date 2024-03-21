@@ -28,7 +28,7 @@ class HeaderForSectionDetailTableView: UITableViewHeaderFooterView {
 extension HeaderForSectionDetailTableView {
     func setupViews() {
         contentView.addView(lineView)
-        lineView.backgroundColor = .black
+        lineView.backgroundColor = Resources.Colors.employeeProfileView
     }
     func setupLayoutViews() {
         NSLayoutConstraint.activate([

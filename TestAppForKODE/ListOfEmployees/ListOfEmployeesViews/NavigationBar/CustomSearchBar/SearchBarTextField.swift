@@ -7,11 +7,10 @@
 
 import UIKit
 
-#warning("донастроить")
 final class SearchBarTextField: UITextField {
     
-    var rightSearchBarItem = SearchSortedButton(configure: .moved, image: UIImage(named: "list.ui.alt")!)
-    var leftSearchBarItem = SearchSortedButton(configure: .unmoved, image: UIImage(systemName: "magnifyingglass")!)
+    var rightSearchBarItem = SearchSortedButton(configure: .moved, image: UIImage(named: "list.ui.alt")!, selectColor: UIColor(hexString: "#6534FF"), deselectColor: UIColor(hexString: "#C3C3C6"))
+    var leftSearchBarItem = SearchSortedButton(configure: .unmoved, image: UIImage(systemName: "magnifyingglass")!, selectColor: UIColor(hexString: "#050510"), deselectColor: UIColor(hexString: "#C3C3C6"))
     
     private var padding = UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 32)
     

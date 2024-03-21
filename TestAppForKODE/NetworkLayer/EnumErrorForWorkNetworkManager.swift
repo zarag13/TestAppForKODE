@@ -19,10 +19,12 @@ enum ErrorForNetworkManager: Error, CustomStringConvertible{
     case createSession
 
     //MARK: - Enum error with work dataTask
-        case errorTask
-        case errorReciveResponse
-        case errorReceiveData
-        case errorDecodeData
+    case errorTask
+    case errorReciveResponse
+    case errorReceiveData
+    case errorDecodeData
+    case statusCode500AndMore
+    case statusCode400before500
        
     
     var description: String {
@@ -47,6 +49,10 @@ enum ErrorForNetworkManager: Error, CustomStringConvertible{
             return "Error Recive Data in datTask"
         case .errorDecodeData:
             return "Error decode data in dataTask"
+        case .statusCode500AndMore:
+            return "Error datatTask return response status code 500 and more"
+        case .statusCode400before500:
+            return "Error datatTask return response status code 400 before 500"
         }
     }
 }

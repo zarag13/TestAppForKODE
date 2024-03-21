@@ -53,15 +53,19 @@ final class CreaterTaskForSession: CreaterTaskProtocol {
                                 completion(.failure(.errorTask))
                                 return
                             }
-                            guard let response = response as? HTTPURLResponse else {
+                            guard let httpResponse = response as? HTTPURLResponse else {
                                 completion(.failure(.errorReciveResponse))
                                 return
                             }
-                            #warning("добавить код ошибки")
-                            guard response.statusCode <= 300 else {
-                                print(response.statusCode)
-                                completion(.failure(.errorReciveResponse))
+                            
+                            switch httpResponse.statusCode {
+                            case 400..<500:
+                                completion(.failure(.statusCode400before500))
                                 return
+                            case 500... :
+                                completion(.failure(.statusCode500AndMore))
+                                return
+                            default: break
                             }
                             
                             
@@ -113,10 +117,11 @@ final class CreaterTaskForSession: CreaterTaskProtocol {
                                 completion(.failure(.errorTask))
                                 return
                             }
-                            guard let response = response else {
+                            guard let httpResponse = response as? HTTPURLResponse else {
                                 completion(.failure(.errorReciveResponse))
                                 return
                             }
+                            
                             guard let data = data else {
                                 completion(.failure(.errorReceiveData))
                                 return

@@ -32,6 +32,14 @@ extension ListOfEmployeesViewController: NavigationBarTableListDelegate {
     }
     
     func searchText(text: String) {
-        self.searchText = text
+        //удаляем в словах лишние пробелы
+        let validText = validate(text: text)
+        self.searchText = validText
+    }
+    
+    
+    private func validate(text: String) -> String{
+        let textWithoutPunctuationCharacters = text.components(separatedBy: .punctuationCharacters).joined().components(separatedBy: .whitespaces).filter { !$0.isEmpty }.joined(separator: " ")
+        return textWithoutPunctuationCharacters
     }
 }

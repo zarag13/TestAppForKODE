@@ -10,6 +10,8 @@ import BaseUIComponents
 class ListOfEmployeesTableViewCell: BaseTableViewCell {
     static let reuseIdentifier = String(describing: ListOfEmployeesTableViewCell.self)
     var contentViewCell = ContentViewForTableViewCell()
+    
+    private var path: String?
 }
 extension ListOfEmployeesTableViewCell {
     
@@ -32,11 +34,35 @@ extension ListOfEmployeesTableViewCell {
     override func configureAppearance() {
         super.configureAppearance()
     }
+    
+    override func prepareForReuse() {
+        contentViewCell.avatarImage.image = UIImage(named: Resources.Image.mockAvatarImage) //Resources.Image.mockAvatarImage
+    }
 }
 
 extension ListOfEmployeesTableViewCell {
     func configurationCell(employee: Employee, birthday: Bool) {
-        contentViewCell.avatarImage.image = employee.avatarImage
+        self.path = employee.id
+        
+        let networkManager = BuilderNetworkLayer.createTaskManagerr()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            networkManager.employeeDownloadAvatarImageTask(url: employee.avatarImage) { result in
+                switch result {
+                case .success(let data):
+                    if employee.id == self.path {
+                        DispatchQueue.main.async {
+                            self.contentViewCell.avatarImage.image = UIImage(data: data)
+                        }
+                    }
+                case .failure(_):
+                    DispatchQueue.main.async {
+                        self.contentViewCell.avatarImage.image = UIImage(named: Resources.Image.mockAvatarImage)
+                    }
+                }
+            }
+        }
+        
+        //contentViewCell.avatarImage.image = employee.avatarImage
         let fullName = "\(employee.firstName) \(employee.lastName)"
         contentViewCell.titleLabel.text = fullName
         contentViewCell.subTitleLabel.text = employee.position

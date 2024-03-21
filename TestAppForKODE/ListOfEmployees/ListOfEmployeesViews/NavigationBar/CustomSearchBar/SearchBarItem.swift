@@ -35,10 +35,15 @@ class SearchSortedButton: BaseView {
         }
     }
     
-    init(configure: ActionSearchSortedButton = .unmoved, image: UIImage, changeState: StateSearchSortedButton = .deselected) {
+    private let selectColor: UIColor
+    private let deselectColor: UIColor
+    
+    init(configure: ActionSearchSortedButton = .unmoved, image: UIImage, changeState: StateSearchSortedButton = .deselected, selectColor: UIColor, deselectColor: UIColor) {
         self.config = configure
         self.imageView.image = image
         self.changeState = changeState
+        self.selectColor = selectColor
+        self.deselectColor = deselectColor
         super.init(frame: .zero)
     }
     
@@ -52,9 +57,9 @@ extension SearchSortedButton {
         
         switch changeState {
         case .selected:
-            imageView.tintColor = UIColor.black
+            imageView.tintColor = selectColor
         case .deselected:
-            imageView.tintColor = UIColor.red
+            imageView.tintColor =  deselectColor
         }
     }
 }

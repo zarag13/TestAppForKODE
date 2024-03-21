@@ -36,7 +36,7 @@ extension DetailEmployeProfileCell {
     
     override func configureAppearance() {
         super.configureAppearance()
-        contentView.backgroundColor = Resources.Colors.empliyeeProfileBacground
+        backgroundColor = Resources.Colors.empliyeeProfileBacground
     }
 }
 

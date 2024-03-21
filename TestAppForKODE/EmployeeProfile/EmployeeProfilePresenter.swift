@@ -5,12 +5,12 @@
 //  Created by Kirill on 11.03.2024.
 //
 
-import Foundation
+import UIKit
 
 //MARK: - протокол по которому view заправшивает у презентера данные - что view загружено и можешь передавать нам данные
 protocol DetailEmployeeProfilePresenterProtocol: AnyObject {
     func viewDidLoad()
-    func returnDataFromInteractor(employee: Employee)
+    func returnDataFromInteractor(employee: Employee, avatar: UIImage)
     func popToViewController()
 }
 
@@ -31,8 +31,8 @@ extension DetailEmployeeProfilePresenter : DetailEmployeeProfilePresenterProtoco
         router.loadBackView()
     }
     
-    func returnDataFromInteractor(employee: Employee) {
-        view?.showDetailInfo(employee: employee)
+    func returnDataFromInteractor(employee: Employee, avatar: UIImage) {
+        view?.showDetailInfo(employee: employee, avatar: avatar)
     }
     
     func viewDidLoad() {

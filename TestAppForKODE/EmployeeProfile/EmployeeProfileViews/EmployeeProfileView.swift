@@ -96,8 +96,8 @@ extension ProfileView {
 //MARK: - func configure contents for View
 extension ProfileView {
     
-    func configureView(employee: Employee) {
-        self.avatarImage.image = employee.avatarImage
+    func configureView(employee: Employee, avatar: UIImage) {
+        self.avatarImage.image = avatar
         self.nameLabel.text = "\(employee.firstName) \(employee.lastName)"
         self.markingLabel.text = employee.userTag
         self.professionLabel.text = employee.position

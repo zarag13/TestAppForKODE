@@ -10,58 +10,63 @@ import BaseUIComponents
 class AlertForCallPhone: BaseView {
     let phoneButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(hexString: "#F5F5F5")
+        button.backgroundColor = UIColor(hexString: "#CACACA")
+        button.setTitleColor(UIColor(hexString: "#323232"), for: .normal)
         return button
     }()
     
     let cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("Отмена", for: .normal)
+        button.setTitleColor(UIColor(hexString: "#323232"), for: .normal)
         button.backgroundColor = UIColor(hexString: "#FFFFFF")
         return button
     }()
     
-    let blureView: UIVisualEffectView = {
-        let view = UIVisualEffectView()
-        let blureEffect = UIBlurEffect(style: .regular)
-        view.effect = blureEffect
-        return view
-    }()
+    let blureView = BlurEffectView()
     
     let superView: UIView
     
-    init(superView: UIView) {
+    init(superView: UIView, phone: String) {
         self.superView = superView
-        let frame = CGRect(x: superView.frame.origin.x, y: superView.frame.maxY, width: superView.frame.width, height: superView.frame.height)
-        super.init(frame: frame)
+        phoneButton.setTitle(phone, for: .normal)
+        super.init(frame: .zero)
     }
     
-    var topActorForAnimate: NSLayoutConstraint?
-    
+    var affine: CGAffineTransform?
 }
 
 extension AlertForCallPhone {
     override func setupViews() {
         super.setupViews()
-        addView(blureView)
-        blureView.contentView.addView(cancelButton)
-        blureView.contentView.addView(phoneButton)
+        insertSubview(blureView, at: 0)
+        blureView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addView(cancelButton)
+        addView(phoneButton)
+        phoneButton.makeSystemButtonAnimation()
+        cancelButton.makeSystemButtonAnimation()
         
         phoneButton.addTarget(self, action: #selector(callPhone), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(closeAlert), for: .touchUpInside)
     }
     
     @objc func callPhone() {
+        guard let phoneNumber = phoneButton.title(for: .normal) else { return }
         
+        if let url = URL(string: "tel://\(phoneNumber)") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            } else {
+                print("Can't open url on this device")
+            }
+        }
     }
     
     @objc func closeAlert() {
-        topActorForAnimate = topAnchor.constraint(equalTo: superView.bottomAnchor)
-        topActorForAnimate?.isActive = true
         
         UIView.animate(withDuration: 2) {
-            self.alpha = 0
-            self.layoutIfNeeded()
+            self.transform = self.affine!.inverted()
         } completion: { state in
             self.removeFromSuperview()
         }
@@ -70,6 +75,29 @@ extension AlertForCallPhone {
     
     override func setupLayoutViews() {
         super.setupLayoutViews()
+    }
+    
+    override func configureAppearance() {
+        super.configureAppearance()
+        backgroundColor = UIColor(hexString: "#000000").withAlphaComponent(0.6)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        phoneButton.layer.cornerRadius =  13
+        cancelButton.layer.cornerRadius =  13   
+    }
+}
+
+extension AlertForCallPhone {
+    func addConstraintForSuperView() {
+        print(superView.frame.height)
+        NSLayoutConstraint.activate([
+            topAnchor.constraint(equalTo: superView.bottomAnchor),
+            centerXAnchor.constraint(equalTo: superView.centerXAnchor),
+            widthAnchor.constraint(equalToConstant: superView.frame.width),
+            heightAnchor.constraint(equalToConstant: superView.frame.height),
+        ])
         
         NSLayoutConstraint.activate([
             blureView.topAnchor.constraint(equalTo: topAnchor),
@@ -90,51 +118,13 @@ extension AlertForCallPhone {
             phoneButton.trailingAnchor.constraint(equalTo: blureView.contentView.trailingAnchor, constant: -8),
             phoneButton.heightAnchor.constraint(equalToConstant: 60),
         ])
+        self.layoutIfNeeded()
     }
     
-    override func configureAppearance() {
-        super.configureAppearance()
-        backgroundColor = .clear
-        alpha = 0
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        phoneButton.layer.cornerRadius = phoneButton.frame.height / 13
-        cancelButton.layer.cornerRadius = phoneButton.frame.height / 13
-    }
-}
-
-extension AlertForCallPhone {
     func showAlert() {
-        print(superView.frame)
-        
-        self.setNeedsLayout()
-        UIView.animate(withDuration: 2) {
-            self.transform = CGAffineTransform.init(translationX: self.frame.origin.x, y: super.frame.origin.y)
-            self.alpha = 1
-            self.setNeedsLayout()
+        UIView.animate(withDuration: 0.8) {
+            self.affine = CGAffineTransform.init(translationX: 0, y: -self.superView.frame.height)
+            self.transform = self.affine!
         }
-
-        
-//        topActorForAnimate = topAnchor.constraint(equalTo: superView.bottomAnchor, constant: -20)
-//        print(superView.frame.height)
-//        NSLayoutConstraint.activate([
-//            topActorForAnimate!,
-//            leadingAnchor.constraint(equalTo: superView.leadingAnchor),
-//            trailingAnchor.constraint(equalTo: superView.trailingAnchor),
-//            centerYAnchor.constraint(equalTo: superView.centerYAnchor),
-//            heightAnchor.constraint(equalToConstant: superView.frame.height)
-//        ])
-//        
-//        
-//        topActorForAnimate?.isActive = false
-//        topActorForAnimate = topAnchor.constraint(equalTo: superView.topAnchor)
-//        topActorForAnimate?.isActive = true
-//        self.layoutIfNeeded()
-//        UIView.animate(withDuration: 2) {
-//            self.alpha = 1
-//            self.layoutIfNeeded()
-//        }
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 import BaseUIComponents
 
 protocol DetailProfileTableViewDelegate: AnyObject {
-    func showAlertCallPhone()
+    func showAlertCallPhone(phone: String)
 }
 
 class DetailProfileView: BaseTableView{
@@ -64,12 +64,12 @@ extension DetailProfileView: UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
             cell.configure(image: Resources.Image.starIcon!, firstTitle: employee.birthday, secondTitle: employee.birzdayYear)
+            cell.selectionStyle = .none
             returnCell = cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: DetailEmployeProfileCell.reuseIdentifier, for: indexPath) as! DetailEmployeProfileCell
             let phone = ManagerProcessingdData.processingPhoneNumberWithSeparate(phone: employee.phone)
             cell.configure(image: Resources.Image.phoneIcon!, firstTitle: phone, secondTitle: nil)
-            cell.selectionStyle = .gray
             returnCell = cell
         }
         return returnCell
@@ -116,26 +116,12 @@ extension DetailProfileView {
 extension DetailProfileView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        deselectRow(at: indexPath, animated: true)
         
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailEmployeProfileCell else { return }
-        
-        if ((cell.conentViewForCell.firstTitle.text?.contains("+7")) != nil) {
-            callNumber(phoneNumber: employee?.phone)
+        if cell.conentViewForCell.firstTitle.text!.contains("+7") {
+            guard let phone = employee?.phone else { return }
+            delegateAction?.showAlertCallPhone(phone: phone)
         }
-    }
-    
-    private func callNumber(phoneNumber: String?) {
-        
-        delegateAction?.showAlertCallPhone()
-        
-//        guard let phoneNumber = phoneNumber else { return }
-//        if let url = URL(string: "tel://\(phoneNumber)") {
-//            if UIApplication.shared.canOpenURL(url) {
-//                UIApplication.shared.open(url)
-//            } else {
-//                print("Can't open url on this device")
-//            }
-//        }
     }
 }

@@ -41,6 +41,8 @@ extension ListOfEmployeesTableView {
         isScrollEnabled = false
         showsVerticalScrollIndicator = false
         
+        backgroundColor = .white
+        
         
         self.refreshControl = UIRefreshControl()
         

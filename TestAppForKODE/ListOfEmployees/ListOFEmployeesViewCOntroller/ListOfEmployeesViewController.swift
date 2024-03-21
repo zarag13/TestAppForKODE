@@ -12,6 +12,7 @@ import BaseUIComponents
 protocol ListOfEmployeesViewControllerProtocol: AnyObject {
     func showData(data: [Employee])
     func showFilteredData(data: [Employee], state: Bool)
+    func showLoadFilteredDataWithError(error: ErrorReloadDataAlertState)
 }
 
 
@@ -36,6 +37,13 @@ class ListOfEmployeesViewController : BaseController {
         }
     }
     
+    var showAlert: Bool = false {
+        didSet {
+            navigationController?.navigationBar.barStyle = showAlert == true ? .black : .default
+        }
+    }
+    
+    
     var searchText: String = "" {
         didSet {
             presenter?.loadFilteredData(selectedDepartament: selectedDepartament, sortedState: sortedState, searchText: searchText)
@@ -59,6 +67,8 @@ class ListOfEmployeesViewController : BaseController {
             presenter?.loadFilteredData(selectedDepartament: selectedDepartament, sortedState: sortedState, searchText: searchText)
         }
     }
+    
+    var reloadDataIfNeeds: Bool = true
 }
 
 extension ListOfEmployeesViewController {
@@ -76,13 +86,18 @@ extension ListOfEmployeesViewController {
         presenter?.viewDidLoad()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        reloadDataIfNeeds = false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //когда мы возвращаемся обратно с экрана ошибки - если данных не было - делаем повторную загрузки
         //защита стоит так как мы и с детальной информации возвращаемся - что бы оно не делало каждый раз запрос
-//        if employees.count == 0 {
-//            presenter?.viewDidLoad()
-//        }
+        if reloadDataIfNeeds == true {
+            presenter?.viewDidLoad()
+        }
     }
     
     override func setupLayoutViews() {
@@ -113,6 +128,16 @@ extension ListOfEmployeesViewController {
 
 //MARK: - получение данных от Presentera
 extension ListOfEmployeesViewController: ListOfEmployeesViewControllerProtocol {
+    func showLoadFilteredDataWithError(error: ErrorReloadDataAlertState) {
+        let alert = ErrorReloadDataAlert(state: error)
+        self.view.addView(alert)
+        alert.setupLayaoutForSuperView()
+        alert.openAlert()
+        showAlert = true
+        alert.delegaate = self
+        callBackDelegate?.reloadDataDone()
+    }
+    
     //защита от использования навигейшен контроллера при отстуствии первоночальных данных - позволяет сохранять mockCell - иначе таблица будет пытаться создать ячейки с данными - а так как они не пришли [] - еще и будет открываться view - что ничего не найдено
     func showFilteredData(data: [Employee], state: Bool) {
         if state {
@@ -168,5 +193,11 @@ extension ListOfEmployeesViewController {
             }
         }
         
+    }
+}
+
+extension ListOfEmployeesViewController: ErrorReloadDataAlertProtocol {
+    func closeAlert() {
+        showAlert = false
     }
 }

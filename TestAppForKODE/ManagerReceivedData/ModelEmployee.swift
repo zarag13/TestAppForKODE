@@ -20,7 +20,8 @@ struct Employee: Hashable, Identifiable {
     //Переделать номер(phone) телефона c 802-623-1785 -> к для UI +7 (999) 900 90 90  -> для вызова tel://\(+79969593262)
     var phone: String
     //Переделать ссылку картинки String в UIIMage (avatarUrl)
-    var avatarImage: UIImage
+    //var avatarImage: UIImage
+    var avatarImage: String
     // "birthday": "2004-08-02", - переделать в 5 июня 1996
     var birthday: String
     // 24 года
