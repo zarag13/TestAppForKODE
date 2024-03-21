@@ -7,16 +7,21 @@
 
 import UIKit
 
-class ManagerProcessingdData {
+
+/// Description: Класс который приводит начальные данные полученные при парсинге JSON к тем которые будут использовать в проекте
+final class ManagerProcessingdData {
     //Логика
     //Iteractor обращается к NetworkNagare - он отдает Result
     //В Result мы обращаемся к этому менеджеру, он будет принимать дефолтный массив данных - обрабаотываеть их и возращать уже необходимые данные
     
-    //1. Основной метод в котором произойдет преобразование
-    var taskForDownloadAvatarImage: CreaterTaskForSession?
     
-    let semaf = DispatchSemaphore(value: 0)
+    private var taskForDownloadAvatarImage: CreaterTaskForSession?
     
+    private let semaf = DispatchSemaphore(value: 0)
+    
+    
+    
+    /// Description: Основной метод в котором и происходит сборка новго массива данных
     func processingDecoderJSONData(data: ModelEmployeeList, task: CreaterTaskForSession) -> [Employee] {
         taskForDownloadAvatarImage = task
 
@@ -30,9 +35,8 @@ class ManagerProcessingdData {
                             lastName: user.lastName,
                             department: user.department,
                             position: user.position,
-                            userTag: lowerTag(name: user.userTag),
-                            phone: processingPhoneNumber(phone: user.phone), // +79969593262
-                            //avatarImage: downloadImage(url: user.avatarUrl),
+                            userTag: lowerTag(tag: user.userTag),
+                            phone: processingPhoneNumber(phone: user.phone),
                             avatarImage: user.avatarUrl ,
                             birthday: processingBirthday(date: user.birthday),
                             currentAge: createCurrentAgefromBirthday(date: user.birthday))
@@ -42,19 +46,22 @@ class ManagerProcessingdData {
     }
     
     
-    private func lowerTag(name: String) -> String {
-        return name.lowercased()
+    /// Description: приводим userTag - к нижнему регистру - так как в основном только он для всего и будет использоваться
+    private func lowerTag(tag: String) -> String {
+        return tag.lowercased()
     }
     
+    
+    /// Description: приводит получаемые телефонные данные к формату - +79969593262
     private func processingPhoneNumber(phone: String) -> String {
         let result = phone.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         return "+7\(result)"
     }
     
+    
+    
+    /// Description: Метод который использовал для получения сразу аватарки сотрудника - при создании - так как они весят очень мало и все происходит асинхронно главному потоку - подождать секунду и получить уже полностью готовый массив данных - удобно, но если данные будут весить много - займет много времени - поэтому его не использую переделав на другую систему загрузки аватарки
     private func downloadImage(url: String) -> UIImage {
-        //здесь делаем запрос к API
-        //если sesess - возвращаем скаченную
-        //если failure - возвращаем моку
         
         var image = UIImage()
         
@@ -78,9 +85,8 @@ class ManagerProcessingdData {
     
     
     
+    /// Description: Метод который преобразует формат номера телефона из +79969593262 к +7 (999) 900 90 90 - который будет использоваться в UI
     static func processingPhoneNumberWithSeparate(phone: String) -> String {
-        //+79969593262
-        //+7 (999) 900 90 90
         var result = phone
         let next = result.index(after: result.firstIndex(of: "7")!)
         result.insert("(", at: next)
@@ -95,8 +101,10 @@ class ManagerProcessingdData {
         return result
     }
     
+    
+    
+    /// Description: метод который преобразует получаем формат даты - к тому который будет использовать в проекте
     private func processingBirthday(date: String) -> String {
-        
         //на основе строки создает дату
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -130,6 +138,8 @@ class ManagerProcessingdData {
         return dateString
     }
     
+    
+    /// Description: метод который позволяет узнать возраст пользователя
     private func createCurrentAgefromBirthday(date: String) -> String {
         
         let dateFormatter = DateFormatter()

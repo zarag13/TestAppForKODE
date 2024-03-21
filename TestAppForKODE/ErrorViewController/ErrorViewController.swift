@@ -12,10 +12,10 @@ protocol ErrorViewControllerProtocol: AnyObject {
     func showData(data: ErrorData)
 }
 
-class ErrorViewController : BaseController {
+final class ErrorViewController : BaseController {
     var presenter: ErrorPresenterProtocol?
     
-    let mainView = ErrorView()
+    private let mainView = ErrorView()
     
     override func loadView() {
         view = mainView
@@ -45,7 +45,6 @@ extension ErrorViewController: ErrorViewControllerProtocol {
     }
 }
 
-#warning("Доделать переход к стартовому контроллеру и вызов у него повтороной загрузки данных")
 extension ErrorViewController: ButtonForReloadDataProtocol {
     func reloadData() {
         presenter?.reloadData()

@@ -8,8 +8,11 @@
 import Foundation
 import UIKit
 
-class BuilderNetworkLayer {
+
+/// Description: Сборка NetworkLayer
+final class BuilderNetworkLayer {
     
+    /// Description создает все зависимости и возвращает уже сразу готовую к работе задачу(dataTask)
     static func createTaskManagerr() ->  CreaterTaskForSession {
         let url = CreaterURL()
         let request = CreaterRequest(url: url)

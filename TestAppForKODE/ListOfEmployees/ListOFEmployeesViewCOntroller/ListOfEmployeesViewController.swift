@@ -21,7 +21,7 @@ protocol ListOfEmployeesViewControllerCallBackProtocol: AnyObject {
     func reloadDataDone()
 }
 
-class ListOfEmployeesViewController : BaseController {
+final class ListOfEmployeesViewController : BaseController {
     var presenter: ListOfEmployeesPresenter?
     
     let navigationBar = NavigationBarTableList()
@@ -63,7 +63,7 @@ class ListOfEmployeesViewController : BaseController {
             print(tableListOfEmployees.sortedBirthDay)
             //уведомление navigationBar - что бы сменился цвет кнопки которая отображает, что применялась сортировка
             navigationBar.sortedState = sortedState
-            //далее нужно обратиться к Презентеру и
+            //далее нужно обратиться к Презентеру и передать ему данные
             presenter?.loadFilteredData(selectedDepartament: selectedDepartament, sortedState: sortedState, searchText: searchText)
         }
     }
@@ -176,6 +176,7 @@ extension ListOfEmployeesViewController: DepartamentsProtocol {
 }
 
 extension ListOfEmployeesViewController {
+    //MARK: - анимация скрытия таблицы и появления view об ошибке поиска - и на оборот
     func animationMissDataOrPresentData(data: [Employee]) {
         if data.count == 0 {
             UIView.animate(withDuration: 1) {

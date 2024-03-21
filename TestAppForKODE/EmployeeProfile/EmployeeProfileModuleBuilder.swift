@@ -9,7 +9,7 @@ import Foundation
 
 
 //MARK: - сборка Второго контроллера
-class EmployeeProfileBuilder {
+final class EmployeeProfileBuilder {
     static func builder(employee: Employee) -> EmployeeProfileVIewController {
         let view = EmployeeProfileVIewController()
         let iteractor = DetailEmployeeProfileIteractor(employe: employee)

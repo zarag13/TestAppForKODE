@@ -22,7 +22,7 @@ protocol CreaterRequestProtocol {
 
 
 //MARK: - Calss create Request
-class CreaterRequest: CreaterRequestProtocol {
+final class CreaterRequest: CreaterRequestProtocol {
     
     //MARK: - required class URL
     let url: CreaterURLProtocol

@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class SortedStackCheckBoxView: BaseView {
+//MARK: - View которая содержит в себе необходимый набор(чекБокс + лейбл) == stack
+final class SortedStackCheckBoxView: BaseView {
     let stackCheckBoxView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -17,6 +18,7 @@ class SortedStackCheckBoxView: BaseView {
         return stackView
     }()
     
+    //MARK: - добавляя делегата для данного стека - мы автоматически сообщаем кнопка - кто будет принимать от них данные
     weak var delegate: SortedCheckBoxButtonProtocol? {
         didSet {
             stackCheckBoxView.arrangedSubviews.forEach { view in
@@ -26,6 +28,7 @@ class SortedStackCheckBoxView: BaseView {
         }
     }
     
+    //MARK: - на основе получаемых данных - создем view с кнопкой + лейбл и добавляем в stack
     var sortedCheckBoxValue = [String]() {
         didSet {
             sortedCheckBoxValue.forEach { value in

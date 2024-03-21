@@ -2,15 +2,20 @@ PODS:
   - BaseUIComponents (0.1.0)
 
 DEPENDENCIES:
-  - BaseUIComponents (from `./Frameworks/BaseUIComponents`)
+  - BaseUIComponents (from `https://github.com/zarag13/BaseUIComponents`)
 
 EXTERNAL SOURCES:
   BaseUIComponents:
-    :path: "./Frameworks/BaseUIComponents"
+    :git: https://github.com/zarag13/BaseUIComponents
+
+CHECKOUT OPTIONS:
+  BaseUIComponents:
+    :commit: 1f552caaf360213992a9f7cea134fdc78569752f
+    :git: https://github.com/zarag13/BaseUIComponents
 
 SPEC CHECKSUMS:
-  BaseUIComponents: a26d95475e15609e49cedeaaeb8e362aacbc4032
+  BaseUIComponents: ae30c59348842cbe1a154e2595d6f168d8e7f1c4
 
-PODFILE CHECKSUM: b6bb18f252e4c1320d19de79d978835062c899d0
+PODFILE CHECKSUM: e446efb2cb58310930101f324f1a06b87ba601f3
 
 COCOAPODS: 1.15.2

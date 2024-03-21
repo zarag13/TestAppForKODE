@@ -321,7 +321,6 @@
 		ED4DA5382B9F5CF200895EAC /* ListOfEmployees */ = {
 			isa = PBXGroup;
 			children = (
-				ED5E2BCA2BA3C1500033B19B /* Entity */,
 				ED5E2B6D2B9FE2560033B19B /* ListOfEmployeesViews */,
 				ED5E2BF82BA66D840033B19B /* ListOFEmployeesViewCOntroller */,
 				ED9A7AA92B9F67290037BAF9 /* ListOfEmployeesPresenter.swift */,
@@ -388,8 +387,8 @@
 		ED5E2B932BA1D0FB0033B19B /* ErrorViews */ = {
 			isa = PBXGroup;
 			children = (
-				ED5E2B892BA1D08C0033B19B /* ErrorView.swift */,
 				ED5E2B972BA1D7980033B19B /* ErrorStackSubview.swift */,
+				ED5E2B892BA1D08C0033B19B /* ErrorView.swift */,
 			);
 			path = ErrorViews;
 			sourceTree = "<group>";
@@ -405,9 +404,10 @@
 		ED5E2BAF2BA21EFE0033B19B /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				ED5E2BCA2BA3C1500033B19B /* Entity */,
 				ED5E2BED2BA5FC930033B19B /* CustomSearchBar */,
-				ED5E2B9F2BA1F0F00033B19B /* DepartamentsCollectionView.swift */,
 				ED5E2BA42BA1F4300033B19B /* DepartamentCollectionViewCell.swift */,
+				ED5E2B9F2BA1F0F00033B19B /* DepartamentsCollectionView.swift */,
 				ED5E2BB02BA21F250033B19B /* NavigationBarTableList.swift */,
 			);
 			path = NavigationBar;
@@ -427,8 +427,8 @@
 		ED5E2BC02BA32BDE0033B19B /* ManagerReceivedData */ = {
 			isa = PBXGroup;
 			children = (
-				ED5E2BC22BA32C160033B19B /* ManagerProcessingdData.swift */,
 				ED5E2BC42BA367170033B19B /* ModelEmployee.swift */,
+				ED5E2BC22BA32C160033B19B /* ManagerProcessingdData.swift */,
 			);
 			path = ManagerReceivedData;
 			sourceTree = "<group>";

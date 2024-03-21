@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class MockItemForTableViewCell: BaseView {
+// MARK: - пустой объект с градиентом -> view -> ячейки первоначального отображения таблицы
+final class MockItemForTableViewCell: BaseView {
     enum ViewStyle {
         case title
         case avatar

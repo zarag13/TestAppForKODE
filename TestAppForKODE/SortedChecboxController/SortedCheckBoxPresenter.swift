@@ -7,13 +7,18 @@
 
 import Foundation
 
+//MARK: - Протокол с помощью которого общаются с презентером
 protocol SortedCheckBoxPresenterProtocol: AnyObject {
+    
+    /// Description: view - сообщила, что она загружена
     func viewDidLoad()
+    /// Description: метод который вызывает итерактор для передачи данных в презентре
     func returnData(value: [String], checkBoxState: CheckBoxState)
+    /// Description: метод который вызывает view -  что бы закрылся контроллер
     func tapBackBarItem()
 }
 
-class SortedCheckBoxPresenter {
+final class SortedCheckBoxPresenter {
     weak var view: SortedCheckBoxControllerProtocol?
     var interactor: SortedCheckBoxInteractorProtocol
     var router: SortedCheckboxRouterProtocol

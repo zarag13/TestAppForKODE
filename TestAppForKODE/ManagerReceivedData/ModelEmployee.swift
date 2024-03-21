@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+/// Description: Сотрудник - основная структура данных в проекте
 struct Employee: Hashable, Identifiable {
     
     var id: String

@@ -11,7 +11,7 @@ protocol ErrorInteractorProtocol: AnyObject {
     func loadData()
 }
 
-class ErrorInteractor {
+final class ErrorInteractor {
     weak var presenter: ErrorPresenterProtocol?
     
     var data: ErrorData?

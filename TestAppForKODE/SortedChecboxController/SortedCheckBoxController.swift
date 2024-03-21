@@ -7,14 +7,16 @@
 
 import BaseUIComponents
 
+//MARK: - Протокол с помощью которого контроллер принимает данные от Презентера
 protocol SortedCheckBoxControllerProtocol: AnyObject {
     func showCheckBoxView(value: [String], checkBoxState: CheckBoxState)
 }
 
-class SortedCheckBoxController: BaseController {
+final class SortedCheckBoxController: BaseController {
     
     var presenter: SortedCheckBoxPresenterProtocol?
     
+    //MARK: - Closure - с помошью которого мы будем передавать состояние выбранной кнопки в стартовый контроолер с таблицей сотрудников
     var checkBoxState: ((CheckBoxState)->Void)?
     
     let navigationBar = SimpleNavigationBar()
@@ -56,29 +58,28 @@ extension SortedCheckBoxController {
     }
 }
 
-//MARK: - Здесь получаем данные о первой загрузке контроллера
+
+//MARK: - Здесь получаем данные о первой загрузке контроллера и при необходимости делаем одну из кнопок активной
 extension SortedCheckBoxController: SortedCheckBoxControllerProtocol {
     func showCheckBoxView(value: [String], checkBoxState: CheckBoxState) {
         stackCheckBoxView.sortedCheckBoxValue = value
-        #warning("обработать получаемые данные о состаянии и сделать сразу одну из кнопок активной")
         guard let views = stackCheckBoxView.stackCheckBoxView.arrangedSubviews as? [SortedCheckBoxView] else { return }
         views.forEach { view in
             if view.checkBoxButton.sotredCheckBoxState == checkBoxState {
-                print("11111111 - \(view.checkBoxButton.sotredCheckBoxState.rawValue)")
                 view.checkBoxButton.changeState = .selected
             }
         }
     }
 }
 
-//MARK: - когда нажали на кнопку вернуть назад
+//MARK: - когда нажали на кнопку вернуться назад у навигации
 extension SortedCheckBoxController: BackButtonViewProtocol {
     func goBack() {
         presenter?.tapBackBarItem()
     }
 }
 
-//MARK: -
+//MARK: - метод который срабатывает при нажатии на кнопку - делаем возможность выборать только одну из кнопок ( вторая становится сразу неактивной)
 extension SortedCheckBoxController: SortedCheckBoxButtonProtocol {
     func selectCheckBox(sortedCeckBoox: CheckBoxState) {
         guard let views = stackCheckBoxView.stackCheckBoxView.arrangedSubviews as? [SortedCheckBoxView] else { return }

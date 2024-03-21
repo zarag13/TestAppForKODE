@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class ContentViewForTableViewCell: BaseView {
+//MARK: - view для ячейки которая получила данные(контент)
+final class ContentViewForTableViewCell: BaseView {
     let avatarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true

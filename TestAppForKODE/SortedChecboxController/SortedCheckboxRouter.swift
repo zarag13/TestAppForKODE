@@ -7,11 +7,14 @@
 
 import Foundation
 
+//MARK: - протокол с помощью которого с Роутером общается Презентер
 protocol SortedCheckboxRouterProtocol: AnyObject {
+    
+    /// Description: метод закрытия текущего контроллера
     func closeСurrentController()
 }
 
-class SortedCheckboxRouter {
+final class SortedCheckboxRouter {
     weak var view: SortedCheckBoxController?
 }
 

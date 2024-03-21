@@ -14,14 +14,16 @@ protocol DetailEmployeeProfileVIewControllerProtocol: AnyObject {
 }
 
 
-class EmployeeProfileVIewController: BaseController {
+final class EmployeeProfileVIewController: BaseController {
     
     var presenter: DetailEmployeeProfilePresenterProtocol?
     
-    let profileView = ProfileView()
-    let detailProfileView = DetailProfileView(frame: .zero, style: .grouped)
-    let navigationBar = SimpleNavigationBar()
-    
+    private let profileView = ProfileView()
+    private let detailProfileView = DetailProfileView(frame: .zero, style: .grouped)
+    private let navigationBar = SimpleNavigationBar()
+}
+
+extension EmployeeProfileVIewController {
     override func setupViews() {
         super.setupViews()
         presenter?.viewDidLoad()
@@ -60,19 +62,21 @@ class EmployeeProfileVIewController: BaseController {
 
 //MARK: - распределяем данные по view
 extension EmployeeProfileVIewController: DetailEmployeeProfileVIewControllerProtocol {
-    
+    //получаем картинку и текстовые данные пользователя
     func showDetailInfo(employee: Employee, avatar: UIImage) {
         profileView.configureView(employee: employee, avatar: avatar)
         detailProfileView.configureDataSourceee(employee: employee)
     }
 }
 
+//MARK: - закрытие контроллера
 extension EmployeeProfileVIewController: BackButtonViewProtocol {
     func goBack() {
         presenter?.popToViewController()
     }
 }
 
+//MARK: - открытие алерта с вызовом номера
 extension EmployeeProfileVIewController: DetailProfileTableViewDelegate {
     func showAlertCallPhone(phone: String) {
         let alert = AlertForCallPhone(superView: self.view, phone: phone)

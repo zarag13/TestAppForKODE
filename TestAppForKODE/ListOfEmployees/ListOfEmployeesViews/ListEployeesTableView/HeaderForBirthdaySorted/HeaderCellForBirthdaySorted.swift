@@ -7,7 +7,8 @@
 
 import UIKit
 
-class HeaderCellForBirthdaySorted: UITableViewHeaderFooterView {
+// MARK: - заголовок который будем использовать при фильтрации по дню рождения
+final class HeaderCellForBirthdaySorted: UITableViewHeaderFooterView {
     static let reuseIdentifier = String(describing: HeaderCellForBirthdaySorted.self)
     
     let contentHeaderView = HeaderContentView()

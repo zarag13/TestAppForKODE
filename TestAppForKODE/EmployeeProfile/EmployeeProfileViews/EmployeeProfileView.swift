@@ -8,7 +8,9 @@
 import UIKit
 import BaseUIComponents
 
-class ProfileView: BaseView {
+
+/// Description: первая view с аватаркой и именем
+final class ProfileView: BaseView {
     
     //MARK: - crate uiComponents
     lazy var nameLabel: UILabel = {

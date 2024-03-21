@@ -3,6 +3,6 @@ use_frameworks!
 
 target 'TestAppForKODE' do
 
-  pod 'BaseUIComponents', :path => './Frameworks/BaseUIComponents'
+  pod 'BaseUIComponents', :git => 'https://github.com/zarag13/BaseUIComponents'
 
 end

@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: - сборка Второго контроллера
-class ListOfEmployeesModuleBuilder {
+final class ListOfEmployeesModuleBuilder {
     static func builder() -> ListOfEmployeesViewController {
         
         let view = ListOfEmployeesViewController()

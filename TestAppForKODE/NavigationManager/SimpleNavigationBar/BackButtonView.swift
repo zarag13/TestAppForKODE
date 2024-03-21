@@ -12,7 +12,8 @@ protocol BackButtonViewProtocol: AnyObject {
 }
 
 
-class BackButtonView: BaseView {
+//MARK: - создание view кнопки == стрелочка назад
+final class BackButtonView: BaseView {
     weak var backButtonViewDelegate: BackButtonViewProtocol?
 }
 
@@ -47,6 +48,7 @@ extension BackButtonView {
         drawBackButtonImage()
         
     }
+    //MARK: - метод в котором рисуется эта стрелочка
     func drawBackButtonImage() {
         let path = UIBezierPath()
         path.move(to: CGPoint(x: frame.size.width - (frame.size.width / 100 * 17), y: frame.size.height - (frame.size.height / 100 * 10)))

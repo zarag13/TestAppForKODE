@@ -14,7 +14,7 @@ protocol ListOfEmployeesPouterProtocol: AnyObject {
     func openSortedController(sortedState: CheckBoxState)
 }
 
-class ListOfEmployeesPouter {
+final class ListOfEmployeesPouter {
     weak var view: ListOfEmployeesViewController?
 }
 

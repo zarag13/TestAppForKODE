@@ -7,8 +7,10 @@
 
 import BaseUIComponents
 
-class SortedCheckBoxView: BaseView {
+//MARK: - View которая содержит в себе чекБокс + лейбл
+final class SortedCheckBoxView: BaseView {
     let checkBoxButton = SortedCheckBoxButton()
+    
     let descriptionForButton: UILabel = {
         let label = UILabel()
         label.textAlignment = .center

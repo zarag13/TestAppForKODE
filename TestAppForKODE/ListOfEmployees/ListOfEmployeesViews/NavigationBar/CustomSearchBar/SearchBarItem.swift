@@ -21,7 +21,8 @@ protocol SearchSortedButtonDelegate: AnyObject {
     func selectLeftButton()
 }
 
-class SearchSortedButton: BaseView {
+//MARK: - кнопки == иконки по краям от searchBar
+final class SearchSortedButton: BaseView {
     
     let imageView = UIImageView()
     
@@ -68,7 +69,6 @@ extension SearchSortedButton {
     override func configureAppearance() {
         super.configureAppearance()
         backgroundColor = .clear
-        //translatesAutoresizingMaskIntoConstraints = false
         
         switch config {
         case .unmoved:

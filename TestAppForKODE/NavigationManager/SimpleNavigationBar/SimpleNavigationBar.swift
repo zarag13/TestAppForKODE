@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class SimpleNavigationBar: BaseView {
+//MARK: - простой навигейшен бар с кнопкой "назад" и заголовком
+final class SimpleNavigationBar: BaseView {
     let leftBarButtomItem = BackBarButtonView()
     let titleLabel: UILabel = {
         let label = UILabel()

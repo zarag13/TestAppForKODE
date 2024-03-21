@@ -14,7 +14,7 @@ protocol DetailEmployeeProfilePresenterProtocol: AnyObject {
     func popToViewController()
 }
 
-class DetailEmployeeProfilePresenter {
+final class DetailEmployeeProfilePresenter {
     weak var view: DetailEmployeeProfileVIewControllerProtocol?
     var router: DetailEmployeeProfileRouterProtocol
     var iteractor: DetailEmployeeProfileIteractorProtocol

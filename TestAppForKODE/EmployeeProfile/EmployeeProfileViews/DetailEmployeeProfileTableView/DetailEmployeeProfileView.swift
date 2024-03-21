@@ -5,14 +5,14 @@
 //  Created by Kirill on 11.03.2024.
 //
 
-import UIKit
 import BaseUIComponents
 
+//MARK: - протокол который делегирует действие по нажатию на номер
 protocol DetailProfileTableViewDelegate: AnyObject {
     func showAlertCallPhone(phone: String)
 }
 
-class DetailProfileView: BaseTableView{
+final class DetailProfileView: BaseTableView{
     
     var employee: Employee? {
         didSet {
@@ -46,10 +46,10 @@ extension DetailProfileView {
 }
 
 extension DetailProfileView: UITableViewDataSource {
+    //MARK: - создание ячеек / секций
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -95,8 +95,7 @@ extension DetailProfileView: UITableViewDataSource {
         return nil
     }
     
-    
-    //MARK: - убираем отступы междлу секциями
+    //MARK: - убираем нижние отступы междлу секциями
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
@@ -107,7 +106,7 @@ extension DetailProfileView: UITableViewDataSource {
 }
 
 extension DetailProfileView {
-    
+    //MARK: - передача данных в таблицу на основе которой создаются потом ячейки
     func configureDataSourceee(employee: Employee) {
         self.employee = employee
     }
@@ -115,9 +114,9 @@ extension DetailProfileView {
 
 extension DetailProfileView: UITableViewDelegate {
     
+    //MARK: - нажатие на ячейку где мы определяем что за ячейка и делегируем действие
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         deselectRow(at: indexPath, animated: true)
-        
         guard let cell = tableView.cellForRow(at: indexPath) as? DetailEmployeProfileCell else { return }
         if cell.conentViewForCell.firstTitle.text!.contains("+7") {
             guard let phone = employee?.phone else { return }

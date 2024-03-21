@@ -9,6 +9,8 @@ import UIKit
 
 extension UIView {
     
+    
+    /// Description: объеденяет в себе добавление view и отключение translatesAutoresizingMaskIntoConstraints
     func addView(_ view: UIView) {
         addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false

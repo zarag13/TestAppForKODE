@@ -7,7 +7,9 @@
 
 import BaseUIComponents
 
-class ErrorSearchView: BaseView {
+
+//MARK: - view которое появляется на контроллере - если произошел недопустим запрос данных в поле "Поиск"
+final class ErrorSearchView: BaseView {
     
     let image: UIImageView = {
         let imageView = UIImageView()
@@ -37,8 +39,6 @@ class ErrorSearchView: BaseView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
-        //stackView.distribution = .fillEqually
-        //stackView.alignment = .fill
         return stackView
     }()
 }

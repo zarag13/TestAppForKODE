@@ -7,12 +7,17 @@
 
 import BaseUIComponents
 
+//MARK: - Протокол таблицы о передаче данных
 protocol ListOfEmployeesTableViewDelegate: AnyObject {
+    //MARK: - просит перезагрузить данные при refresh скролинге (здесь мы передаем самого себя(таблицу) - что бы была возмождность остановить refreshControll)
     func reloadData(callback: ListOfEmployeesViewControllerCallBackProtocol)
+    //MARK: - сообщает о том какая ячейка была нажата
     func selectedEmployee(employee: Employee)
 }
 
-class ListOfEmployeesTableView: BaseTableView {
+
+//MARK: - таблица которая отображает данные или моку во время ожидания получения данных
+final class ListOfEmployeesTableView: BaseTableView {
     var employees: [Employee]? {
         didSet {
             reloadData()
@@ -124,6 +129,7 @@ extension ListOfEmployeesTableView: UITableViewDataSource {
     }
     
     
+    //MARK: - создание ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let employee = employees?[indexPath.section] else {
             guard let cell = dequeueReusableCell(withIdentifier: MockCellForTableView.reuseIdentifier, for: indexPath) as? MockCellForTableView else {
@@ -141,6 +147,7 @@ extension ListOfEmployeesTableView: UITableViewDataSource {
     }
 }
 
+//MARK: - метод который будет тригерить контроллер что бы таблица остановила refresh
 extension ListOfEmployeesTableView: ListOfEmployeesViewControllerCallBackProtocol {
     func reloadDataDone() {
         refreshControl?.endRefreshing()

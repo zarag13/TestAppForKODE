@@ -7,7 +7,9 @@
 
 import BaseUIComponents
 
-class AlertForCallPhone: BaseView {
+
+/// Description: Алерт при нажатии на телефон - вызов номера
+final class AlertForCallPhone: BaseView {
     let phoneButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(hexString: "#CACACA")

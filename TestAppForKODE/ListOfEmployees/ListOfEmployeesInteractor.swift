@@ -9,7 +9,6 @@ import Foundation
 
 protocol ListOfEmployeesInteractorProtocol: AnyObject {
     //MARK: - первая загрузка данных + перезагрузка данных - здесь используем обращение в сеть
-    #warning("Реализовать сохранение состояния в UserDefault - и хранить их здесь - сейчас реализую такой способ получения- но потом удаляем входные параметры и берем их из UserDefault")
     func loadData()
     //MARK: - метод сортировки
     func loadFilteredData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String)
@@ -17,7 +16,7 @@ protocol ListOfEmployeesInteractorProtocol: AnyObject {
     func reloadData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String)
 }
 
-class ListOfEmployeesInteractor {
+final class ListOfEmployeesInteractor {
     weak var presenter: ListOfEmployeesPresenterProtocol?
     
     let networkManager = BuilderNetworkLayer.createTaskManagerr()
@@ -29,7 +28,7 @@ class ListOfEmployeesInteractor {
 }
 
 extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
-    //MARK: -перезагрузка данных - без открытия окна ошибки
+    //MARK: -перезагрузка данных - с открытие алерта об ошибке
     func reloadData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String) {
         networkManager.eployeeListGetTask(state: .code500) {[weak self] result in
             guard let self = self else { return }
@@ -71,7 +70,7 @@ extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
                 DispatchQueue.main.async {
                     self.presenter?.didLoad(data: self.employees)
                 }
-            case .failure(let error):
+            case .failure(_):
                 DispatchQueue.main.async {
                     self.presenter?.obtainError()
                 }
@@ -79,7 +78,7 @@ extension ListOfEmployeesInteractor: ListOfEmployeesInteractorProtocol {
         }
     }
     
-    //
+    //MARK: - метод фильтрации данных
     func loadFilteredData(selectedDepartament: Department, sortedState: CheckBoxState, searchText: String) {
         //защита при первой загрузке данных - если данные еще не были загружены - что бы не пропали mockViewCell и не обновлялась таблица
         let state = employees.count != 0

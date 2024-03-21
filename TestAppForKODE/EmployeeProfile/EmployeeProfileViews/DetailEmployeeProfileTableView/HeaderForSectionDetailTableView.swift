@@ -7,11 +7,13 @@
 
 import UIKit
 
-class HeaderForSectionDetailTableView: UITableViewHeaderFooterView {
+
+/// Description: заголовок который будет разделять секции
+final class HeaderForSectionDetailTableView: UITableViewHeaderFooterView {
     
     static let reuseIdentifier = String(describing: HeaderForSectionDetailTableView.self)
     
-    let lineView = UIView()
+    private let lineView = UIView()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

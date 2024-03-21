@@ -8,7 +8,7 @@
 import Foundation
 
 
-// MARK: - Model Array EmployeeList
+// MARK: - Model Array EmployeeList for JSON Decode
 struct ModelEmployeeList: Codable {
     let employee: [Employee]
     

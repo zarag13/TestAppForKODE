@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class ListOfEmployeesTableViewCell: BaseTableViewCell {
+//MARK: - ячейка которая отображается при успешной загрузке данных
+final class ListOfEmployeesTableViewCell: BaseTableViewCell {
     static let reuseIdentifier = String(describing: ListOfEmployeesTableViewCell.self)
     var contentViewCell = ContentViewForTableViewCell()
     
@@ -44,6 +45,7 @@ extension ListOfEmployeesTableViewCell {
     func configurationCell(employee: Employee, birthday: Bool) {
         self.path = employee.id
         
+        //MARK: - здесь реализована загрузка аватарки - но она должна быть в интеракторе - не успел придумать как ее туда вынести, что бы корректно работало
         let networkManager = BuilderNetworkLayer.createTaskManagerr()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             networkManager.employeeDownloadAvatarImageTask(url: employee.avatarImage) { result in
@@ -62,7 +64,6 @@ extension ListOfEmployeesTableViewCell {
             }
         }
         
-        //contentViewCell.avatarImage.image = employee.avatarImage
         let fullName = "\(employee.firstName) \(employee.lastName)"
         contentViewCell.titleLabel.text = fullName
         contentViewCell.subTitleLabel.text = employee.position
@@ -74,6 +75,7 @@ extension ListOfEmployeesTableViewCell {
         }
     }
     
+    //MARK: - метод преобразования даты в тот формат который требуется для отображния - число + первые три буквы месяца
     func createNewFormatBirthDay(birthday: String) -> String {
         let array = birthday.components(separatedBy: .whitespaces)
         if array[0].count == 1 {

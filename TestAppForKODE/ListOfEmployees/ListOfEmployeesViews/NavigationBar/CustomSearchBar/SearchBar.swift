@@ -12,7 +12,8 @@ enum DidBeginEditingSearchBar {
     case end
 }
 
-class SearchBar: BaseView {
+//MARK: - View - которая включает в себе SearchBarTextField и создает вокург него скругленный фон
+final class SearchBar: BaseView {
     let textField: SearchBarTextField = {
         let textField = SearchBarTextField()
         return textField

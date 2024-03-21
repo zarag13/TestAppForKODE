@@ -12,7 +12,7 @@ protocol DetailEmployeeProfileRouterProtocol: AnyObject {
 }
 
 
-class DetailEmployeeProfileRouter {
+final class DetailEmployeeProfileRouter {
     weak var view: EmployeeProfileVIewController?
 }
 

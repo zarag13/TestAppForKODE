@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class HeaderContentView: BaseView {
+// MARK: - view для заголовка который будем использовать при фильтрации по дню рождения
+final class HeaderContentView: BaseView {
     
     let leftLineView: UIView = {
         let view = UIView()

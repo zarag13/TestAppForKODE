@@ -12,7 +12,8 @@ protocol NavigationBarTableListDelegate: AnyObject {
     func cancelEditing() 
 }
 
-class NavigationBarTableList: BaseView {
+//MARK: - Собранный navigationBAr - который включает в себя строку поиска и  коллекцию с ячейками фильтрации + кнопка отмены редактирования
+final class NavigationBarTableList: BaseView {
     
     let searchBar = SearchBar()
     
@@ -28,7 +29,6 @@ class NavigationBarTableList: BaseView {
     
     let cancelButton: UIButton = {
         let button = UIButton()
-        //button.setTitle("Отмена", for: .normal)
         let title = NSAttributedString(string: "Отмена", attributes: [.font: Resources.Founts.interBold(with: 14)])
         button.setAttributedTitle(title, for: .normal)
         button.setTitleColor(Resources.Colors.titleErrorTextColor, for: .normal)
@@ -38,7 +38,7 @@ class NavigationBarTableList: BaseView {
     
     lazy var trailingAnchorSearchBar: NSLayoutConstraint = searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
     
-    #warning("Началось редактирование")
+    
     var didBeginEditing: DidBeginEditingSearchBar? = .end {
         didSet {
             searchBar.didBeginEditing = didBeginEditing

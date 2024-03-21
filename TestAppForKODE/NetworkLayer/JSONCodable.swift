@@ -13,7 +13,7 @@ protocol JSONCodableProtocol {
 }
 
 //MARK: - JSONCodable
-class JSONCodable: JSONCodableProtocol {
+final class JSONCodable: JSONCodableProtocol {
     
     //MARK: - universal func decoding Models
     func decodeJson<T: Codable>(type: T.Type, from: Data) -> T? {

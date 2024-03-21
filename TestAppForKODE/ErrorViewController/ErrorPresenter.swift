@@ -13,7 +13,7 @@ protocol ErrorPresenterProtocol: AnyObject {
     func reloadData()
 }
 
-class ErrorPresenter {
+final class ErrorPresenter {
     weak var view: ErrorViewControllerProtocol?
     let interactor: ErrorInteractorProtocol
     let router: ErrorRouterProtocol

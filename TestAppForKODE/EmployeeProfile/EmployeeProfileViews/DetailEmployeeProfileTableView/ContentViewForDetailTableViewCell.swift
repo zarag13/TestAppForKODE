@@ -7,7 +7,9 @@
 
 import BaseUIComponents
 
-class ContentViewForDetailTableViewCell: BaseView {
+
+/// Description: view для ячейки которую будем наполнять контентом
+final class ContentViewForDetailTableViewCell: BaseView {
     let firstTitle: UILabel = {
         let label = UILabel()
         label.font = Resources.Founts.interMedium(with: 16)

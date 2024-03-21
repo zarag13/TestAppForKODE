@@ -9,7 +9,8 @@ import Foundation
 import BaseUIComponents
 
 
-class ErrorView : BaseView {
+//MARK: - view - на которую подменяем rootview у контроллера
+final class ErrorView : BaseView {
     
     let stackView = ErrorStackSubview()
     

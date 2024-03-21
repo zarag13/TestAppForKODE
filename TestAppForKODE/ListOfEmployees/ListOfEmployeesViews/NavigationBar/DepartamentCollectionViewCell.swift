@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class DepartamentCollectionViewCell: BaseCollectionViewCell{
+//MARK: - ячека которая отображает список объектов для фильтрации данных
+final class DepartamentCollectionViewCell: BaseCollectionViewCell{
     
     static let reuseIdentifier = String(describing: DepartamentCollectionViewCell.self)
     

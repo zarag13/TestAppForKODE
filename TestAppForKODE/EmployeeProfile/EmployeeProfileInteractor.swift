@@ -12,7 +12,7 @@ protocol DetailEmployeeProfileIteractorProtocol: AnyObject {
     func gettingData()
 }
 
-class DetailEmployeeProfileIteractor {
+final class DetailEmployeeProfileIteractor {
     weak var presenter: DetailEmployeeProfilePresenterProtocol?
     let employe: Employee
     

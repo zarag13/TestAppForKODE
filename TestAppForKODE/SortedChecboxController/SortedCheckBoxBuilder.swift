@@ -7,7 +7,9 @@
 
 import Foundation
 
-class SortedCheckBoxBuilder {
+
+/// Description: Класс который собирает все необходимые зависимости и возвращает SortedCheckBoxController
+final class SortedCheckBoxBuilder {
     static func build(checkBoxState: CheckBoxState) -> SortedCheckBoxController {
         let view = SortedCheckBoxController()
         let router = SortedCheckboxRouter()

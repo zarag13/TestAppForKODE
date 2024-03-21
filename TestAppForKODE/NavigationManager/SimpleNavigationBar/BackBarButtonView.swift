@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class BackBarButtonView: BaseView {
+//MARK: - view в которой создает кнопка возврата назад
+final class BackBarButtonView: BaseView {
     let view = BackButtonView()
 }
 

@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class MockIViewForTableViewCell: BaseView {
+// MARK: - view для ячейки первоначального отображения таблицы
+final class MockIViewForTableViewCell: BaseView {
     let avatarImage = MockItemForTableViewCell(styleView: .avatar)
     let titleLabel = MockItemForTableViewCell(styleView: .title)
     let subTitleLabel = MockItemForTableViewCell(styleView: .title)

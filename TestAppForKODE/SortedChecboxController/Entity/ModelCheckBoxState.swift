@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: - данные о виде сортировки которые передают кнопки 
 enum CheckBoxState: String {
     case none
     case alphabet = "По алфавиту"

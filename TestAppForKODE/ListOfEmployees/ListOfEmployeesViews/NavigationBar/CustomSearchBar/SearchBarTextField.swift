@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - SearchBar == кастомный TextField
 final class SearchBarTextField: UITextField {
     
     var rightSearchBarItem = SearchSortedButton(configure: .moved, image: UIImage(named: "list.ui.alt")!, selectColor: UIColor(hexString: "#6534FF"), deselectColor: UIColor(hexString: "#C3C3C6"))

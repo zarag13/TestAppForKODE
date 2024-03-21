@@ -7,7 +7,8 @@
 
 import BaseUIComponents
 
-class MockCellForTableView: BaseTableViewCell {
+// MARK: - ячейки первоначального отображения таблицы во время ожидания загрузки данных из интернета
+final class MockCellForTableView: BaseTableViewCell {
     static let reuseIdentifier = String(describing: MockCellForTableView.self)
     
     var mockViewCell = MockIViewForTableViewCell()

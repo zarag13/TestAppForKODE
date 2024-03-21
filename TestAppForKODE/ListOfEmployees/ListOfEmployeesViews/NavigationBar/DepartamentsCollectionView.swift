@@ -12,7 +12,8 @@ protocol DepartamentsProtocol: AnyObject {
     func move(departamen: Department)
 }
 
-class DepartamentsCollectionView: BaseCollectionView {
+//MARK: - горизонтальная коллекция с ячейками - по нажатию на которые будет фильтрация данных
+final class DepartamentsCollectionView: BaseCollectionView {
     weak var departamentsDelegate: DepartamentsProtocol?
 }
 

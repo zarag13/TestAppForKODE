@@ -16,7 +16,7 @@ protocol CreaterURLProtocol {
 
 
 //MARK: - Class Create URL with funcs
-class CreaterURL: CreaterURLProtocol {
+final class CreaterURL: CreaterURLProtocol {
     
     //MARK: - create url for download image
     func employeeAvatarImage(url: String, completion: @escaping (Result<URL, ErrorForNetworkManager>) -> Void) {

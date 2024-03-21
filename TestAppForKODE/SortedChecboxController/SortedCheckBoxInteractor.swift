@@ -7,17 +7,21 @@
 
 import Foundation
 
+//MARK: - протокол интерактора по которому с ним общается презентер
 protocol SortedCheckBoxInteractorProtocol: AnyObject {
+    
+    /// Description: метод загрузки данных
     func getData()
 }
 
-class SortedCheckBoxInteractor {
+final class SortedCheckBoxInteractor {
     weak var presenter: SortedCheckBoxPresenterProtocol?
     
     let checkBoxState: CheckBoxState
     
     let sortedValue = ["По алфавиту", "По дню рождения"]
     
+    /// Description: принимает данные о том, какая кнопка должна быть нажата
     init(checkBoxState: CheckBoxState) {
         self.checkBoxState = checkBoxState
     }

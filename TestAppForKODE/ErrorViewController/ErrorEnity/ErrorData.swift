@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+/// Description: данные которые будут заполнять контент контроллера с ошибкой загрузки первоначальных данных
 struct ErrorData {
     var fisrtTitle: String
     var secondTitle: String

@@ -7,18 +7,22 @@
 
 import BaseUIComponents
 
+//MARK: - Список ошибок - состояний для алерта
 enum ErrorReloadDataAlertState {
     case networkConnectionError
     case errorFromServer
 }
 
+//MARK: - делегирования действия по нажатию на алерт
 protocol ErrorReloadDataAlertProtocol: AnyObject {
     func closeAlert()
 }
 
-class ErrorReloadDataAlert: BaseView {
+
+//MARK: - красный алерт который появляется при невозможности перезагрузить данные
+final class ErrorReloadDataAlert: BaseView {
     
-    let message: UITextView = {
+    private let message: UITextView = {
         let textView = UITextView()
         textView.textAlignment = .left
         textView.isSelectable = false

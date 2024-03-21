@@ -11,7 +11,7 @@ protocol ErrorRouterProtocol: AnyObject {
     func openStartVC()
 }
 
-class ErrorRouter {
+final class ErrorRouter {
     weak var view: ErrorViewController?
 }
 

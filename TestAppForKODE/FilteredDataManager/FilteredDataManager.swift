@@ -8,14 +8,18 @@
 import Foundation
 
 
-class FilteredDataManager {
+
+/// Description: class for filtering data
+final class FilteredDataManager {
+    
+    /// Description: Method filtering data by Department and CheckBoxState
     func filteringBy(departament: Department, sortedCheckBoxFiltered: CheckBoxState, data: [Employee]) -> [Employee] {
         let filteredByDepartament = filteringByDepartament(departament: departament, employees: data)
         let filteredByCheckBox = filteringByCheckBox(sortedCheckBoxFiltered: sortedCheckBoxFiltered, employees: filteredByDepartament)
         return filteredByCheckBox
     }
     
-    //фильтрация поиска - полнсотью готова - здесь не важно какой придет массив(с уже ранее примененными фильтрами или нет) - все будет четко работать
+    /// Description: Method filtering data by search text
     func filteringBySearchText(searchText: String, employees: [Employee]) -> [Employee] {
         var filteredEmployee = [Employee]()
         
@@ -46,7 +50,8 @@ class FilteredDataManager {
 
 
 private extension FilteredDataManager {
-    //фильтрация по имени и фамилии (поиск)
+    
+    /// Description: Method filtering data by search text in contains lastName and fisrtName
     private func searchNameFiltered(searchText: String, employees: [Employee]) -> [Employee] {
         var filteredEmployee = [Employee]()
         let lowerSearch = searchText.lowercased()
@@ -65,7 +70,8 @@ private extension FilteredDataManager {
         return filteredEmployee
     }
     
-    //Возвращает данные отфильтрованные по departament
+
+    /// Description: Method filtering data by only Department
     private func filteringByDepartament(departament: Department, employees: [Employee]) -> [Employee] {
         let filteredEmployee = employees.filter { eployee in
             if departament == .all {
@@ -78,7 +84,7 @@ private extension FilteredDataManager {
     }
     
     
-    //фильтрация по чекбоксу
+    /// Description: Method filtering data by only CheckBoxState
     private func filteringByCheckBox(sortedCheckBoxFiltered: CheckBoxState, employees: [Employee]) -> [Employee] {
         switch sortedCheckBoxFiltered {
         case .none:
@@ -91,7 +97,8 @@ private extension FilteredDataManager {
         }
     }
     
-    //фильтруем по дате рождения от меньшего к большему - по числу + месяцу
+
+    /// Description: Method filtering data by only dirthDay from less to more, (day + month)
     private func filteredBirthday(employees: [Employee]) -> [Employee] {
         let calendar = Calendar.current
         let dateFormatter = DateFormatter()
@@ -126,7 +133,7 @@ private extension FilteredDataManager {
     
     //здесь сразу две фильтрации в одной из массива находим тех у кого др в этом году - второй у к кого в следующем
     //в теории елси придет массив уже отфильтрованный по дате - то этот метод вернет так же все отфильтрованное по порядку
-    #warning("Здесь мы получили два массива с разными данными - у кого в этом году др, у кого в следующем")
+    /// Description: "Здесь мы получили два массива с разными данными - у кого в этом году др, у кого в следующем
     private func filteredBirzdayYear(employees: [Employee]) -> [Employee] {
         //1. Приходит массив отфильтрованных данных по дате рождения
         

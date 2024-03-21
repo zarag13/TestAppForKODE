@@ -25,7 +25,7 @@ protocol ListOfEmployeesPresenterProtocol: AnyObject {
     func selectedSortedButton(sortedState: CheckBoxState)
 }
 
-class ListOfEmployeesPresenter {
+final class ListOfEmployeesPresenter {
     weak var view: ListOfEmployeesViewControllerProtocol?
     let interactor: ListOfEmployeesInteractorProtocol
     let router: ListOfEmployeesPouterProtocol

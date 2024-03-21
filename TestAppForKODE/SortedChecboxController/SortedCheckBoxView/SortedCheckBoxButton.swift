@@ -7,18 +7,20 @@
 
 import BaseUIComponents
 
+//MARK: - состояние для кнопок (нажата или нет)
 enum CheckBoxButtonState {
     case selected
     case deselected
 }
 
+//MARK: - Протокол делегирования - отправляем данные какая кнопка была нажата
 protocol SortedCheckBoxButtonProtocol: AnyObject {
     func selectCheckBox(sortedCeckBoox: CheckBoxState)
 }
 
-class SortedCheckBoxButton: BaseView {
+final class SortedCheckBoxButton: BaseView {
     
-    let circleLayer = CAShapeLayer()
+    private let circleLayer = CAShapeLayer()
     
     private var noSotredCheckBoxState: CheckBoxState = .none
     var sotredCheckBoxState : CheckBoxState = .none
@@ -54,7 +56,8 @@ extension SortedCheckBoxButton {
         }
     }
     
-    func createCircleImage(width: CGFloat) {
+    //MARK: - Мето создания рисунка == круг(чекбокс)
+    private func createCircleImage(width: CGFloat) {
         let offset: CGFloat = 2
         let newFrame = CGRect(origin: CGPoint(x: bounds.origin.y + offset, y: bounds.origin.x + offset),
                               size: CGSize(width: frame.width - (offset * 2), height: frame.height - (offset * 2)))

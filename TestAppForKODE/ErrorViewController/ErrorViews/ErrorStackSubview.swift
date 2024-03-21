@@ -8,15 +8,16 @@
 import Foundation
 import BaseUIComponents
 
+//MARK: - протокол делегирования действия о нажатии на кнопку
 protocol ButtonForReloadDataProtocol: AnyObject {
     func reloadData()
 }
 
-class ErrorStackSubview: BaseStackView {
+final class ErrorStackSubview: BaseStackView {
     
     weak var delegate: ButtonForReloadDataProtocol?
     
-    let firstLabel: UILabel = {
+    private let firstLabel: UILabel = {
         let label = UILabel()
         label.textColor = Resources.Colors.titleTextColor
         label.font = Resources.Founts.interBold(with: 17)
@@ -24,7 +25,7 @@ class ErrorStackSubview: BaseStackView {
         return label
     }()
     
-    let secondLabel: UILabel = {
+    private let secondLabel: UILabel = {
         let label = UILabel()
         label.textColor = Resources.Colors.metaTextColor
         label.font = Resources.Founts.interRegular(with: 17)
@@ -32,14 +33,14 @@ class ErrorStackSubview: BaseStackView {
         return label
     }()
     
-    let reloadButton: UIButton = {
+    private let reloadButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = Resources.Founts.interBold(with: 16)
         button.setTitleColor(Resources.Colors.titleErrorTextColor, for: .normal)
         return button
     }()
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
     }()
@@ -80,6 +81,7 @@ extension ErrorStackSubview {
 }
 
 extension ErrorStackSubview {
+    //MARK: - заполнения данными эту view
     func congigurationSTackView(data: ErrorData, controller: ButtonForReloadDataProtocol?) {
         firstLabel.text = data.fisrtTitle
         secondLabel.text = data.secondTitle

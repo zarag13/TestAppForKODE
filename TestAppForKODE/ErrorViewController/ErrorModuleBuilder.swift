@@ -8,7 +8,7 @@
 import Foundation
 
 //MARK: - сборка экрана с ошибкой
-class ErrorModuleBuilder {
+final class ErrorModuleBuilder {
     static func builder() -> ErrorViewController {
         let view = ErrorViewController()
         let interactor = ErrorInteractor()

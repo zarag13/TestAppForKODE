@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+/// Description: Список ошибок используемый при работе NetworkLayer
 enum ErrorForNetworkManager: Error, CustomStringConvertible{
     //MARK: - Error Create URL
     case createURLFromString

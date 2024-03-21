@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BlurEffectView: UIVisualEffectView {
+//MARK: - класс в котором создано размытие с необходимым уровнем
+final class BlurEffectView: UIVisualEffectView {
     
     var animator = UIViewPropertyAnimator(duration: 0, curve: .linear)
     

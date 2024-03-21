@@ -8,7 +8,9 @@
 import BaseUIComponents
 
 
-class DetailEmployeProfileCell: BaseTableViewCell {
+
+/// Description: Ячейка для таблицы с детальной информацией о сотруднике
+final class DetailEmployeProfileCell: BaseTableViewCell {
     
     static let reuseIdentifier = String(describing: DetailEmployeProfileCell.self)
     

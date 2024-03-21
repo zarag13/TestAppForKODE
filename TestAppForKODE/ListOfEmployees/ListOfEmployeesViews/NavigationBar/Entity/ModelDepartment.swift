@@ -9,7 +9,7 @@ import Foundation
 
 
 
-//NARK: - MOC data
+//MARK: - список фильтраций которые мы будем использовать для создания коллекции
 enum Department: String {
     case all = "Все"
     case android = "Android"

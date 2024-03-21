@@ -9,6 +9,7 @@ import UIKit
 
 extension UIButton {
     
+    /// Description: добавляет кнопке анимацию мигания
     func makeSystemButtonAnimation() {
         self.addTarget(self, action: #selector(handeIn), for: [.touchDown, .touchDragInside])
         self.addTarget(self, action: #selector(handeOut), for: [.touchDragOutside, .touchUpInside, .touchUpOutside, .touchDragExit, .touchCancel])
