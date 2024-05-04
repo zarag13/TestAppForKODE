@@ -102,17 +102,27 @@ final class CreaterTaskForSession: CreaterTaskProtocol {
     ///   - Return: returns the data that needs to be converted in UIImage(data: result)
     ///   - Description: такое решение было принято, что бы не импортировать UIKit
     func employeeDownloadAvatarImageTask(url: String, completion: @escaping (Result<Data, ErrorForNetworkManager>) -> Void) {
-        sessionPr.eployeeAvatarDownloadSession(url: url) { [weak self] result in
+        sessionPr.eployeeAvatarDownloadSession(url: url) { [weak self] rsultSession in
             guard let strSelf = self else { return }
             
-            switch result {
+            switch rsultSession {
                 
             case .success(let session):
                 
                 strSelf.requestPr.getRequestForDownloadAvatar(urL: url) { result in
+                    
+                    
+                    
                     switch result {
                     case .success(let request):
                         strSelf.task = session.dataTask(with: request, completionHandler: { data, response, error in
+                            //
+                            if let cacheResponse = session.configuration.urlCache?.cachedResponse(for: request) {
+                                completion(.success(cacheResponse.data))
+                                return
+                            }
+                            //
+                            
                             if error != nil {
                                 completion(.failure(.errorTask))
                                 return

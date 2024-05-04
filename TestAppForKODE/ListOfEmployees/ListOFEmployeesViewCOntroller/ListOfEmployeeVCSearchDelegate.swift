@@ -34,7 +34,9 @@ extension ListOfEmployeesViewController: NavigationBarTableListDelegate {
     func searchText(text: String) {
         //удаляем в словах лишние пробелы
         let validText = validate(text: text)
-        self.searchText = validText
+        if !validText.isEmpty {
+            self.searchText = validText
+        }
     }
     
     

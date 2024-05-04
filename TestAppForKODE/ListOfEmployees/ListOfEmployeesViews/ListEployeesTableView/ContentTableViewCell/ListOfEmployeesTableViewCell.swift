@@ -62,7 +62,6 @@ extension ListOfEmployeesTableViewCell {
                 }
             }
         }
-        
         let fullName = "\(employee.firstName) \(employee.lastName)"
         contentViewCell.titleLabel.text = fullName
         contentViewCell.subTitleLabel.text = employee.position

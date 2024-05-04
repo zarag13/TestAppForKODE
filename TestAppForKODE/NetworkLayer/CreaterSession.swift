@@ -57,10 +57,12 @@ final class CreaterSession: NSObject, CreaterSessionProtocol {
     }
     
     
-    
     //MARK: - create URLSessionConfiguration
     func setupConfigSession(cahePolicy: NSURLRequest.CachePolicy) -> URLSessionConfiguration {
         let config = URLSessionConfiguration.default
+        if cahePolicy == .returnCacheDataElseLoad {
+            config.urlCache = URLCache(memoryCapacity: 50*1024*1024, diskCapacity: 50*1024*1024, diskPath: "images")
+        }
         config.allowsCellularAccess = false
         config.waitsForConnectivity = true
         config.timeoutIntervalForRequest = 30
